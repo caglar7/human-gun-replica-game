@@ -9,6 +9,7 @@ using UnityEngine;
 public class PlayerMover : MonoBehaviour
 {
     #region Properties
+    [Header("Settings")]
     [SerializeField] float forwardSpeed = 5f;
     [SerializeField] float clampRange = 3f;
     [Range(0f, 1f)] [SerializeField] float movementSensitivity = .5f;
