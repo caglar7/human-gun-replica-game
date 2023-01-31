@@ -12,6 +12,7 @@ using UnityEngine.UI;
 /// quiting game
 /// 
 /// </summary>
+/// 
 
 public enum ButtonActionType
 {
@@ -23,28 +24,13 @@ public enum ButtonActionType
 }
 
 [RequireComponent(typeof(Button))]
-public class ButtonMethod : MonoBehaviour
+public class ButtonMethods : MonoBehaviour
 {
-    [SerializeField] ButtonActionType[] actions;
-    Button button;
+    public ButtonActionType[] actions;
 
-    private void Start()
+    public void ButtonAction(ButtonActionType type)
     {
-        button = GetComponent<Button>();
-        button.onClick.AddListener(OnClick);
-    }
-
-    private void OnClick()
-    {
-        foreach(ButtonActionType action in actions)
-        {
-            ButtonAction(action);
-        }
-    }
-
-    private void ButtonAction(ButtonActionType type)
-    {
-        switch(type)
+        switch (type)
         {
             case ButtonActionType.Pause:
                 GameManager.instance.PauseGame();
