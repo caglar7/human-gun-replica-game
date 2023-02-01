@@ -21,6 +21,7 @@ public enum ButtonActionType
     SwitchCanvas_StartMenu,
     SwitchCanvas_GameMenu,
     SwitchCanvas_LevelEndMenu,
+    StartGameEvent,
 }
 
 [RequireComponent(typeof(Button))]
@@ -50,6 +51,10 @@ public class ButtonMethods : MonoBehaviour
 
             case ButtonActionType.SwitchCanvas_LevelEndMenu:
                 CanvasController.instance.SwitchCanvas(CanvasType.LevelEndMenu);
+                break;
+
+            case ButtonActionType.StartGameEvent:
+                EventManager.StartGameEvent();
                 break;
         }
     }

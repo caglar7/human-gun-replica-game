@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
+/// <summary>
+/// Event Manager
+/// </summary>
 
 public class EventManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    #region Events
+    public static event Action StartGame; 
+    #endregion
 
-    // Update is called once per frame
-    void Update()
+    #region Methods
+    public static void StartGameEvent()
     {
-        
-    }
+        StartGame?.Invoke();
+    } 
+    #endregion
 }

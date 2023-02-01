@@ -9,10 +9,21 @@ using UnityEngine;
 
 public class Stickman : Gun
 {
-    [SerializeField] Animator animator;
+    #region Properties
+    [SerializeField] Animator animator; 
+    #endregion
 
-    public void TriggerAnimation(string param)
+    #region Start
+    private void Start()
     {
-        animator.SetTrigger(param);
-    }
+        EventManager.StartGame += RunAnimation;
+    } 
+    #endregion
+
+    #region Animation Methods
+    private void RunAnimation() => animator.SetTrigger("Run");
+
+    private void IdleAnimation() => animator.SetTrigger("Idle");
+
+    #endregion
 }
