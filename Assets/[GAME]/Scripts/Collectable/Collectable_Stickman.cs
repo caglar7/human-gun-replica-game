@@ -9,5 +9,6 @@ public class Collectable_Stickman : Collectable
     public override void OnCollect()
     {
         EventManager.GunTransformEvent(addCount);
+        gameObject.SetActive(false);
     }
 }

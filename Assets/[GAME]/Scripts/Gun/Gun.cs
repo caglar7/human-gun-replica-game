@@ -18,6 +18,7 @@ public class Gun : MonoBehaviour
     public void Init()
     {
         gunParts.AddRange(gunPartsObj.GetComponentsInChildren<GunPart>(true));
-    } 
+    }
     #endregion
+
 }

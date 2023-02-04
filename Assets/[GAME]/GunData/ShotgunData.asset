@@ -15,5 +15,6 @@ MonoBehaviour:
   name: Shotgun
   attackDamage: 10
   range: 3
-  rangeMin: 9
-  rangeMax: 20
+  shootingPeriod: 1
+  min: 0
+  max: 0

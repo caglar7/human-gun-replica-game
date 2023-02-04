@@ -84,7 +84,7 @@ public class GunTransformer : MonoBehaviour
     {
         foreach (Gun g in gunList)
         {
-            if (stickmanCount >= g.gunData.rangeMin && stickmanCount <= g.gunData.rangeMax)
+            if (stickmanCount >= g.gunData.min && stickmanCount <= g.gunData.max)
             {
                 if (currentGun != g)
                 {

@@ -9,8 +9,9 @@ public class GunData : ScriptableObject
     public new string name;
     public int attackDamage;
     public float range;
+    public float shootingPeriod;
 
     [Header("Stickman Range")]
-    public int rangeMin;
-    public int rangeMax;
+    public int min;
+    public int max;
 }

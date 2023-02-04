@@ -15,5 +15,6 @@ MonoBehaviour:
   name: SMG
   attackDamage: 10
   range: 5
-  rangeMin: 5
-  rangeMax: 8
+  shootingPeriod: 0.5
+  min: 0
+  max: 0
