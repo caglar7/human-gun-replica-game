@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class Shotgun : Gun
 {
-    
+    #region Awake
+    private void Awake()
+    {
+        Init();
+    } 
+    #endregion
 }

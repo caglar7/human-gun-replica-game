@@ -10,7 +10,8 @@ using System;
 public class EventManager : MonoBehaviour
 {
     #region Events
-    public static event Action StartGame; 
+    public static event Action StartGame;
+    public static event Action<int> GunTransform;
     #endregion
 
     #region Methods
@@ -18,5 +19,10 @@ public class EventManager : MonoBehaviour
     {
         StartGame?.Invoke();
     } 
+
+    public static void GunTransformEvent(int count)
+    {
+        GunTransform?.Invoke(count);
+    }
     #endregion
 }

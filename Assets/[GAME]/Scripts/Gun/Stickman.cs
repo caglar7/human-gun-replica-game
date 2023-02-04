@@ -10,14 +10,35 @@ using UnityEngine;
 public class Stickman : Gun
 {
     #region Properties
-    [SerializeField] Animator animator; 
+
+    [Header("Stickman Params")]
+    [SerializeField] Animator animator;
     #endregion
 
-    #region Start
-    private void Start()
+    #region Awake
+
+    private void Awake()
+    {
+        Init();
+    }
+
+    #endregion
+
+    #region Enable, Disable
+
+    /// <summary>
+    ///  subs to events
+    /// </summary>
+    private void OnEnable()
     {
         EventManager.StartGame += RunAnimation;
-    } 
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StartGame -= RunAnimation;
+    }
+
     #endregion
 
     #region Animation Methods

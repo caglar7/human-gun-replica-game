@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ShotgunData
   m_EditorClassIdentifier: 
   name: Shotgun
-  gunLevel: 3
   attackDamage: 10
   range: 3
+  rangeMin: 9
+  rangeMax: 20

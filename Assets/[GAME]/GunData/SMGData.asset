@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SMGData
   m_EditorClassIdentifier: 
   name: SMG
-  gunLevel: 2
   attackDamage: 10
   range: 5
+  rangeMin: 5
+  rangeMax: 8
