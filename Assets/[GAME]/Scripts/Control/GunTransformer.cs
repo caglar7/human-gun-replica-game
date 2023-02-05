@@ -68,6 +68,8 @@ public class GunTransformer : MonoBehaviour
     {
         if(currentGun)
         {
+
+
             for (int i = 0; i < currentGun.gunParts.Count; i++)
             {
                 if (i < stickmanCount) currentGun.gunParts[i].gameObject.SetActive(true);
@@ -90,6 +92,9 @@ public class GunTransformer : MonoBehaviour
                 {
                     g.gameObject.SetActive(true);
                     currentGun = g;
+
+                    // testing
+                    print("current gun" + currentGun.gunData.name);
                 }
                 break;
             }
@@ -110,6 +115,9 @@ public class GunTransformer : MonoBehaviour
         currentGun = null;
         stickmanCount = 1;
         gunList.AddRange(GetComponentsInChildren<Gun>(true));
+
+        // testing
+        print("gun list count: " + gunList.Count);
     } 
     #endregion
 }
