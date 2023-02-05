@@ -54,6 +54,8 @@ public class GunTransformer : MonoBehaviour
     {
         stickmanCount = Mathf.Max(stickmanCount + addedCount, 1);
 
+        if (stickmanCount == 1 && addedCount < 0) return; 
+
         ActivateCurrentGun();
 
         ActivateGunParts();
