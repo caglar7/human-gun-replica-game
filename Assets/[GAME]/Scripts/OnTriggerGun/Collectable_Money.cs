@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Collectable_Money : Collectable
+public class Collectable_Money : OnTriggerGun
 {
     [SerializeField] float groundLevelY;
     [SerializeField] float zOffset = 10f;
@@ -33,7 +33,7 @@ public class Collectable_Money : Collectable
     ///  removing this object and get a small money mesh from pool
     ///  moves up to UI, updating the money count on UI
     /// </summary>
-    public override void OnCollect()
+    public override void OnTrigger()
     {
         // implementation later on
         print("money collected");

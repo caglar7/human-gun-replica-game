@@ -12,6 +12,7 @@ public class EventManager : MonoBehaviour
     #region Events
     public static event Action StartGame;
     public static event Action<int> GunTransform;
+    public static event Action ObstacleJump;
     #endregion
 
     #region Methods
@@ -23,6 +24,11 @@ public class EventManager : MonoBehaviour
     public static void GunTransformEvent(int count)
     {
         GunTransform?.Invoke(count);
+    }
+
+    public static void ObstacleJumpEvent()
+    {
+        ObstacleJump?.Invoke();
     }
     #endregion
 }

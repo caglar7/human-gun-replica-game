@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectable : MonoBehaviour
+public class OnTriggerGun : MonoBehaviour
 {
     bool isUsed = false;
     Gun gun;
@@ -13,11 +13,11 @@ public class Collectable : MonoBehaviour
         if(gun && isUsed == false)
         {
             isUsed = true;
-            OnCollect();
+            OnTrigger();
         }
     }
 
-    public virtual void OnCollect()
+    public virtual void OnTrigger()
     {
         Debug.Log("OnCollect() not implemented");
     }

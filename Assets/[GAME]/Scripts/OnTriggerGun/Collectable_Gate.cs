@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using System;
 
-public class Collectable_Gate : Collectable
+public class Collectable_Gate : OnTriggerGun
 {
     [SerializeField] Collider otherGate;
     [SerializeField] int addedStickman;
@@ -22,7 +22,7 @@ public class Collectable_Gate : Collectable
         tmpro.text = (addedStickman < 0) ? addedStickman.ToString() : tmpro.text;
     }
 
-    public override void OnCollect()
+    public override void OnTrigger()
     {
         otherGate.enabled = false;
 

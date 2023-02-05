@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 /// <summary>
 /// drag control for player
@@ -14,6 +15,10 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] float clampRange = 3f;
     [Range(0f, 1f)] [SerializeField] float movementSensitivity = .5f;
     [SerializeField] float damping = 10f;
+
+    [Header("Obstacle Jump Adjust")]
+    [SerializeField] float height;
+    [SerializeField] float jumpDuration;
 
     float screenFractionForMaxRange;
     Vector3 initTouchPosition;
@@ -32,6 +37,20 @@ public class PlayerMover : MonoBehaviour
         DragMove();
         ForwardMove();
     }
+    #endregion
+
+    #region Enable, Disable
+
+    private void OnEnable()
+    {
+        EventManager.ObstacleJump += PlayerJump;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.ObstacleJump -= PlayerJump;
+    }
+
     #endregion
 
     #region Methods
@@ -62,6 +81,20 @@ public class PlayerMover : MonoBehaviour
     {
         transform.position += (Vector3.forward * forwardSpeed * Time.deltaTime);
     } 
+
+    /// <summary>
+    ///  value not used in this subs method, it's used in GunTransformer method
+    /// </summary>
+    /// <param name="value"></param>
+    private void PlayerJump()
+    {
+        float initY = transform.position.y;
+        transform.DOMoveY(initY + height, jumpDuration / 2f)
+            .OnComplete(() => {
+                transform.DOMoveY(initY, jumpDuration / 2f);
+            });
+    }
+
     #endregion
 
     #region Init

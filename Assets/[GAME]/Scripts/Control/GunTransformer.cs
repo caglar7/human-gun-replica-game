@@ -70,8 +70,6 @@ public class GunTransformer : MonoBehaviour
     {
         if(currentGun)
         {
-
-
             for (int i = 0; i < currentGun.gunParts.Count; i++)
             {
                 if (i < stickmanCount) currentGun.gunParts[i].gameObject.SetActive(true);
@@ -98,7 +96,6 @@ public class GunTransformer : MonoBehaviour
                     // testing
                     print("current gun" + currentGun.gunData.name);
                 }
-                break;
             }
             else g.gameObject.SetActive(false);
         }
