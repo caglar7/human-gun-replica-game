@@ -9,6 +9,7 @@ public class Shooter : MonoBehaviour
     GunData gunData;
     float period, timer;
     float range, speed;
+    int attackDamage;
     #endregion
 
     #region Awake, Update
@@ -46,7 +47,7 @@ public class Shooter : MonoBehaviour
     {
         Bullet bullet = PoolManager.instance.poolBullet.PullObjFromPool().GetComponent<Bullet>();
         bullet.transform.position = shootPoint.position;
-        bullet.Shoot(range, speed);
+        bullet.Shoot(range, speed, attackDamage);
     }
 
     #endregion
@@ -58,6 +59,7 @@ public class Shooter : MonoBehaviour
         range = gunData.range;
         period = gunData.shootingPeriod;
         speed = gunData.bulletSpeed;
+        attackDamage = gunData.attackDamage;
         timer = period;
     }
     #endregion

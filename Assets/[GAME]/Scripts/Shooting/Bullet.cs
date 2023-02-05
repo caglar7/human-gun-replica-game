@@ -9,8 +9,11 @@ using DG.Tweening;
 
 public class Bullet : MonoBehaviour
 {
-    public void Shoot(float range, float speed)
+    int bulletDamage;
+
+    public void Shoot(float range, float speed, int damage)
     {
+        bulletDamage = damage;
         float duration = range / speed;
         float nextZ = transform.position.z + range;
         transform.DOMoveZ(nextZ, duration).SetEase(Ease.Linear)
@@ -23,5 +26,10 @@ public class Bullet : MonoBehaviour
     {
         transform.DOKill();
         PoolManager.instance.poolBullet.AddObjToPool(gameObject);
+    }
+
+    public int GetBulletDamage()
+    {
+        return bulletDamage;
     }
 }

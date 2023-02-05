@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PistolData
   m_EditorClassIdentifier: 
   name: Pistol
-  attackDamage: 10
+  attackDamage: 1
   range: 20
   shootingPeriod: 0.5
   bulletSpeed: 60

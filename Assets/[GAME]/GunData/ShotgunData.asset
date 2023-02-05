@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShotgunData
   m_EditorClassIdentifier: 
   name: Shotgun
-  attackDamage: 10
+  attackDamage: 4
   range: 20
   shootingPeriod: 0.5
   bulletSpeed: 40
