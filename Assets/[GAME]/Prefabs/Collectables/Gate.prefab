@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherGate: {fileID: 8170267559795700281}
-  addedStickman: 2
+  addedStickman: 1
 --- !u!1 &8170267559678582504
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4219178106521069027}
   - component: {fileID: 2119365200705212713}
   - component: {fileID: 768121889837632942}
+  - component: {fileID: 2945181587716153520}
   m_Layer: 0
   m_Name: Collectable_Money
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 462044592661098748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.34, y: -0.31, z: 0}
-  m_LocalScale: {x: 0.4246484, y: 0.6953618, z: 0.42464837}
+  m_LocalScale: {x: 0.008287326, y: 0.013570503, z: 0.0030696013}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 768121891268295825}
@@ -98,10 +99,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05302cce0ad1c024eb1d8a63975c1916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLevelY: 0
+--- !u!114 &2945181587716153520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462044592661098748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28fad0c411b2f3c49971fa4ff4590281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLevelY: 1.29
   zOffset: 2
-  jumpDuration: 1
-  jumpPower: 1.6
+  jumpDuration: 1.2
+  jumpPower: 1.3
   jumpCount: 1
   ease: 30
 --- !u!1 &768121891268295830
