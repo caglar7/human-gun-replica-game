@@ -10,9 +10,8 @@ public class Collectable_Money : OnTriggerGun
     /// </summary>
     public override void OnTrigger()
     {
-        // implementation later on
-        print("money collected");
-        gameObject.SetActive(false);
+        EventManager.MoneyCollectEvent(transform.position);
 
+        gameObject.SetActive(false);
     }
 }
