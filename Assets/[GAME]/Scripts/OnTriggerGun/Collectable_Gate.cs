@@ -26,8 +26,6 @@ public class Collectable_Gate : OnTriggerGun
     {
         otherGate.enabled = false;
 
-        EventManager.GunTransformEvent(addedStickman);
-
         gameObject.SetActive(false);
     }
 }

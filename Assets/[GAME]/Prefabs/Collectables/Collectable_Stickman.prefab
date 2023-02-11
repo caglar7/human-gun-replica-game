@@ -170,7 +170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1883229044325933153}
-  - component: {fileID: 1254607063272569560}
+  - component: {fileID: 8183048915378237002}
   m_Layer: 0
   m_Name: Stickman
   m_TagString: Untagged
@@ -195,7 +195,7 @@ Transform:
   m_Father: {fileID: 2137006039234851699}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1254607063272569560
+--- !u!95 &8183048915378237002
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -204,10 +204,10 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1254607063272569563}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: fd743041c1b8f73499568302da5b82fd, type: 3}
-  m_Controller: {fileID: 9100000, guid: 22bd0795de57fa2448c2a4ff7d85b983, type: 2}
+  m_Avatar: {fileID: 9000000, guid: e3a8c0aee3aa3b84e8f118cf562bb664, type: 3}
+  m_Controller: {fileID: 9100000, guid: 899051f0d5a7dac47997c733279d64a5, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0

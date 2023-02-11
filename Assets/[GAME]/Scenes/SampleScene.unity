@@ -4787,7 +4787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &456541268
 Transform:
   m_ObjectHideFlags: 0
@@ -5084,7 +5084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2137006039902178320, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.86
+      value: -8.7
       objectReference: {fileID: 0}
     - target: {fileID: 2137006039902178320, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5890,7 +5890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &551193727
 Transform:
   m_ObjectHideFlags: 0
@@ -11541,7 +11541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2137006039902178320, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.86
+      value: -8.7
       objectReference: {fileID: 0}
     - target: {fileID: 2137006039902178320, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18861,7 +18861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2137006039902178320, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.86
+      value: -8.7
       objectReference: {fileID: 0}
     - target: {fileID: 2137006039902178320, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19828,9 +19828,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7197582090754203781, guid: eb35e1dad96fb074b8d5f6f543306b8d, type: 3}
-  moneyImage: {fileID: 2018955887300470285, guid: a1c611db6cf741740b33d23ff67d6354, type: 3}
+  moneyImage: {fileID: 6807570025233956466, guid: 6e8eedf7308922a46a3b3645085e0486, type: 3}
+  stickmanVisual: {fileID: 341726620892121112, guid: 4b5cf05bb4db24b468339635061b614a, type: 3}
   poolBullet: {fileID: 0}
   poolMoneyImage: {fileID: 0}
+  poolStickmanVisual: {fileID: 0}
 --- !u!1 &1773113039
 GameObject:
   m_ObjectHideFlags: 0
@@ -20019,7 +20021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1783044154
 Transform:
   m_ObjectHideFlags: 0
@@ -24341,7 +24343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2137006039902178320, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.86
+      value: -8.7
       objectReference: {fileID: 0}
     - target: {fileID: 2137006039902178320, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
       propertyPath: m_LocalRotation.w
@@ -26467,9 +26469,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 15, y: -112}
+  m_AnchoredPosition: {x: -251, y: -122}
   m_SizeDelta: {x: 513.1094, y: 100}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8514690407665426566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26483,9 +26485,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 8514690408052293489}
-  targetUI: {fileID: 8514690408974075028}
-  duration: 1
-  ease: 1
+  targetUI: {fileID: 8514690407665426565}
+  duration: 0.65
+  ease: 8
+  startPosRange: 150
+  animScale: 1.2
+  animTime: 0.2
 --- !u!224 &8514690408052293488
 RectTransform:
   m_ObjectHideFlags: 0

@@ -19,6 +19,6 @@ public class OnTriggerGun : MonoBehaviour
 
     public virtual void OnTrigger()
     {
-        Debug.Log("OnCollect() not implemented");
+        Debug.Log("OnTrigger() not implemented");
     }
 }

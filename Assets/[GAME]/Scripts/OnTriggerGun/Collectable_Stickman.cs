@@ -8,7 +8,6 @@ public class Collectable_Stickman : OnTriggerGun
 
     public override void OnTrigger()
     {
-        EventManager.GunTransformEvent(addCount);
         gameObject.SetActive(false);
     }
 }

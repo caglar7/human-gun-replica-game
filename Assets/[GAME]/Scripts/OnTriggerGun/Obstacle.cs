@@ -8,7 +8,6 @@ public class Obstacle : OnTriggerGun
 
     public override void OnTrigger()
     {
-        EventManager.GunTransformEvent(-stickmanLose);
         EventManager.ObstacleJumpEvent();
     }
 }

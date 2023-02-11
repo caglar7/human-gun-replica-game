@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 /// <summary>
 /// transforming from one gun to another based on stickman count
@@ -50,15 +51,49 @@ public class GunTransformer : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="addedCount"> added stickman count </param>
-    private void NextTransform(int addedCount)
+    private int UpdateStickmanCount(int addedCount)
     {
+        // here
+        // should create a class etc. to handle stickman counts and access
+        // this count
+        // ...
+
         stickmanCount = Mathf.Max(stickmanCount + addedCount, 1);
+        return stickmanCount;
+    }
 
-        if (stickmanCount == 1 && addedCount < 0) return; 
+    /// <summary>
+    /// using the stickmanCount value, get correct gun
+    /// for the count
+    /// </summary>
+    private Gun GetCurrentGun()
+    {
+        #region prev logic
+        //foreach (Gun g in gunList)
+        //{
+        //    if (stickmanCount >= g.gunData.min && stickmanCount <= g.gunData.max)
+        //    {
+        //        if (currentGun != g)
+        //        {
+        //            //g.gameObject.SetActive(true);
+        //            currentGun = g;
+        //        }
+        //    }
+        //    else g.gameObject.SetActive(false);
+        //} 
+        #endregion
 
-        ActivateCurrentGun();
+        Gun gun = null;
+        foreach(Gun g in gunList)
+        {
+            if (stickmanCount >= g.gunData.min && stickmanCount <= g.gunData.max)
+            {
+                gun = g;
+                break;
+            }
+        }
 
-        ActivateGunParts();
+        return gun;
     }
 
     /// <summary>
@@ -66,40 +101,28 @@ public class GunTransformer : MonoBehaviour
     /// this activation will be after an collectable jump animation end
     /// also color animation
     /// </summary>
-    private void ActivateGunParts()
+    private void NextTransform()
     {
-        if(currentGun)
-        {
-            for (int i = 0; i < currentGun.gunParts.Count; i++)
-            {
-                if (i < stickmanCount) currentGun.gunParts[i].gameObject.SetActive(true);
-                else currentGun.gunParts[i].gameObject.SetActive(false);
-            }
-        }
-    }
+        if (stickmanCount == 1) return;
 
-    /// <summary>
-    /// using the stickmanCount value, activate correct gun
-    /// for the count
-    /// </summary>
-    private void ActivateCurrentGun()
-    {
+        Gun gun = GetCurrentGun();
         foreach (Gun g in gunList)
         {
-            if (stickmanCount >= g.gunData.min && stickmanCount <= g.gunData.max)
-            {
-                if (currentGun != g)
-                {
-                    g.gameObject.SetActive(true);
-                    currentGun = g;
+            g.gameObject.SetActive(false);
+        }
+        gun.gameObject.SetActive(true);
 
-                    // testing
-                    print("current gun" + currentGun.gunData.name);
-                }
+        if (gun)
+        {
+            for (int i = 0; i < gun.gunParts.Count; i++)
+            {
+                if (i < stickmanCount) gun.gunParts[i].gameObject.SetActive(true);
+                else gun.gunParts[i].gameObject.SetActive(false);
             }
-            else g.gameObject.SetActive(false);
+             
         }
     }
+
     #endregion
 
     #region Init Method

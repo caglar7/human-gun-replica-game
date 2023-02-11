@@ -9,11 +9,17 @@ public class MoneyCount : MonoBehaviour
 {
     #region Properties
 
+    [Header("Money Collect Settings")]
     [SerializeField] Text text; 
     [SerializeField] RectTransform targetUI;
     [SerializeField] float duration;
     [SerializeField] Ease ease;
+    [SerializeField] float startPosRange;
+    [SerializeField] float animScale;
+    [SerializeField] float animTime;
     int moneyCount;
+    Vector3 initScale;
+    Vector2 targetUIPos;
 
     #endregion
 
@@ -28,6 +34,12 @@ public class MoneyCount : MonoBehaviour
     private void Init()
     {
         moneyCount = 0;
+
+        Vector2 pos = targetUI.anchoredPosition;
+        pos += new Vector2(Screen.width, Screen.height);
+        targetUIPos = pos;
+
+        initScale = transform.localScale;
     } 
     #endregion
 
@@ -47,6 +59,7 @@ public class MoneyCount : MonoBehaviour
 
     #region Methods
     /// <summary>
+    /// 
     /// get money mesh from pool, tween it to the UI element with selected ease
     /// 
     /// </summary>
@@ -56,24 +69,36 @@ public class MoneyCount : MonoBehaviour
         clone.transform.SetParent(transform.parent);
 
         RectTransform rtClone = clone.GetComponent<RectTransform>();
-       
+      
         Vector2 startPosUI = Camera.main.WorldToScreenPoint(worldPos);
-        startPosUI.x -= (Screen.width);
-        startPosUI.y -= (Screen.height);
+        float posX = UnityEngine.Random.Range(startPosUI.x - startPosRange, startPosUI.x + startPosRange);
+        float posY = UnityEngine.Random.Range(startPosUI.y - startPosRange, startPosUI.y + startPosRange);
+        startPosUI = new Vector2(posX, posY);
+
         rtClone.anchoredPosition = startPosUI;
 
-        rtClone.DOAnchorPos(targetUI.anchoredPosition, duration).SetEase(ease)
+        rtClone.DOAnchorPos(targetUIPos, duration).SetEase(ease)
             .OnComplete(() => {
 
-                UpdateCount(1);
                 PoolManager.instance.poolMoneyImage.AddObjToPool(clone);
+                UpdateCount(1);
+                UpdateAnimation();
             });
     } 
-
+    
     private void UpdateCount(int add)
     {
         moneyCount += add;
         text.text = moneyCount.ToString();
+    }
+
+    private void UpdateAnimation()
+    {
+        transform.DOKill();
+        transform.DOScale(animScale * initScale, animTime / 2f)
+            .OnComplete(() => {
+                transform.DOScale(initScale, animTime / 2f);
+            });
     }
 
     #endregion

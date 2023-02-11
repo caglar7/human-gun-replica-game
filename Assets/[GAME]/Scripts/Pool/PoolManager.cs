@@ -18,10 +18,12 @@ public class PoolManager : MonoBehaviour
     [Header("Objects For Pooling")]
     public GameObject bullet;
     public GameObject moneyImage;
+    public GameObject stickmanVisual;
 
     [Header("Pools")]
     [HideInInspector] public PoolingPattern poolBullet;
     [HideInInspector] public PoolingPattern poolMoneyImage;
+    [HideInInspector] public PoolingPattern poolStickmanVisual;
 
     void Init()
     {
@@ -30,5 +32,8 @@ public class PoolManager : MonoBehaviour
 
         poolMoneyImage = new PoolingPattern(moneyImage);
         poolMoneyImage.FillPool(10);
+
+        poolStickmanVisual = new PoolingPattern(stickmanVisual);
+        poolStickmanVisual.FillPool(10);
     }
 }
