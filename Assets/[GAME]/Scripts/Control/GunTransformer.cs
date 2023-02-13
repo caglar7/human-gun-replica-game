@@ -65,15 +65,25 @@ public class GunTransformer : MonoBehaviour
     {
         if (stickmanCount == 1 && added < 0) return;
 
-        // only collecting stickman for now 
         if (added > 0 && stickman != null)       // collecting stickman case
         {
-            // here use the next gun part
-
-            // testing
             Transform nextPart = GetNextGunPart(stickmanCount + added);
 
-            ShowStickmanVisual(stickman, nextPart, true);
+            Gun nextGun = GetGun(stickmanCount + added);
+            
+            // if we are at the same gun but just adding more stickmans
+            if(currentGun.GetComponent<Stickman>() || currentGun == nextGun)
+            {
+                ShowStickmanVisual(stickman, nextPart, true);
+                StartCoroutine(NextTransformCo(added));
+            }
+            else // if we switch to a new gun, switch right away
+            {
+                PoolManager.instance.poolStickmanVisual.AddObjToPool(stickman.gameObject);
+                NextTransform(added);
+                StartCoroutine(AnimateNewGun(currentGun));
+            }
+
 
         }
         else if (added > 0 && stickman == null)  // collecting with gate
@@ -98,7 +108,7 @@ public class GunTransformer : MonoBehaviour
         foreach (GunPart gPart in currentGun.gunParts)
             gPart.EnableRenderer(false);
 
-        currentGun = GetCurrentGun(stickmanCount);
+        currentGun = GetGun(stickmanCount);
 
         if (currentGun)
         {
@@ -116,7 +126,7 @@ public class GunTransformer : MonoBehaviour
     /// </summary>
     /// <param name="count"></param>
     /// <returns></returns>
-    private Gun GetCurrentGun(int count)
+    private Gun GetGun(int count)
     {
         #region prev logic
         //foreach (Gun g in gunList)
@@ -156,7 +166,7 @@ public class GunTransformer : MonoBehaviour
     /// <returns></returns>
     private Transform GetNextGunPart(int nextCount)
     {
-        Gun gun = GetCurrentGun(nextCount);
+        Gun gun = GetGun(nextCount);
 
         // testing
         // test gun and gunParts count here why it returns null
@@ -181,20 +191,12 @@ public class GunTransformer : MonoBehaviour
     /// <returns></returns>
     private void ShowStickmanVisual(Transform currentStickman, Transform targetStickman, bool isJump)
     {
-        // make sure the stickman obj (params) are on the same sorf of hierarchy
-
+        GunPart targetGunPart = targetStickman.GetComponent<GunPart>();
         currentStickman.SetParent(targetStickman);
         currentStickman.DOLocalRotate(Vector3.zero, animTime_StickmanJump);
 
         if(isJump)
         {
-            //currentStickman.DOJump(Vector3.zero, 5f, 1, animTime_StickmanJump)
-            //    .OnComplete(() => {
-            //        currentStickman.SetParent(null);
-            //        PoolManager.instance.poolStickmanVisual.AddObjToPool(currentStickman.gameObject);
-            //    });
-
-            // do move up and move to gun part
             Vector3 pos = currentStickman.position;
             Vector3 posAdded = new Vector3(0f, jumpHeight, jumpOffsetZ);
             currentStickman.DOMove(pos + posAdded, animTime_StickmanJump / 2f).SetEase(easeUp)                                                                                                                                                                   
@@ -205,9 +207,6 @@ public class GunTransformer : MonoBehaviour
 
                         currentStickman.SetParent(null);
                         PoolManager.instance.poolStickmanVisual.AddObjToPool(currentStickman.gameObject);
-
-                        // update gun here
-                        // ...
 
                     });
                 });
@@ -220,7 +219,45 @@ public class GunTransformer : MonoBehaviour
                     PoolManager.instance.poolStickmanVisual.AddObjToPool(currentStickman.gameObject);
                 });
         }
-       
+
+        AnimateLimbs(currentStickman, targetGunPart, 1f);
+
+        ColorHandle colorHandle = currentStickman.GetComponent<ColorHandle>();
+        if (colorHandle) colorHandle.SetColor(targetGunPart.color);
+    }
+
+    /// <summary>
+    /// animating current stickman which moves in air, to the next gun part
+    /// stickman limb rotations
+    /// 
+    /// time fraction is based on animTime_StickmanJump
+    /// 
+    /// </summary>
+    /// <param name="current"></param>
+    /// <param name="target"></param>
+    /// <param name="timeFraction"></param>
+    private void AnimateLimbs(Transform current, GunPart gunPart, float timeFraction)
+    {
+        float duration = Mathf.Clamp01(timeFraction) * animTime_StickmanJump;
+
+        Transform[] currentLimbs = current.GetComponentsInChildren<Transform>();
+
+        for (int i = 0; i < currentLimbs.Length; i++)
+        {
+            currentLimbs[i].DORotate(gunPart.stickmanLimbs[i].eulerAngles, duration);
+        }
+    }
+
+    IEnumerator AnimateNewGun(Gun gun)
+    {
+        if(gun)
+        {
+            foreach(GunPart g in gun.gunParts)
+            {
+                g.transform.DOShakePosition(.3f, 1.5f);
+                yield return 0;
+            }
+        }
     }
 
     IEnumerator NextTransformCo(int added)

@@ -19927,7 +19927,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animTime_StickmanJump: 0.6
-  jumpHeight: 2
+  jumpHeight: 3.5
+  jumpOffsetZ: 2
   easeUp: 3
   easeDown: 2
 --- !u!1 &5512961044520523632

@@ -12,6 +12,8 @@ public class GunPart : MonoBehaviour
 {
     #region Properties
     Renderer rend;
+    [HideInInspector] public Transform[] stickmanLimbs;
+    [HideInInspector] public Color color;
     #endregion
 
     #region Awake, Init
@@ -23,6 +25,8 @@ public class GunPart : MonoBehaviour
     private void Init()
     {
         rend = GetComponentInChildren<Renderer>();
+        stickmanLimbs = GetComponentsInChildren<Transform>();
+        color = GetComponentInChildren<Renderer>().material.color;
     }
     #endregion
 
