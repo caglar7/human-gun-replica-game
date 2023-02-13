@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &200667090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 200667091}
+  m_Layer: 0
+  m_Name: PointAddRemove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &200667091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200667090}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.54, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5512961044517772809}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &48192028288804955
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,6 +831,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1961892518317748923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2386,6 +2419,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961042725018026
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,6 +2467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961042725906677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2605,6 +2642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961042751122722
 GameObject:
   m_ObjectHideFlags: 0
@@ -4242,6 +4281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961042924852038
 GameObject:
   m_ObjectHideFlags: 0
@@ -4595,6 +4636,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961042963017778
 GameObject:
   m_ObjectHideFlags: 0
@@ -5332,6 +5375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961043030832172
 GameObject:
   m_ObjectHideFlags: 0
@@ -6392,6 +6437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961043129808103
 GameObject:
   m_ObjectHideFlags: 0
@@ -9477,6 +9524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961043442792034
 GameObject:
   m_ObjectHideFlags: 0
@@ -9650,6 +9699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961043475698670
 GameObject:
   m_ObjectHideFlags: 0
@@ -9791,6 +9842,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961043487626919
 GameObject:
   m_ObjectHideFlags: 0
@@ -10284,6 +10337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961043545432674
 GameObject:
   m_ObjectHideFlags: 0
@@ -10461,6 +10516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961043561909579
 GameObject:
   m_ObjectHideFlags: 0
@@ -10666,6 +10723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961043587447746
 GameObject:
   m_ObjectHideFlags: 0
@@ -12594,6 +12653,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961043762254569
 GameObject:
   m_ObjectHideFlags: 0
@@ -14017,6 +14078,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961043894326954
 GameObject:
   m_ObjectHideFlags: 0
@@ -14543,6 +14606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961043954852194
 GameObject:
   m_ObjectHideFlags: 0
@@ -17263,6 +17328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961044234376992
 GameObject:
   m_ObjectHideFlags: 0
@@ -18739,6 +18806,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961044408573977
 GameObject:
   m_ObjectHideFlags: 0
@@ -18847,6 +18916,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961044412052974
 GameObject:
   m_ObjectHideFlags: 0
@@ -19893,6 +19964,7 @@ Transform:
   - {fileID: 5512961042661022197}
   - {fileID: 5512961042672659852}
   - {fileID: 5512961042942314489}
+  - {fileID: 200667091}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19926,11 +19998,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe5616b58a4de44bb02986725c3feb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animTime_StickmanJump: 0.6
+  animTime_StickmanJump: 0.5
   jumpHeight: 3.5
-  jumpOffsetZ: 2
+  jumpOffsetZ: 1.5
   easeUp: 3
   easeDown: 2
+  pointAddRemove: {fileID: 200667091}
 --- !u!1 &5512961044520523632
 GameObject:
   m_ObjectHideFlags: 0
@@ -20839,6 +20912,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961044632746376
 GameObject:
   m_ObjectHideFlags: 0
@@ -21744,6 +21819,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961044729302300
 GameObject:
   m_ObjectHideFlags: 0
@@ -22077,6 +22154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5512961044747688921
 GameObject:
   m_ObjectHideFlags: 0
@@ -23181,6 +23260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &6538883836906706411
 GameObject:
   m_ObjectHideFlags: 0
@@ -23227,6 +23308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90fb14f0c3eaca4b9cce081d51a5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickmanLimbs: []
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &6603606709940624042
 GameObject:
   m_ObjectHideFlags: 0

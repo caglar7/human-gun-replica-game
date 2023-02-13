@@ -759,7 +759,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8170267559510113680, guid: 7966a3fc9bdb0a24faea5052a041cb9d, type: 3}
       propertyPath: addedStickman
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8170267559755704711, guid: 7966a3fc9bdb0a24faea5052a041cb9d, type: 3}
       propertyPath: m_Name
@@ -783,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170267559755704728, guid: 7966a3fc9bdb0a24faea5052a041cb9d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 52.1
+      value: 21.5
       objectReference: {fileID: 0}
     - target: {fileID: 8170267559755704728, guid: 7966a3fc9bdb0a24faea5052a041cb9d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -830,7 +830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &456541268
 Transform:
   m_ObjectHideFlags: 0
@@ -989,7 +989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &551193727
 Transform:
   m_ObjectHideFlags: 0
@@ -3296,17 +3296,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5512961044517772811, guid: 0d2e06cc97ae406489f9248ae6000b42, type: 3}
-      propertyPath: jumpOffsetZ
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5512961044517772811, guid: 0d2e06cc97ae406489f9248ae6000b42, type: 3}
-      propertyPath: animTime_StickmanJump
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5512961044517772814, guid: 0d2e06cc97ae406489f9248ae6000b42, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512961044635395755, guid: 0d2e06cc97ae406489f9248ae6000b42, type: 3}
+      propertyPath: m_Radius
+      value: 0.27500746
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d2e06cc97ae406489f9248ae6000b42, type: 3}
@@ -3343,7 +3339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170267559755704728, guid: 7966a3fc9bdb0a24faea5052a041cb9d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.13
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 8170267559755704728, guid: 7966a3fc9bdb0a24faea5052a041cb9d, type: 3}
       propertyPath: m_LocalRotation.w

@@ -21,6 +21,7 @@ public class GunTransformer : MonoBehaviour
     [SerializeField] float jumpOffsetZ;
     [SerializeField] Ease easeUp;
     [SerializeField] Ease easeDown;
+    [SerializeField] Transform pointAddRemove; 
 
     #endregion
 
@@ -61,39 +62,60 @@ public class GunTransformer : MonoBehaviour
     /// </summary>
     /// <param name="added"></param>
     /// <param name="stickman"></param>
-    private void StickmanUpdate(int added, Transform stickman, bool isJump)
+    private void StickmanUpdate(int added, Transform stickman, VisualMode mode)
     {
         if (stickmanCount == 1 && added < 0) return;
 
-        if (added > 0 && stickman != null)       // collecting stickman case
+        #region Standard Collecting
+        // standard, collecting stickmans on platform, checking condition for gun switch
+        // special condition and animation for new gun
+        if (added > 0 && mode == VisualMode.StandardCollect)
         {
-            Transform nextPart = GetNextGunPart(stickmanCount + added);
+            Transform gunPart = GetGunPart(stickmanCount + added);
 
             Gun nextGun = GetGun(stickmanCount + added);
-            
-            // if we are at the same gun but just adding more stickmans
-            if(currentGun.GetComponent<Stickman>() || currentGun == nextGun)
+
+            if (currentGun.GetComponent<Stickman>() || currentGun == nextGun)
             {
-                ShowStickmanVisual(stickman, nextPart, true);
+                ShowStickmanVisual(stickman, gunPart, mode);
                 StartCoroutine(NextTransformCo(added));
             }
-            else // if we switch to a new gun, switch right away
+            else
             {
                 PoolManager.instance.poolStickmanVisual.AddObjToPool(stickman.gameObject);
                 NextTransform(added);
                 StartCoroutine(AnimateNewGun(currentGun));
             }
-
-
         }
-        else if (added > 0 && stickman == null)  // collecting with gate
+        #endregion
+
+        #region Gate Collecting
+        // collecting stickmans with math gates, stickmans shows up on midair
+        // iteration for more than 1, condition to check if switching to a new gun
+        else if (added > 0 && mode == VisualMode.GateCollect)
+        {
+            Gun nextGun = GetGun(stickmanCount + added);
+
+            if(nextGun != currentGun)
+            {
+                NextTransform(added);
+                StartCoroutine(AnimateNewGun(currentGun));
+            }
+            else
+            {
+                StartCoroutine(AddStickman(added, .2f, .1f));
+            }
+        }
+        #endregion
+
+        #region Removing
+        // removing stickmans, just having a "added" value negative means removing
+        // iteration
+        else if (added < 0)
         {
 
-        }
-        else if (added < 0 && stickman == null)
-        {
-
-        }
+        } 
+        #endregion
     }
 
     /// <summary>
@@ -164,17 +186,17 @@ public class GunTransformer : MonoBehaviour
     /// </summary>
     /// <param name="count"></param>
     /// <returns></returns>
-    private Transform GetNextGunPart(int nextCount)
+    private Transform GetGunPart(int count)
     {
-        Gun gun = GetGun(nextCount);
+        Gun gun = GetGun(count);
 
         // testing
         // test gun and gunParts count here why it returns null
         // ...
 
-        if (gun && nextCount <= gun.gunParts.Count)
+        if (gun && count <= gun.gunParts.Count)
         {
-            return gun.gunParts[nextCount - 1].transform;
+            return gun.gunParts[count - 1].transform;
         }
         else return null;
     }
@@ -184,18 +206,18 @@ public class GunTransformer : MonoBehaviour
     #region Gun Transform Async Methods
 
     /// <summary>
-    /// moving stickmanVisual to the target transform
+    /// animation for stickmans flying when adding or removing gun parts
     /// </summary>
     /// <param name="currentStickman"></param>
-    /// <param name="targetStickman"></param>
+    /// <param name="gunPart"></param>
     /// <returns></returns>
-    private void ShowStickmanVisual(Transform currentStickman, Transform targetStickman, bool isJump)
+    private void ShowStickmanVisual(Transform currentStickman, Transform gunPart, VisualMode mode)
     {
-        GunPart targetGunPart = targetStickman.GetComponent<GunPart>();
-        currentStickman.SetParent(targetStickman);
+        GunPart targetGunPart = gunPart.GetComponent<GunPart>();
+        currentStickman.SetParent(gunPart);
         currentStickman.DOLocalRotate(Vector3.zero, animTime_StickmanJump);
 
-        if(isJump)
+        if(mode == VisualMode.StandardCollect)
         {
             Vector3 pos = currentStickman.position;
             Vector3 posAdded = new Vector3(0f, jumpHeight, jumpOffsetZ);
@@ -211,13 +233,17 @@ public class GunTransformer : MonoBehaviour
                     });
                 });
         }
-        else
+        else if(mode == VisualMode.GateCollect)
         {
             currentStickman.DOLocalMove(Vector3.zero, animTime_StickmanJump)
                 .OnComplete(() => {
                     currentStickman.SetParent(null);
                     PoolManager.instance.poolStickmanVisual.AddObjToPool(currentStickman.gameObject);
                 });
+        }
+        else
+        {
+            // ...
         }
 
         AnimateLimbs(currentStickman, targetGunPart, 1f);
@@ -248,6 +274,12 @@ public class GunTransformer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// switching to a new gun with animation, just a regular shake
+    /// to individual gun parts
+    /// </summary>
+    /// <param name="gun"></param>
+    /// <returns></returns>
     IEnumerator AnimateNewGun(Gun gun)
     {
         if(gun)
@@ -260,10 +292,54 @@ public class GunTransformer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// calling NextTransform with a initial delay
+    /// </summary>
+    /// <param name="added"></param>
+    /// <returns></returns>
     IEnumerator NextTransformCo(int added)
     {
         yield return new WaitForSeconds(animTime_StickmanJump);
         NextTransform(added);
+    }
+
+    /// <summary>
+    /// adding stickmans independent from a collectable stickman
+    /// just add as many as you like (if we got enough guns to support it :) )
+    /// </summary>
+    /// <param name="howMany"></param>
+    /// <param name="delayBetween"></param>
+    /// <returns></returns>
+    IEnumerator AddStickman(int howMany, float addDuration, float initDelay)
+    {
+        yield return new WaitForSeconds(initDelay);
+
+        int startCount = stickmanCount + 1;
+        float period = addDuration / howMany;
+
+        for (int i = 0; i < howMany; i++)
+        {
+            Transform gunPart = GetGunPart(startCount + i);
+            Transform stickman = PoolManager.instance.GenerateVisualStickman();
+            stickman.position = pointAddRemove.position;
+
+            ShowStickmanVisual(stickman, gunPart, VisualMode.GateCollect);
+
+            StartCoroutine(NextTransformCo(1));
+
+            yield return new WaitForSeconds(period);
+        }
+    }
+
+    /// <summary>
+    /// removing stickmans from our gun
+    /// </summary>
+    /// <param name="howMany"></param>
+    /// <param name="delayBetween"></param>
+    /// <returns></returns>
+    IEnumerator RemoveStickman(int howMany, float delayBetween)
+    {
+        yield return 0;
     }
 
     #endregion
@@ -283,4 +359,11 @@ public class GunTransformer : MonoBehaviour
     }
     #endregion
 
+}
+
+public enum VisualMode
+{
+    StandardCollect,
+    GateCollect,
+    Remove,
 }

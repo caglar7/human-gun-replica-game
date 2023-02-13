@@ -8,11 +8,11 @@ public class Collectable_Stickman : OnTriggerGun
 
     public override void OnTrigger()
     {
-        Transform cloneTransform = PoolManager.instance.poolStickmanVisual.PullObjFromPool().transform;
+        Transform cloneTransform = PoolManager.instance.GenerateVisualStickman();
         cloneTransform.position = stickman.position;
         cloneTransform.rotation = stickman.rotation;
 
-        EventManager.StickmanUpdateEvent(1, cloneTransform, true);
+        EventManager.StickmanUpdateEvent(1, cloneTransform, VisualMode.StandardCollect);
         gameObject.SetActive(false);
     }
 }

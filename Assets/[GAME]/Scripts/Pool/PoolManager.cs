@@ -34,6 +34,11 @@ public class PoolManager : MonoBehaviour
         poolMoneyImage.FillPool(10);
 
         poolStickmanVisual = new PoolingPattern(stickmanVisual);
-        poolStickmanVisual.FillPool(10);
+        poolStickmanVisual.FillPool(20);
+    }
+
+    public Transform GenerateVisualStickman()
+    {
+        return poolStickmanVisual.PullObjFromPool().transform;
     }
 }
