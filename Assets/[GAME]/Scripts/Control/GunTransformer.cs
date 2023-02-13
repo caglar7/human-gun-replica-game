@@ -13,7 +13,15 @@ public class GunTransformer : MonoBehaviour
     #region Properties
     List<Gun> gunList;
     Gun currentGun;
-    int stickmanCount; 
+    int stickmanCount;
+
+    [Header("Animation Settings")]
+    [SerializeField] float animTime_StickmanJump;
+    [SerializeField] float jumpHeight;
+    [SerializeField] float jumpOffsetZ;
+    [SerializeField] Ease easeUp;
+    [SerializeField] Ease easeDown;
+
     #endregion
 
     #region Awake
@@ -29,44 +37,86 @@ public class GunTransformer : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        EventManager.GunTransform += NextTransform;
+        EventManager.StickmanUpdate += StickmanUpdate;
     }
 
     private void OnDisable()
     {
-        EventManager.GunTransform -= NextTransform;
+        EventManager.StickmanUpdate -= StickmanUpdate;
     }
 
     #endregion
 
     #region Gun Transform Methods
+
     /// <summary>
+    /// handling 3 cases for stickman update here
     /// 
-    /// clamp stickman count to min => 1, so at least we have a pistol
-    /// at all times
+    /// * collecting stickmans
     /// 
-    /// get correct gun for stickman count
+    /// * collecting with gates
     /// 
-    /// activate deactivate parts for current stickmanCount
+    /// * removing stickmans (happens at gates, obstacles)
     /// 
     /// </summary>
-    /// <param name="addedCount"> added stickman count </param>
-    private int UpdateStickmanCount(int addedCount)
+    /// <param name="added"></param>
+    /// <param name="stickman"></param>
+    private void StickmanUpdate(int added, Transform stickman, bool isJump)
     {
-        // here
-        // should create a class etc. to handle stickman counts and access
-        // this count
-        // ...
+        if (stickmanCount == 1 && added < 0) return;
 
-        stickmanCount = Mathf.Max(stickmanCount + addedCount, 1);
-        return stickmanCount;
+        // only collecting stickman for now 
+        if (added > 0 && stickman != null)       // collecting stickman case
+        {
+            // here use the next gun part
+
+            // testing
+            Transform nextPart = GetNextGunPart(stickmanCount + added);
+
+            ShowStickmanVisual(stickman, nextPart, true);
+
+        }
+        else if (added > 0 && stickman == null)  // collecting with gate
+        {
+
+        }
+        else if (added < 0 && stickman == null)
+        {
+
+        }
     }
 
     /// <summary>
-    /// using the stickmanCount value, get correct gun
-    /// for the count
+    /// method to activate proper gun and gun parts 
+    /// based on the count param given
     /// </summary>
-    private Gun GetCurrentGun()
+    /// <param name="count"></param>
+    private void NextTransform(int added)
+    {
+        stickmanCount = Mathf.Max(stickmanCount + added, 1);
+
+        foreach (GunPart gPart in currentGun.gunParts)
+            gPart.EnableRenderer(false);
+
+        currentGun = GetCurrentGun(stickmanCount);
+
+        if (currentGun)
+        {
+            for (int i = 0; i < currentGun.gunParts.Count; i++)
+            {
+                if (i < stickmanCount) currentGun.gunParts[i].EnableRenderer(true);
+                else currentGun.gunParts[i].EnableRenderer(false);
+            }
+        }
+    }
+
+    /// <summary>
+    ///  gets current gun based on the stickman count value passed in
+    ///  this count is a local value, so it's independent from main stickmanCount
+    /// </summary>
+    /// <param name="count"></param>
+    /// <returns></returns>
+    private Gun GetCurrentGun(int count)
     {
         #region prev logic
         //foreach (Gun g in gunList)
@@ -86,7 +136,7 @@ public class GunTransformer : MonoBehaviour
         Gun gun = null;
         foreach(Gun g in gunList)
         {
-            if (stickmanCount >= g.gunData.min && stickmanCount <= g.gunData.max)
+            if (count >= g.gunData.min && count <= g.gunData.max)
             {
                 gun = g;
                 break;
@@ -97,30 +147,86 @@ public class GunTransformer : MonoBehaviour
     }
 
     /// <summary>
-    /// using stickmanCount, activate gun parts (stickmans)
-    /// this activation will be after an collectable jump animation end
-    /// also color animation
+    /// next count as for stickman count after we add
+    /// 
+    /// before we might get the data where the stickman gonna be located
+    /// 
     /// </summary>
-    private void NextTransform()
+    /// <param name="count"></param>
+    /// <returns></returns>
+    private Transform GetNextGunPart(int nextCount)
     {
-        if (stickmanCount == 1) return;
+        Gun gun = GetCurrentGun(nextCount);
 
-        Gun gun = GetCurrentGun();
-        foreach (Gun g in gunList)
-        {
-            g.gameObject.SetActive(false);
-        }
-        gun.gameObject.SetActive(true);
+        // testing
+        // test gun and gunParts count here why it returns null
+        // ...
 
-        if (gun)
+        if (gun && nextCount <= gun.gunParts.Count)
         {
-            for (int i = 0; i < gun.gunParts.Count; i++)
-            {
-                if (i < stickmanCount) gun.gunParts[i].gameObject.SetActive(true);
-                else gun.gunParts[i].gameObject.SetActive(false);
-            }
-             
+            return gun.gunParts[nextCount - 1].transform;
         }
+        else return null;
+    }
+
+    #endregion
+
+    #region Gun Transform Async Methods
+
+    /// <summary>
+    /// moving stickmanVisual to the target transform
+    /// </summary>
+    /// <param name="currentStickman"></param>
+    /// <param name="targetStickman"></param>
+    /// <returns></returns>
+    private void ShowStickmanVisual(Transform currentStickman, Transform targetStickman, bool isJump)
+    {
+        // make sure the stickman obj (params) are on the same sorf of hierarchy
+
+        currentStickman.SetParent(targetStickman);
+        currentStickman.DOLocalRotate(Vector3.zero, animTime_StickmanJump);
+
+        if(isJump)
+        {
+            //currentStickman.DOJump(Vector3.zero, 5f, 1, animTime_StickmanJump)
+            //    .OnComplete(() => {
+            //        currentStickman.SetParent(null);
+            //        PoolManager.instance.poolStickmanVisual.AddObjToPool(currentStickman.gameObject);
+            //    });
+
+            // do move up and move to gun part
+            Vector3 pos = currentStickman.position;
+            Vector3 posAdded = new Vector3(0f, jumpHeight, jumpOffsetZ);
+            currentStickman.DOMove(pos + posAdded, animTime_StickmanJump / 2f).SetEase(easeUp)                                                                                                                                                                   
+                .OnComplete(() => {
+
+                    currentStickman.DOLocalMove(Vector3.zero, animTime_StickmanJump / 2f).SetEase(easeDown)
+                    .OnComplete(() => {
+
+                        currentStickman.SetParent(null);
+                        PoolManager.instance.poolStickmanVisual.AddObjToPool(currentStickman.gameObject);
+
+                        // update gun here
+                        // ...
+
+                    });
+                });
+        }
+        else
+        {
+            currentStickman.DOLocalMove(Vector3.zero, animTime_StickmanJump)
+                .OnComplete(() => {
+                    currentStickman.SetParent(null);
+                    PoolManager.instance.poolStickmanVisual.AddObjToPool(currentStickman.gameObject);
+                });
+        }
+       
+    }
+
+    IEnumerator NextTransformCo(int added)
+    {
+        yield return new WaitForSeconds(animTime_StickmanJump);
+        NextTransform(added);
     }
 
     #endregion
@@ -134,12 +240,10 @@ public class GunTransformer : MonoBehaviour
     private void Init()
     {
         gunList = new List<Gun>();
-        currentGun = null;
         stickmanCount = 1;
         gunList.AddRange(GetComponentsInChildren<Gun>(true));
-
-        // testing
-        print("gun list count: " + gunList.Count);
-    } 
+        currentGun = (gunList.Count > 0) ? gunList[0] : null;
+    }
     #endregion
+
 }

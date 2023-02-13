@@ -27,5 +27,7 @@ public class Collectable_Gate : OnTriggerGun
         otherGate.enabled = false;
 
         gameObject.SetActive(false);
+
+        EventManager.StickmanUpdateEvent(addedStickman, null, false);
     }
 }
