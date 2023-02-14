@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ColorHandle : MonoBehaviour
 {
@@ -20,15 +21,36 @@ public class ColorHandle : MonoBehaviour
     } 
     #endregion
 
+    /// <summary>
+    ///  set color with prop block
+    /// </summary>
+    /// <param name="color"></param>
     public void SetColor(Color color)
     {
+        color.a = 1f;
         rend.GetPropertyBlock(matPB);
         matPB.SetColor("_Color", color);
         rend.SetPropertyBlock(matPB);
     }
-
-    public void SetColorSmooth()
+    
+    /// <summary>
+    /// fading, alpha goes from 1f to 0f
+    /// </summary>
+    /// <param name="duration"></param>
+    public void FadeOut(float duration = .5f)
     {
+        Color color = rend.material.color;
+        rend.GetPropertyBlock(matPB);
 
+        float colorA = color.a;
+        DOTween.To(() => colorA, x => colorA = x, 0f, duration).SetEase(Ease.InSine)
+            .OnUpdate(() => {
+
+                color.a = colorA;
+
+                matPB.SetColor("_Color", color);
+                rend.SetPropertyBlock(matPB);
+
+            });
     }
 }

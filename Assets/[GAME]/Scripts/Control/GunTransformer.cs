@@ -213,47 +213,59 @@ public class GunTransformer : MonoBehaviour
         if (colorHandle) colorHandle.SetColor(targetGunPart.color);
 
         currentStickman.SetParent(gunPart);
-        currentStickman.DOLocalRotate(Vector3.zero, animTime_StickmanJump);
 
-        if(mode == VisualMode.StandardCollect)
+        #region Standard Collect
+        if (mode == VisualMode.StandardCollect)
         {
             Vector3 pos = currentStickman.position;
             Vector3 posAdded = new Vector3(0f, jumpHeight, jumpOffsetZ);
-            currentStickman.DOMove(pos + posAdded, animTime_StickmanJump / 2f).SetEase(easeUp)                                                                                                                                                                   
-                .OnComplete(() => {
 
+            currentStickman.DOMove(pos + posAdded, animTime_StickmanJump / 2f).SetEase(easeUp)
+                .OnComplete(() =>
+                {
                     currentStickman.DOLocalMove(Vector3.zero, animTime_StickmanJump / 2f).SetEase(easeDown)
-                    .OnComplete(() => {
-
+                    .OnComplete(() =>
+                    {
                         PoolManager.instance.poolStickmanVisual.AddObjToPool(currentStickman.gameObject);
-
                     });
                 });
 
+            currentStickman.DOLocalRotate(Vector3.zero, animTime_StickmanJump);
+
+            AnimateLimbs(currentStickman, targetGunPart, 1f);
         }
-        else if(mode == VisualMode.GateCollect)
+        #endregion
+
+        #region Gate Collect
+        else if (mode == VisualMode.GateCollect)
         {
             currentStickman.DOLocalMove(Vector3.zero, animTime_StickmanJump)
-                .OnComplete(() => {
+                .OnComplete(() =>
+                {
 
                     PoolManager.instance.poolStickmanVisual.AddObjToPool(currentStickman.gameObject);
                 });
 
+            currentStickman.DOLocalRotate(Vector3.zero, animTime_StickmanJump);
+
+            AnimateLimbs(currentStickman, targetGunPart, 1f);
         }
+        #endregion
+
+        #region Removing
         else
         {
-            // color fade here ...
-
+            if (colorHandle) colorHandle.FadeOut();
 
             currentStickman.SetParent(transform);
             currentStickman.DOLocalMove(pointAddRemove.localPosition, animTime_StickmanJump)
-                .OnComplete(() => {         
+                .OnComplete(() =>
+                {
 
                     PoolManager.instance.poolStickmanVisual.AddObjToPool(currentStickman.gameObject);
                 });
-        }
-
-        AnimateLimbs(currentStickman, targetGunPart, 1f);
+        } 
+        #endregion
 
     }
 
