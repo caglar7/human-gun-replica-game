@@ -40,6 +40,7 @@ public class PoolingPattern : MonoBehaviour
 
     public void AddObjToPool(GameObject obje)
     {
+        obje.transform.SetParent(null);
         obje.gameObject.SetActive(false);
         objPool.Push(obje);
     }

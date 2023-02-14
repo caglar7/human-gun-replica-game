@@ -103,8 +103,9 @@ public class GunTransformer : MonoBehaviour
             }
             else
             {
-                StartCoroutine(AddStickman(added, .2f, .1f));
+                StartCoroutine(AddStickmanCo(added, .2f, .1f));
             }
+
         }
         #endregion
 
@@ -113,6 +114,18 @@ public class GunTransformer : MonoBehaviour
         // iteration
         else if (added < 0)
         {
+            Gun nextGun = GetGun(stickmanCount + added);
+
+            if (nextGun != currentGun)
+            {
+                NextTransform(added);
+                if(!nextGun.GetComponent<Stickman>()) StartCoroutine(AnimateNewGun(currentGun));
+            }
+            else
+            {
+                StartCoroutine(RemoveStickmanCo(added, .5f, .1f));
+
+            }
 
         } 
         #endregion
@@ -150,21 +163,6 @@ public class GunTransformer : MonoBehaviour
     /// <returns></returns>
     private Gun GetGun(int count)
     {
-        #region prev logic
-        //foreach (Gun g in gunList)
-        //{
-        //    if (stickmanCount >= g.gunData.min && stickmanCount <= g.gunData.max)
-        //    {
-        //        if (currentGun != g)
-        //        {
-        //            //g.gameObject.SetActive(true);
-        //            currentGun = g;
-        //        }
-        //    }
-        //    else g.gameObject.SetActive(false);
-        //} 
-        #endregion
-
         Gun gun = null;
         foreach(Gun g in gunList)
         {
@@ -190,10 +188,6 @@ public class GunTransformer : MonoBehaviour
     {
         Gun gun = GetGun(count);
 
-        // testing
-        // test gun and gunParts count here why it returns null
-        // ...
-
         if (gun && count <= gun.gunParts.Count)
         {
             return gun.gunParts[count - 1].transform;
@@ -214,6 +208,10 @@ public class GunTransformer : MonoBehaviour
     private void ShowStickmanVisual(Transform currentStickman, Transform gunPart, VisualMode mode)
     {
         GunPart targetGunPart = gunPart.GetComponent<GunPart>();
+
+        ColorHandle colorHandle = currentStickman.GetComponent<ColorHandle>();
+        if (colorHandle) colorHandle.SetColor(targetGunPart.color);
+
         currentStickman.SetParent(gunPart);
         currentStickman.DOLocalRotate(Vector3.zero, animTime_StickmanJump);
 
@@ -227,29 +225,36 @@ public class GunTransformer : MonoBehaviour
                     currentStickman.DOLocalMove(Vector3.zero, animTime_StickmanJump / 2f).SetEase(easeDown)
                     .OnComplete(() => {
 
-                        currentStickman.SetParent(null);
                         PoolManager.instance.poolStickmanVisual.AddObjToPool(currentStickman.gameObject);
 
                     });
                 });
+
         }
         else if(mode == VisualMode.GateCollect)
         {
             currentStickman.DOLocalMove(Vector3.zero, animTime_StickmanJump)
                 .OnComplete(() => {
-                    currentStickman.SetParent(null);
+
                     PoolManager.instance.poolStickmanVisual.AddObjToPool(currentStickman.gameObject);
                 });
+
         }
         else
         {
-            // ...
+            // color fade here ...
+
+
+            currentStickman.SetParent(transform);
+            currentStickman.DOLocalMove(pointAddRemove.localPosition, animTime_StickmanJump)
+                .OnComplete(() => {         
+
+                    PoolManager.instance.poolStickmanVisual.AddObjToPool(currentStickman.gameObject);
+                });
         }
 
         AnimateLimbs(currentStickman, targetGunPart, 1f);
 
-        ColorHandle colorHandle = currentStickman.GetComponent<ColorHandle>();
-        if (colorHandle) colorHandle.SetColor(targetGunPart.color);
     }
 
     /// <summary>
@@ -271,6 +276,20 @@ public class GunTransformer : MonoBehaviour
         for (int i = 0; i < currentLimbs.Length; i++)
         {
             currentLimbs[i].DORotate(gunPart.stickmanLimbs[i].eulerAngles, duration);
+        }
+    }
+
+    /// <summary>
+    /// sets all of them right away, not animating here
+    /// </summary>
+    private void SetLimbsRotPos(Transform current, GunPart gunPart)
+    {
+        Transform[] currentArr = current.GetComponentsInChildren<Transform>();
+
+        for (int i = 0; i < gunPart.stickmanLimbs.Length; i++)
+        {
+            currentArr[i].eulerAngles = gunPart.stickmanLimbs[i].eulerAngles;
+            currentArr[i].position = gunPart.stickmanLimbs[i].position;
         }
     }
 
@@ -310,12 +329,12 @@ public class GunTransformer : MonoBehaviour
     /// <param name="howMany"></param>
     /// <param name="delayBetween"></param>
     /// <returns></returns>
-    IEnumerator AddStickman(int howMany, float addDuration, float initDelay)
+    IEnumerator AddStickmanCo(int howMany, float duration, float initDelay)
     {
         yield return new WaitForSeconds(initDelay);
 
         int startCount = stickmanCount + 1;
-        float period = addDuration / howMany;
+        float period = duration / howMany;
 
         for (int i = 0; i < howMany; i++)
         {
@@ -337,9 +356,29 @@ public class GunTransformer : MonoBehaviour
     /// <param name="howMany"></param>
     /// <param name="delayBetween"></param>
     /// <returns></returns>
-    IEnumerator RemoveStickman(int howMany, float delayBetween)
+    IEnumerator RemoveStickmanCo(int howMany, float duration, float initDelay)
     {
-        yield return 0;
+        yield return new WaitForSeconds(initDelay);
+
+        int howManyPositive = Mathf.Abs(howMany);
+
+        float period = duration / howManyPositive;
+
+        for (int i = 0; i < howManyPositive; i++)
+        {
+            if (stickmanCount == 1) break;
+
+            Transform gunPart = GetGunPart(stickmanCount);
+            Transform stickman = PoolManager.instance.GenerateVisualStickman();
+
+            SetLimbsRotPos(stickman, gunPart.GetComponent<GunPart>());
+
+            NextTransform(-1);
+
+            ShowStickmanVisual(stickman, gunPart, VisualMode.Remove);
+
+            yield return new WaitForSeconds(period);
+        }
     }
 
     #endregion
