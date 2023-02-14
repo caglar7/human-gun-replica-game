@@ -12,7 +12,7 @@ public class Collectable_Stickman : OnTriggerGun
         cloneTransform.position = stickman.position;
         cloneTransform.rotation = stickman.rotation;
 
-        EventManager.StickmanUpdateEvent(1, cloneTransform, VisualMode.StandardCollect);
+        EventManager.StickmanUpdateEvent(1, cloneTransform, VisualMode.StickmanCollect);
         gameObject.SetActive(false);
     }
 }
