@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: SMGData
   m_EditorClassIdentifier: 
   name: SMG
+  id: 1
   attackDamage: 2
   range: 20
-  shootingPeriod: 0.5
+  shootingPeriod: 0.2
   bulletSpeed: 40
   min: 5
   max: 8

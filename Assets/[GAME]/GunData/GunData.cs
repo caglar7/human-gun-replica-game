@@ -7,6 +7,7 @@ public class GunData : ScriptableObject
 {
     [Header("Gun Stats")]
     public new string name;
+    public int id;
     public int attackDamage;
     public float range;
     public float shootingPeriod;

@@ -10,6 +10,8 @@ public class Shooter : MonoBehaviour
     float period, timer;
     float range, speed;
     int attackDamage;
+    bool isActive;
+    int gunID;
     #endregion
 
     #region Awake, Update
@@ -20,12 +22,30 @@ public class Shooter : MonoBehaviour
 
     private void Update()
     {
+        if (!isActive) return;
+
         timer += Time.deltaTime;
         if(timer >= period && isThereTarget())
         {
             timer = 0f;
             Shoot();
+
+            print(transform.name + " shoot");
         }
+    }
+
+    #endregion
+
+    #region Enable, Disable
+
+    private void OnEnable()
+    {
+        EventManager.EnableGun += EnableShooting;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.EnableGun -= EnableShooting;
     }
 
     #endregion
@@ -50,6 +70,15 @@ public class Shooter : MonoBehaviour
         bullet.Shoot(range, speed, attackDamage);
     }
 
+    public void EnableShooting(int id)
+    {
+        if (gunID == id) isActive = true;
+        else isActive = false;
+
+        // testing
+        print(transform.name + ": " + isActive);
+    }
+
     #endregion
 
     #region Init Method
@@ -60,6 +89,7 @@ public class Shooter : MonoBehaviour
         period = gunData.shootingPeriod;
         speed = gunData.bulletSpeed;
         attackDamage = gunData.attackDamage;
+        gunID = gunData.id;
         timer = period;
     }
     #endregion

@@ -14,6 +14,7 @@ public class EventManager : MonoBehaviour
     public static event Action<int, Transform, VisualMode> StickmanUpdate;
     public static event Action ObstacleJump;
     public static event Action<Vector3> MoneyCollect;
+    public static event Action<int> EnableGun;
     #endregion
 
     #region Methods
@@ -35,6 +36,11 @@ public class EventManager : MonoBehaviour
     public static void MoneyCollectEvent(Vector3 worldPos)
     {
         MoneyCollect?.Invoke(worldPos);
+    }
+
+    public static void EnableGunEvent(int id)
+    {
+        EnableGun?.Invoke(id);
     }
 
     #endregion

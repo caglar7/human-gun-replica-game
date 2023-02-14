@@ -78,10 +78,20 @@ public class GunTransformer : MonoBehaviour
         if (added > 0 && mode == VisualMode.StickmanCollect)
         {
             Transform gunPart = GetGunPart(stickmanCount_Instant);
+            
+            if(currentGun_Instant != nextGun_Instant && !currentGun_Instant.GetComponent<Stickman>())
+            {
+                PoolManager.instance.poolStickmanVisual.AddObjToPool(stickman.gameObject);
+                NextTransform(added);
+                StartCoroutine(AnimateNewGun(currentGun));
+            }
+            else
+            {
+                ShowStickmanVisual(stickman, gunPart, mode);
+                StartCoroutine(NextTransformCo(added));
+            }
 
             #region prev code
-            //Gun nextGun = GetGun(stickmanCount_Instant);
-
             //if (currentGun == nextGun)
             //{
             //    ShowStickmanVisual(stickman, gunPart, mode);
@@ -94,9 +104,6 @@ public class GunTransformer : MonoBehaviour
             //    StartCoroutine(AnimateNewGun(currentGun));
             //} 
             #endregion
-
-            ShowStickmanVisual(stickman, gunPart, mode);
-            StartCoroutine(NextTransformCo(added));
 
         }
         #endregion
@@ -165,7 +172,8 @@ public class GunTransformer : MonoBehaviour
             }
         }
 
-        
+        if (!currentGun.GetComponent<Stickman>())
+            EventManager.EnableGunEvent(currentGun.gunData.id);
     }
 
     /// <summary>
