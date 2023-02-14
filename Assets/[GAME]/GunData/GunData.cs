@@ -11,6 +11,9 @@ public class GunData : ScriptableObject
     public int attackDamage;
     public float range;
     public float shootingPeriod;
+
+    [Header("Bullet")]
+    public BulletType bulletType;
     public float bulletSpeed;
 
     [Header("Stickman Range")]

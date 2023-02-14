@@ -15,8 +15,9 @@ MonoBehaviour:
   name: SMG
   id: 1
   attackDamage: 2
-  range: 20
-  shootingPeriod: 0.2
-  bulletSpeed: 40
+  range: 15
+  shootingPeriod: 0.3
+  bulletType: 0
+  bulletSpeed: 75
   min: 5
   max: 8

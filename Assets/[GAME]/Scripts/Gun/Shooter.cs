@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// component responsible for shooting,
+/// does automatic shooting, every gun object contains this class
+/// </summary>
+
 public class Shooter : MonoBehaviour
 {
     #region Properties
@@ -38,6 +43,9 @@ public class Shooter : MonoBehaviour
 
     #region Enable, Disable
 
+    /// <summary>
+    ///  subs to events
+    /// </summary>
     private void OnEnable()
     {
         EventManager.EnableGun += EnableShooting;
@@ -52,6 +60,10 @@ public class Shooter : MonoBehaviour
 
     #region Shooting Related
 
+    /// <summary>
+    /// send a raycast, check hits if there is a shooting target on the way
+    /// </summary>
+    /// <returns></returns>
     private bool isThereTarget()
     {
         RaycastHit[] hits = Physics.RaycastAll(shootPoint.position, Vector3.forward, range);
@@ -62,14 +74,24 @@ public class Shooter : MonoBehaviour
         }
         return false;
     }
-
+    
+    /// <summary>
+    /// get a bullet from pool, set its position to shooting point
+    /// then shoot, calling its method in Bullet.cs
+    /// </summary>
     private void Shoot()
     {
         Bullet bullet = PoolManager.instance.poolBullet.PullObjFromPool().GetComponent<Bullet>();
+        bullet.SetBulletType(gunData.bulletType);
+
         bullet.transform.position = shootPoint.position;
         bullet.Shoot(range, speed, attackDamage);
     }
 
+    /// <summary>
+    /// enabled with event, passing gun id to recognize which gun
+    /// </summary>
+    /// <param name="id"></param>
     public void EnableShooting(int id)
     {
         if (gunID == id) isActive = true;
