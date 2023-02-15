@@ -11,10 +11,9 @@ using System;
 [ExecuteInEditMode]
 public class Test_ActivateGuns : MonoBehaviour
 {
-
     [SerializeField]
     private GunNames gunName;
-
+    
     private void OnEnable()
     {
         ShowGun(gunName);
