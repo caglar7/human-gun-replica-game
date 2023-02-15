@@ -20073,6 +20073,9 @@ MonoBehaviour:
   damping: 20
   height: 3
   jumpDuration: 0.5
+  pushZ: 4
+  pushDuration: 0.6
+  pushEase: 1
 --- !u!114 &5512961044517772811
 MonoBehaviour:
   m_ObjectHideFlags: 0

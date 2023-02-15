@@ -20,10 +20,17 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] float height;
     [SerializeField] float jumpDuration;
 
+    [Tooltip("Player hits the stones without destroying them")]
+    [Header("Shooting Target Hit Adjust")]
+    [SerializeField] float pushZ;
+    [SerializeField] float pushDuration;
+    [SerializeField] Ease pushEase;
+
     float screenFractionForMaxRange;
     Vector3 initTouchPosition;
     float playerPosX;
-    float screenXPerUnitMove; 
+    float screenXPerUnitMove;
+    bool forwardMoveActive;
     #endregion
 
     #region Start, Update
@@ -44,11 +51,13 @@ public class PlayerMover : MonoBehaviour
     private void OnEnable()
     {
         EventManager.ObstacleJump += PlayerJump;
+        EventManager.PlayerHitsTarget += PushBack;
     }
 
     private void OnDisable()
     {
         EventManager.ObstacleJump -= PlayerJump;
+        EventManager.PlayerHitsTarget -= PushBack;
     }
 
     #endregion
@@ -79,8 +88,15 @@ public class PlayerMover : MonoBehaviour
     /// </summary>
     private void ForwardMove()
     {
+        if (!forwardMoveActive) return;
+        
         transform.position += (Vector3.forward * forwardSpeed * Time.deltaTime);
     } 
+
+    private void ForwardActive(bool value)
+    {
+        forwardMoveActive = value;
+    }
 
     /// <summary>
     ///  value not used in this subs method, it's used in GunTransformer method
@@ -95,6 +111,15 @@ public class PlayerMover : MonoBehaviour
             });
     }
 
+    private void PushBack()
+    {
+        ForwardActive(false);
+        transform.DOMoveZ(transform.position.z - pushZ, pushDuration).SetEase(pushEase)
+            .OnComplete(() => {
+                ForwardActive(true);
+            });
+    }
+
     #endregion
 
     #region Init
@@ -103,7 +128,7 @@ public class PlayerMover : MonoBehaviour
         // screen sensitivity and pixels for max range
         screenFractionForMaxRange = Mathf.Clamp(1f - movementSensitivity, .1f, 1f);
         screenXPerUnitMove = (screenFractionForMaxRange * Screen.width) / (clampRange * 2f);
-
+        forwardMoveActive = true;
     }
 
     #endregion

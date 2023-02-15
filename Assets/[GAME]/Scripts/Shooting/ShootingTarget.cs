@@ -41,10 +41,9 @@ public class ShootingTarget : MonoBehaviour
 
         if(gun)
         {
-            // push player back
-            // ...
+            EventManager.StickmanUpdateEvent(-1, null, VisualMode.Remove);
+            EventManager.PlayerHitsTargetEvent();
         }
-            
     }
 
     #endregion
