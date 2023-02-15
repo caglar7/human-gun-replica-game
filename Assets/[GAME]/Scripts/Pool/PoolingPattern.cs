@@ -42,6 +42,7 @@ public class PoolingPattern : MonoBehaviour
     {
         obje.transform.SetParent(null);
         obje.gameObject.SetActive(false);
+        obje.hideFlags = HideFlags.HideInHierarchy;
         objPool.Push(obje);
     }
 }

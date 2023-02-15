@@ -1989,6 +1989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 5512961042806091770}
   recoilLevel: 0.5
+  muzzleFlash: {fileID: 0}
 --- !u!1 &5512961042662119411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,6 +2227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 5512961044606641867}
   recoilLevel: 0.6
+  muzzleFlash: {fileID: 0}
 --- !u!1 &5512961042676756252
 GameObject:
   m_ObjectHideFlags: 0
@@ -17583,8 +17585,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7249654, y: 1.7701033, z: 1.906436}
-  m_Center: {x: 0, y: 0.8388625, z: 0.35060263}
+  m_Size: {x: 0.7249654, y: 1.7701033, z: 1.6250858}
+  m_Center: {x: 0, y: 0.8388625, z: 0.20992756}
 --- !u!114 &5512961044246003933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17614,6 +17616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 5512961043529727298}
   recoilLevel: 0.5
+  muzzleFlash: {fileID: 0}
 --- !u!1 &5512961044252901121
 GameObject:
   m_ObjectHideFlags: 0

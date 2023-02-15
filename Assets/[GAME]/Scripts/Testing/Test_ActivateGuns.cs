@@ -37,6 +37,7 @@ public class Test_ActivateGuns : MonoBehaviour
             {
                 foreach(Renderer r in gun.transform.GetComponentsInChildren<Renderer>())
                 {
+                    if (r.transform.GetComponent<ParticleSystem>()) continue;
                     r.enabled = true;
                 }
             }
@@ -44,6 +45,7 @@ public class Test_ActivateGuns : MonoBehaviour
             {
                 foreach (Renderer r in gun.transform.GetComponentsInChildren<Renderer>())
                 {
+                    if (r.transform.GetComponent<ParticleSystem>()) continue;
                     r.enabled = false;
                 }
             }

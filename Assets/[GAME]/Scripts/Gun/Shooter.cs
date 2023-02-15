@@ -36,8 +36,6 @@ public class Shooter : MonoBehaviour
         {
             timer = 0f;
             Shoot();
-
-            print(transform.name + " shoot");
         }
     }
 
@@ -101,9 +99,6 @@ public class Shooter : MonoBehaviour
     {
         if (gunID == id) isActive = true;
         else isActive = false;
-
-        // testing
-        print(transform.name + ": " + isActive);
     }
 
     /// <summary>

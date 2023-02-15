@@ -3086,9 +3086,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7197582090754203781, guid: eb35e1dad96fb074b8d5f6f543306b8d, type: 3}
+  bulletDecal: {fileID: 1649514149693448, guid: d519ad6ef8ea3cd4f9acf13f6646a601, type: 3}
   moneyImage: {fileID: 6807570025233956466, guid: 6e8eedf7308922a46a3b3645085e0486, type: 3}
   stickmanVisual: {fileID: 341726620892121112, guid: 4b5cf05bb4db24b468339635061b614a, type: 3}
   poolBullet: {fileID: 0}
+  poolBulletDecal: {fileID: 0}
   poolMoneyImage: {fileID: 0}
   poolStickmanVisual: {fileID: 0}
 --- !u!4 &1781197162 stripped
@@ -3838,34 +3840,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1632335104}
     m_Modifications:
-    - target: {fileID: 729896805549288915, guid: 0d2e06cc97ae406489f9248ae6000b42, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 773707478750854155, guid: 0d2e06cc97ae406489f9248ae6000b42, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5386215881003222466, guid: 0d2e06cc97ae406489f9248ae6000b42, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5512961042965703107, guid: 0d2e06cc97ae406489f9248ae6000b42, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5512961043965955871, guid: 0d2e06cc97ae406489f9248ae6000b42, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5512961044246003932, guid: 0d2e06cc97ae406489f9248ae6000b42, type: 3}
-      propertyPath: m_Size.z
-      value: 1.6250858
-      objectReference: {fileID: 0}
-    - target: {fileID: 5512961044246003932, guid: 0d2e06cc97ae406489f9248ae6000b42, type: 3}
-      propertyPath: m_Center.z
-      value: 0.20992756
-      objectReference: {fileID: 0}
     - target: {fileID: 5512961044517772809, guid: 0d2e06cc97ae406489f9248ae6000b42, type: 3}
       propertyPath: m_RootOrder
       value: 0

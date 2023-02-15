@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0195, y: 0}
+  m_AnchoredPosition: {x: 0.01745, y: 0}
   m_SizeDelta: {x: 0.018797, y: 0.014345}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &394171691
@@ -707,9 +707,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLevelY: 1.1
   nextRotationX: 0
-  zOffset: 2
-  jumpDuration: 0.5
-  jumpPower: 1.5
+  zOffset: 2.5
+  jumpDuration: 0.6
+  jumpPower: 2
   jumpCount: 1
   ease: 1
 --- !u!1 &3581032149235431989
