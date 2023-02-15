@@ -76,8 +76,13 @@ public class ShootingTarget : MonoBehaviour
                 cj.transform.SetParent(null);
                 cj.JumpDown();
             }
-            
+
             // stone blast effect here
+            GameObject blastEffect = PoolManager.instance.poolTargetRemoved.PullObjFromPool();
+            blastEffect.transform.position = transform.position;
+
+            // put object back to the pool
+            // ... later with delay
 
             gameObject.SetActive(false);
 
@@ -111,8 +116,6 @@ public class ShootingTarget : MonoBehaviour
     {
         tmpro.transform.DOKill();
         tmpro.transform.DOPunchScale(tmpro.transform.localScale * 1.1f, .2f);
-
-        print("1");
     }
 
     #endregion

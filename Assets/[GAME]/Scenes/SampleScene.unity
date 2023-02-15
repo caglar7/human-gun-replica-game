@@ -3089,10 +3089,12 @@ MonoBehaviour:
   bulletDecal: {fileID: 1649514149693448, guid: d519ad6ef8ea3cd4f9acf13f6646a601, type: 3}
   moneyImage: {fileID: 6807570025233956466, guid: 6e8eedf7308922a46a3b3645085e0486, type: 3}
   stickmanVisual: {fileID: 341726620892121112, guid: 4b5cf05bb4db24b468339635061b614a, type: 3}
+  targetRemoved: {fileID: 186782, guid: 32e5eec4a4b3ffc4dba1ac0f5bb318be, type: 3}
   poolBullet: {fileID: 0}
   poolBulletDecal: {fileID: 0}
   poolMoneyImage: {fileID: 0}
   poolStickmanVisual: {fileID: 0}
+  poolTargetRemoved: {fileID: 0}
 --- !u!4 &1781197162 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2137006039902178320, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
@@ -3903,7 +3905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170267559510113680, guid: 7966a3fc9bdb0a24faea5052a041cb9d, type: 3}
       propertyPath: addedStickman
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8170267559755704711, guid: 7966a3fc9bdb0a24faea5052a041cb9d, type: 3}
       propertyPath: m_Name
