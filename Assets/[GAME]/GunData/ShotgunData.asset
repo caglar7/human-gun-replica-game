@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Shotgun
   id: 2
-  attackDamage: 4
+  attackDamage: 12
   range: 15
   shootingPeriod: 0.6
   bulletType: 1
-  bulletSpeed: 75
+  bulletSpeed: 100
   min: 9
   max: 12

@@ -527,7 +527,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267265796625717877}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -795,6 +795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294350088451946136}
   - component: {fileID: 1294350088451946139}
+  - component: {fileID: 768910260}
   m_Layer: 0
   m_Name: Stickman_flat
   m_TagString: Untagged
@@ -833,6 +834,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stickmanLimbs: []
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &768910260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926876675876596770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daee2c07e78193448e7749ceb40bac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1961892518317748923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,6 +1988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 5512961042806091770}
+  recoilLevel: 0.5
 --- !u!1 &5512961042662119411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,6 +2225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 5512961044606641867}
+  recoilLevel: 0.6
 --- !u!1 &5512961042676756252
 GameObject:
   m_ObjectHideFlags: 0
@@ -2606,6 +2621,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5512961042741476257}
   - component: {fileID: 5512961042741476256}
+  - component: {fileID: 9036356027271542149}
   m_Layer: 0
   m_Name: Stickman_flat (12)
   m_TagString: Untagged
@@ -2644,6 +2660,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stickmanLimbs: []
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &9036356027271542149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961042741476262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daee2c07e78193448e7749ceb40bac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5512961042751122722
 GameObject:
   m_ObjectHideFlags: 0
@@ -4245,6 +4273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5512961042920404458}
   - component: {fileID: 5512961042920404453}
+  - component: {fileID: 3311769131609124699}
   m_Layer: 0
   m_Name: Stickman_flat (1)
   m_TagString: Untagged
@@ -4283,6 +4312,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stickmanLimbs: []
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &3311769131609124699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961042920404459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daee2c07e78193448e7749ceb40bac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5512961042924852038
 GameObject:
   m_ObjectHideFlags: 0
@@ -4600,6 +4641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5512961042958129254}
   - component: {fileID: 5512961042958129249}
+  - component: {fileID: 2111747851}
   m_Layer: 0
   m_Name: Stickman_angled (1)
   m_TagString: Untagged
@@ -4638,6 +4680,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stickmanLimbs: []
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &2111747851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961042958129255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daee2c07e78193448e7749ceb40bac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5512961042963017778
 GameObject:
   m_ObjectHideFlags: 0
@@ -5447,7 +5501,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512961043037381014}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5682,7 +5736,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512961043061620186}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6541,7 +6595,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512961043133976165}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -7030,7 +7084,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512961043182069749}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -7169,7 +7223,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512961043195181940}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -8066,7 +8120,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512961043256490963}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -9488,6 +9542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5512961043437562172}
   - component: {fileID: 5512961043437562175}
+  - component: {fileID: 3696155143790466244}
   m_Layer: 0
   m_Name: Stickman_flat (11)
   m_TagString: Untagged
@@ -9526,6 +9581,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stickmanLimbs: []
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &3696155143790466244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961043437562173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daee2c07e78193448e7749ceb40bac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5512961043442792034
 GameObject:
   m_ObjectHideFlags: 0
@@ -9663,6 +9730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5512961043461971874}
   - component: {fileID: 5512961043461971901}
+  - component: {fileID: 685253146}
   m_Layer: 0
   m_Name: Stickman_flat (5)
   m_TagString: Untagged
@@ -9701,6 +9769,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stickmanLimbs: []
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &685253146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961043461971875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daee2c07e78193448e7749ceb40bac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5512961043475698670
 GameObject:
   m_ObjectHideFlags: 0
@@ -9806,6 +9886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5512961043487478978}
   - component: {fileID: 5512961043487479005}
+  - component: {fileID: 65178796}
   m_Layer: 0
   m_Name: Stickman_flat_kneesbend
   m_TagString: Untagged
@@ -9844,6 +9925,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stickmanLimbs: []
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &65178796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961043487478979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daee2c07e78193448e7749ceb40bac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5512961043487626919
 GameObject:
   m_ObjectHideFlags: 0
@@ -10301,6 +10394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5512961043543696736}
   - component: {fileID: 5512961043543696739}
+  - component: {fileID: 4219643471141667660}
   m_Layer: 0
   m_Name: Stickman_flat
   m_TagString: Untagged
@@ -10339,6 +10433,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stickmanLimbs: []
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &4219643471141667660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961043543696737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daee2c07e78193448e7749ceb40bac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5512961043545432674
 GameObject:
   m_ObjectHideFlags: 0
@@ -10480,6 +10586,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5512961043560288798}
   - component: {fileID: 5512961043560288793}
+  - component: {fileID: 7491469692595444650}
   m_Layer: 0
   m_Name: Stickman_flat (14)
   m_TagString: Untagged
@@ -10518,6 +10625,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stickmanLimbs: []
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &7491469692595444650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961043560288799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daee2c07e78193448e7749ceb40bac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5512961043561909579
 GameObject:
   m_ObjectHideFlags: 0
@@ -10687,6 +10806,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5512961043583759374}
   - component: {fileID: 5512961043583759369}
+  - component: {fileID: 689606626}
   m_Layer: 0
   m_Name: Stickman_flat (1)
   m_TagString: Untagged
@@ -10725,6 +10845,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stickmanLimbs: []
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &689606626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961043583759375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daee2c07e78193448e7749ceb40bac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5512961043587447746
 GameObject:
   m_ObjectHideFlags: 0
@@ -11556,7 +11688,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512961043662865918}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -12617,6 +12749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5512961043760047197}
   - component: {fileID: 5512961043760047196}
+  - component: {fileID: 6707368346756333217}
   m_Layer: 0
   m_Name: Stickman_flat (8)
   m_TagString: Untagged
@@ -12655,6 +12788,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stickmanLimbs: []
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &6707368346756333217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961043760047170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daee2c07e78193448e7749ceb40bac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5512961043762254569
 GameObject:
   m_ObjectHideFlags: 0
@@ -12950,7 +13095,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512961043782454651}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -13443,7 +13588,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512961043841655445}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -13837,7 +13982,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512961043874581217}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -14042,6 +14187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5512961043892414560}
   - component: {fileID: 5512961043892414563}
+  - component: {fileID: 3131851227130393008}
   m_Layer: 0
   m_Name: Stickman_flat
   m_TagString: Untagged
@@ -14080,6 +14226,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stickmanLimbs: []
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &3131851227130393008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961043892414561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daee2c07e78193448e7749ceb40bac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5512961043894326954
 GameObject:
   m_ObjectHideFlags: 0
@@ -17042,7 +17200,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512961044209763966}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -17539,6 +17697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 5512961043529727298}
+  recoilLevel: 0.5
 --- !u!1 &5512961044252901121
 GameObject:
   m_ObjectHideFlags: 0
@@ -18770,6 +18929,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5512961044408464318}
   - component: {fileID: 5512961044408464313}
+  - component: {fileID: 1686421703}
   m_Layer: 0
   m_Name: Stickman_flat (4)
   m_TagString: Untagged
@@ -18808,6 +18968,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stickmanLimbs: []
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1686421703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961044408464319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daee2c07e78193448e7749ceb40bac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5512961044408573977
 GameObject:
   m_ObjectHideFlags: 0
@@ -19540,7 +19712,7 @@ SkinnedMeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512961044472741883}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -20541,7 +20713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512961044606641864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.072, z: 3.43}
+  m_LocalPosition: {x: 0, y: 1.072, z: 3.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20876,6 +21048,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5512961044630855769}
   - component: {fileID: 5512961044630855768}
+  - component: {fileID: 5901349459631263306}
   m_Layer: 0
   m_Name: Stickman_flat (1)
   m_TagString: Untagged
@@ -20914,6 +21087,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stickmanLimbs: []
   color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &5901349459631263306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961044630855774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daee2c07e78193448e7749ceb40bac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5512961044632746376
 GameObject:
   m_ObjectHideFlags: 0

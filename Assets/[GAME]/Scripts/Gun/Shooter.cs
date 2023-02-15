@@ -11,7 +11,9 @@ public class Shooter : MonoBehaviour
 {
     #region Properties
     [SerializeField] Transform shootPoint;
+    [SerializeField] [Range(0f, 1f)] float recoilLevel;
     GunData gunData;
+    RecoilPart[] recoilParts;
     float period, timer;
     float range, speed;
     int attackDamage;
@@ -66,6 +68,7 @@ public class Shooter : MonoBehaviour
     /// <returns></returns>
     private bool isThereTarget()
     {
+
         RaycastHit[] hits = Physics.RaycastAll(shootPoint.position, Vector3.forward, range);
 
         foreach(RaycastHit hit in hits)
@@ -86,6 +89,8 @@ public class Shooter : MonoBehaviour
 
         bullet.transform.position = shootPoint.position;
         bullet.Shoot(range, speed, attackDamage);
+
+        StartCoroutine(RecoilCo(recoilLevel));
     }
 
     /// <summary>
@@ -101,12 +106,27 @@ public class Shooter : MonoBehaviour
         print(transform.name + ": " + isActive);
     }
 
+    /// <summary>
+    /// recoil animation, async
+    /// </summary>
+    /// <param name="level"></param>
+    /// <returns></returns>
+    IEnumerator RecoilCo(float level)
+    {
+        foreach(RecoilPart r in recoilParts)
+        {
+            r.RecoilAnimation(level);
+            yield return 0;
+        }
+    }
+
     #endregion
 
     #region Init Method
     private void Init()
     {
         gunData = GetComponent<Gun>().gunData;
+        recoilParts = GetComponentsInChildren<RecoilPart>();
         range = gunData.range;
         period = gunData.shootingPeriod;
         speed = gunData.bulletSpeed;

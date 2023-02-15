@@ -18,6 +18,6 @@ MonoBehaviour:
   range: 15
   shootingPeriod: 0.3
   bulletType: 0
-  bulletSpeed: 75
+  bulletSpeed: 85
   min: 5
   max: 8
