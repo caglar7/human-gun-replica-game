@@ -355,7 +355,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.3957462
+  m_Radius: 0.28744045
   m_Height: 1.8343409
   m_Direction: 1
   m_Center: {x: 0, y: 0.8676904, z: 0}

@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Pistol
   id: 0
   attackDamage: 1
-  range: 15
+  range: 20
   shootingPeriod: 0.5
   bulletType: 0
   bulletSpeed: 85

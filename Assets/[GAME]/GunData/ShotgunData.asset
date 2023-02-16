@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Shotgun
   id: 2
   attackDamage: 12
-  range: 15
+  range: 20
   shootingPeriod: 0.6
   bulletType: 1
   bulletSpeed: 100

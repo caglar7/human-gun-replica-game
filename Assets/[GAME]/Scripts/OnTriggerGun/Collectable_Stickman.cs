@@ -14,5 +14,11 @@ public class Collectable_Stickman : OnTriggerGun
 
         EventManager.StickmanUpdateEvent(1, cloneTransform, VisualMode.StickmanCollect);
         gameObject.SetActive(false);
+
+        if(!ColliderHandle.isUsed)
+        {
+            ColliderHandle.isUsed = true;
+            EventManager.CollidersDisabledEvent();
+        }
     }
 }

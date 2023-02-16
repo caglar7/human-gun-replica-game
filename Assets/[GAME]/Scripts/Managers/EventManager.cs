@@ -16,6 +16,8 @@ public class EventManager : MonoBehaviour
     public static event Action<Vector3> MoneyCollect;
     public static event Action<int> EnableGun;
     public static event Action PlayerHitsTarget;
+    public static event Action CollidersDisabled;
+
     #endregion
 
     #region Methods
@@ -47,6 +49,11 @@ public class EventManager : MonoBehaviour
     public static void PlayerHitsTargetEvent()
     {
         PlayerHitsTarget?.Invoke();
+    }
+
+    public static void CollidersDisabledEvent()
+    {
+        CollidersDisabled?.Invoke();
     }
 
     #endregion

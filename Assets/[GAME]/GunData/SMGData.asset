@@ -15,7 +15,7 @@ MonoBehaviour:
   name: SMG
   id: 1
   attackDamage: 2
-  range: 15
+  range: 20
   shootingPeriod: 0.3
   bulletType: 0
   bulletSpeed: 85
