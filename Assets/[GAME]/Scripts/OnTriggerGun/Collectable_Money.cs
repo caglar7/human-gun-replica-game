@@ -12,6 +12,7 @@ public class Collectable_Money : OnTriggerGun
     {
         EventManager.MoneyCollectEvent(transform.position);
 
+        transform.SetParent(null);
         gameObject.SetActive(false);
     }
 }

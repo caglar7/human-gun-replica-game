@@ -18,7 +18,7 @@ public class ShootingTarget : MonoBehaviour
     TextMeshPro tmpro;
     Bullet bullet;
     Gun gun;
-    Collectable_JumpDown[] collectableJumps;
+    ICollectableMovable[] collectableMovables;
     #endregion
 
     #region Awake
@@ -71,10 +71,9 @@ public class ShootingTarget : MonoBehaviour
 
         if(health == 0)
         {
-            foreach(Collectable_JumpDown cj in collectableJumps)
+            foreach (ICollectableMovable m in collectableMovables)
             {
-                cj.transform.SetParent(null);
-                cj.JumpDown();
+                m.Move();
             }
 
             // stone blast effect here
@@ -125,7 +124,7 @@ public class ShootingTarget : MonoBehaviour
     {
         tmpro = GetComponentInChildren<TextMeshPro>();
         tmpro.text = health.ToString();
-        collectableJumps = GetComponentsInChildren<Collectable_JumpDown>();
+        collectableMovables = GetComponentsInChildren<ICollectableMovable>();
     } 
     #endregion
 }

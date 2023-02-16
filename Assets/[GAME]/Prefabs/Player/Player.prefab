@@ -1989,7 +1989,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 5512961042806091770}
   recoilLevel: 0.5
-  muzzleFlash: {fileID: 0}
 --- !u!1 &5512961042662119411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2227,7 +2226,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 5512961044606641867}
   recoilLevel: 0.6
-  muzzleFlash: {fileID: 0}
 --- !u!1 &5512961042676756252
 GameObject:
   m_ObjectHideFlags: 0
@@ -17616,7 +17614,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 5512961043529727298}
   recoilLevel: 0.5
-  muzzleFlash: {fileID: 0}
 --- !u!1 &5512961044252901121
 GameObject:
   m_ObjectHideFlags: 0
@@ -21096,7 +21093,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.3164034
   m_Height: 1.8285594
   m_Direction: 1
   m_Center: {x: 0, y: 0.85405374, z: 0}

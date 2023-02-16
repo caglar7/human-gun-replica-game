@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Collectable_JumpDown : MonoBehaviour
+public class Collectable_JumpDown : MonoBehaviour, ICollectableMovable
 {
     [SerializeField] float groundLevelY;
     [SerializeField] float nextRotationX;
@@ -17,8 +15,10 @@ public class Collectable_JumpDown : MonoBehaviour
     /// object set parent null, jumps down to groundLevelY
     /// new rotation
     /// </summary>
-    public void JumpDown()
+    public void Move()
     {
+        transform.SetParent(null);
+
         Vector3 posNext = transform.position;
         posNext.y = groundLevelY;
         posNext.z += zOffset;

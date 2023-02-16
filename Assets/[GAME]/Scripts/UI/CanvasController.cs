@@ -27,7 +27,8 @@ public class CanvasController : MonoBehaviour
 
     #region Awake
 
-    public static CanvasController instance;
+    public static CanvasController instance { get; private set; }
+
     private void Awake()
     {
         if (instance == null) instance = this;

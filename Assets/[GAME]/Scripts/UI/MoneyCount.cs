@@ -66,19 +66,23 @@ public class MoneyCount : MonoBehaviour
     private void Collect(Vector3 worldPos)
     {
         GameObject clone = PoolManager.instance.poolMoneyImage.PullObjFromPool();
-        clone.transform.SetParent(transform.parent);
+
+        Transform canvasObj = CanvasController.instance.transform;
+
+        clone.transform.SetParent(canvasObj);
 
         RectTransform rtClone = clone.GetComponent<RectTransform>();
       
-        Vector2 startPosUI = Camera.main.WorldToScreenPoint(worldPos);
+        Vector2 startPosUI = Camera.main.WorldToScreenPoint(worldPos) / canvasObj.localScale.x;
         float posX = UnityEngine.Random.Range(startPosUI.x - startPosRange, startPosUI.x + startPosRange);
-        float posY = UnityEngine.Random.Range(startPosUI.y - startPosRange, startPosUI.y + startPosRange);
+        float posY = UnityEngine.Random.Range(startPosUI.y, startPosUI.y + startPosRange);
         startPosUI = new Vector2(posX, posY);
 
         rtClone.anchoredPosition = startPosUI;
 
         rtClone.DOAnchorPos(targetUIPos, duration).SetEase(ease)
-            .OnComplete(() => {
+            .OnComplete(() =>
+            {
 
                 PoolManager.instance.poolMoneyImage.AddObjToPool(clone);
                 UpdateCount(1);
