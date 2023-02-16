@@ -21,6 +21,7 @@ public class PoolManager : MonoBehaviour
     public GameObject moneyImage;
     public GameObject stickmanVisual;
     public GameObject targetRemoved;
+    public GameObject endPlatform;
 
     [Header("Pools")]
     [HideInInspector] public PoolingPattern poolBullet;
@@ -28,6 +29,7 @@ public class PoolManager : MonoBehaviour
     [HideInInspector] public PoolingPattern poolMoneyImage;
     [HideInInspector] public PoolingPattern poolStickmanVisual;
     [HideInInspector] public PoolingPattern poolTargetRemoved;
+    [HideInInspector] public PoolingPattern poolEndPlatform;
 
     void Init()
     {
@@ -45,6 +47,9 @@ public class PoolManager : MonoBehaviour
 
         poolTargetRemoved = new PoolingPattern(targetRemoved);
         poolTargetRemoved.FillPool(5);
+
+        poolEndPlatform = new PoolingPattern(endPlatform);
+        poolEndPlatform.FillPool(10);
     }
 
     public Transform GenerateVisualStickman()
