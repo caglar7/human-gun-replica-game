@@ -53,8 +53,20 @@ public class ShootingTarget : MonoBehaviour
 
         if(gun)
         {
-            EventManager.StickmanUpdateEvent(-1, null, VisualMode.Remove);
-            EventManager.PlayerHitsTargetEvent();
+            if(GetComponent<LevelEndShootingTarget>())
+            {
+                GameManager.instance.PauseGame();
+
+                print("level done");
+
+                // event level end done here
+                // ...
+            }
+            else
+            {
+                EventManager.StickmanUpdateEvent(-1, null, VisualMode.Remove);
+                EventManager.PlayerHitsTargetEvent();
+            }
         }
     }
 
@@ -66,10 +78,9 @@ public class ShootingTarget : MonoBehaviour
     private void UpdateHealth(int added)
     {
         health = Mathf.Max(health + added, 0);
-
         tmpro.text = health.ToString();
 
-        if(health == 0)
+        if (health == 0)
         {
             foreach (ICollectableMovable m in collectableMovables)
             {
@@ -84,8 +95,12 @@ public class ShootingTarget : MonoBehaviour
             // ... later with delay
 
             gameObject.SetActive(false);
-
         }
+    }
+
+    public void SetInitHealth(int value)
+    {
+        health = value;
     }
 
     #endregion
@@ -123,8 +138,9 @@ public class ShootingTarget : MonoBehaviour
     private void Init()
     {
         tmpro = GetComponentInChildren<TextMeshPro>();
-        tmpro.text = health.ToString();
         collectableMovables = GetComponentsInChildren<ICollectableMovable>();
-    } 
+
+        tmpro.text = health.ToString();
+    }
     #endregion
 }

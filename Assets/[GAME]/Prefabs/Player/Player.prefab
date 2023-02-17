@@ -20068,6 +20068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9218f10e275be3e479e41dc2ba34a248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableDuration: 1
 --- !u!114 &5512961044517772808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20080,7 +20081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c72cac900947549a1b9e5edb5a4444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 10
+  forwardSpeed: 9
   clampRange: 3.5
   movementSensitivity: 0.5
   damping: 20

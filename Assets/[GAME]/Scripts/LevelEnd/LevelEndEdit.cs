@@ -5,14 +5,15 @@ using UnityEngine;
 using TMPro;
 
 /// <summary>
-///  keep the track of the object in this transform
-///  working with child cound is more cleaner
+/// Editing level end visuals in edit mode
+/// instead of placing objects staticly, we use a platform prefab and a starting pos
+/// then generating level end models based on preferences
 /// </summary>
 
 public class LevelEndEdit : MonoBehaviour
 {
+    #region Properties
     [Header("Settings")]
-    //[SerializeField] bool updateActive;
     [SerializeField] int partCount;
     [SerializeField] Color[] colors;
 
@@ -21,16 +22,18 @@ public class LevelEndEdit : MonoBehaviour
     [SerializeField] Transform startPoint;
     Vector3 nextPos;
     float zDiff;
-    bool isUpdatedZ = false;
-    private const int COUNT_LIMIT = 20;
+    bool isUpdatedZ;
+    private const int COUNT_LIMIT = 20; 
+    #endregion
 
 #if UNITY_EDITOR
+    /// <summary>
+    /// on validate is called to update level end models
+    /// can directly call the update here in OnValidate but
+    /// it logs out too many annoying warnings, we update with delay to bypass some logs
+    /// </summary>
     private void OnValidate()
     {
-        //if (!updateActive) return;
-
-        print("Validate Called");
-
         UnityEditor.EditorApplication.delayCall += _OnValidate;
     }
 
@@ -42,6 +45,9 @@ public class LevelEndEdit : MonoBehaviour
     }
 #endif
 
+    /// <summary>
+    /// update
+    /// </summary>
     private void UpdateLevelEnd()
     {
         if(partCount < 0 || partCount > COUNT_LIMIT)
@@ -52,8 +58,29 @@ public class LevelEndEdit : MonoBehaviour
         ShowParts(partCount);
     }
 
+    /// <summary>
+    /// if parts already instantiated, there is no need to do it again
+    /// using the parts that already exist and adding more if needed
+    /// 
+    /// adjust for model positions
+    /// 
+    /// setting x2, x3 texts 
+    /// 
+    /// setting colors
+    /// 
+    /// </summary>
+    /// <param name="count"></param>
     private void ShowParts(int count)
     {
+        if(count == 0)
+        {
+            foreach(LevelEndPart part in GetParts())
+            {
+                DestroyImmediate(part.gameObject);
+            }
+            return;
+        }
+
         int alreadyHave = GetParts().Length;
         isUpdatedZ = false;
 
@@ -74,6 +101,8 @@ public class LevelEndEdit : MonoBehaviour
             SetCountText(g, i + 2);
 
             SetColor(g, i);
+
+            SetShootingHealths(g, (i * 10) + (i == 0 ? 2 : 0));
         }
 
         if(alreadyHave > count)
@@ -94,12 +123,23 @@ public class LevelEndEdit : MonoBehaviour
         return transform.GetComponentsInChildren<LevelEndPart>(true);
     }
 
+    /// <summary>
+    /// get a level end platform object, parent is transform
+    /// </summary>
+    /// <returns></returns>
     private GameObject GenerateEndPlatform()
     {
         GameObject clone = Instantiate(prefab, transform);
         return clone;
     }
 
+    /// <summary>
+    /// z diff is obtained from renderer bounds
+    /// 
+    /// zDiff is used to position objects in right places
+    /// 
+    /// </summary>
+    /// <param name="g"></param>
     private void SetZDiff(GameObject g)
     {
         if (isUpdatedZ) return;
@@ -108,11 +148,45 @@ public class LevelEndEdit : MonoBehaviour
         isUpdatedZ = true;
     }
 
+    /// <summary>
+    /// setting x2, x3 etc. texts
+    /// </summary>
+    /// <param name="g"></param>
+    /// <param name="value"></param>
     private void SetCountText(GameObject g, int value)
     {
-        g.GetComponentInChildren<TextMeshPro>().text = "x" + value.ToString();
+        foreach(TextMeshPro tm in g.GetComponentsInChildren<TextMeshPro>())
+        {
+            if(tm.gameObject.GetComponent<Text_CountX>())
+            {
+                tm.text = "x" + value.ToString();
+                break;
+            }
+        }
     }
 
+    /// <summary>
+    /// on level end shooting healths goes like 2, 10, 20, 30
+    /// this method sets all 3 of them on a level end model
+    /// </summary>
+    /// <param name="g"></param>
+    /// <param name="health"></param>
+    private void SetShootingHealths(GameObject g, int health)
+    {
+        foreach(ShootingTarget t in g.GetComponentsInChildren<ShootingTarget>())
+        {
+            t.SetInitHealth(health);
+        }
+    }
+
+    /// <summary>
+    /// setting colors with prob block
+    /// 
+    /// no need to create additional materials for each new object
+    /// 
+    /// </summary>
+    /// <param name="g"></param>
+    /// <param name="index"></param>
     private void SetColor(GameObject g, int index)
     {
         int indexMod = index % colors.Length;
