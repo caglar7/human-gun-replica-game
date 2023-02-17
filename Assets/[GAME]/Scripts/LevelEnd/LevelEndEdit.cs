@@ -11,6 +11,7 @@ using UnityEngine;
 public class LevelEndEdit : MonoBehaviour
 {
     [Header("Settings")]
+    [SerializeField] bool updateActive;
     [SerializeField] int partCount;
     [SerializeField] Color[] colors;
 
@@ -20,29 +21,18 @@ public class LevelEndEdit : MonoBehaviour
 
     List<Transform> parts = new List<Transform>();
     float zDiff;
-    bool isInitCalled;
-
-    private void OnEnable()
-    {
-        // testing
-        //isInitCalled = false;
-        //Init();
-    }
 
     private void OnValidate()
     {
-        // do it with finding LevelEndPart.cs in children
-        // ...
+        if (!updateActive) return;
 
-        //UpdateLevelEnd();
+        
     }
 
     private void UpdateLevelEnd()
     {
-        if(partCount > 0 && colors.Length > 0)
+        if (partCount > 0 && colors.Length > 0)
         {
-            // testing
-            //Init();
 
             RemovePlatforms();
 
@@ -50,23 +40,27 @@ public class LevelEndEdit : MonoBehaviour
         }
     }
 
+
     /// <summary>
-    /// pull one reference and find bounds for z
-    /// init list
+    ///  remove the currently active ones
     /// </summary>
-    /// <returns></returns>
-    private void Init()
+    private void RemovePlatforms()
     {
-        if (isInitCalled) return;
+        foreach(LevelEndPart part in transform.GetComponentsInChildren<LevelEndPart>(false))
+        {
+            part.gameObject.SetActive(false);
+        }
+    }
 
-        GameObject clone = GenerateEndPlatform(HideFlags.HideInHierarchy);
-        zDiff = clone.GetComponent<MeshRenderer>().bounds.extents.x * 2f;
-        clone.gameObject.SetActive(false);
+    private void AddPlatforms(int count)
+    {
+        LevelEndPart[] currentParts = transform.GetComponentsInChildren<LevelEndPart>(false);
 
-        parts = new List<Transform>();
-
-        isInitCalled = true;
-
+        for (int i = 0; i < count; i++)
+        {
+            if (i < currentParts.Length) currentParts[i].gameObject.SetActive(true);
+            else GenerateEndPlatform();
+        }
     }
 
     /// <summary>
@@ -75,59 +69,9 @@ public class LevelEndEdit : MonoBehaviour
     /// </summary>
     /// <param name="flags"></param>
     /// <returns></returns>
-    private GameObject GenerateEndPlatform(HideFlags flags = HideFlags.None)
+    private GameObject GenerateEndPlatform()
     {
         GameObject clone = Instantiate(prefab, transform);
-        clone.hideFlags = flags;
         return clone;
-    }
-
-    /// <summary>
-    ///  remove the currently active ones
-    /// </summary>
-    private void RemovePlatforms()
-    {
-
-        foreach (Transform t in parts)
-        {
-            if(t) t.gameObject.SetActive(false);
-        }
-    }
-
-    private void AddPlatforms(int count)
-    {
-        //if(count > parts.Count)
-        //{
-        //    int generateCount = count - parts.Count;
-        //    foreach (Transform t in parts)
-        //    {
-        //        t.gameObject.SetActive(true);
-        //    }
-
-        //    for (int i = 0; i < generateCount; i++)
-        //    {
-        //        GameObject clone = GenerateEndPlatform();
-        //        parts.Add(clone.transform);
-        //    }
-        //}
-        //else
-        //{
-
-        //}
-
-        int listCount = parts.Count;
-        for (int i = 0; i < count; i++)
-        {
-            if(i < listCount)
-            {
-                parts[i].gameObject.SetActive(true);
-            }
-            else
-            {
-                GameObject clone = GenerateEndPlatform();
-                parts.Add(clone.transform);
-            }
-        }
-        
     }
 }
