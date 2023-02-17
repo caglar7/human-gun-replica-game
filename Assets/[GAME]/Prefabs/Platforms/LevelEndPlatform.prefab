@@ -1016,7 +1016,7 @@ GameObject:
   m_Component:
   - component: {fileID: 540420286}
   - component: {fileID: 540420285}
-  - component: {fileID: 540420284}
+  - component: {fileID: 3387075567114850106}
   - component: {fileID: 540420283}
   - component: {fileID: 6782737680781898640}
   m_Layer: 0
@@ -1064,8 +1064,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!65 &540420284
-BoxCollider:
+--- !u!136 &3387075567114850106
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1074,8 +1074,9 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.9504616, y: 3.2151165, z: 0.90007496}
+  m_Radius: 0.98
+  m_Height: 3.176089
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &540420283
 MonoBehaviour:
@@ -1278,7 +1279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 560799692}
   - component: {fileID: 560799691}
-  - component: {fileID: 560799690}
+  - component: {fileID: 7679852807958443911}
   - component: {fileID: 560799689}
   - component: {fileID: 972878912267358548}
   m_Layer: 0
@@ -1326,8 +1327,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!65 &560799690
-BoxCollider:
+--- !u!136 &7679852807958443911
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1336,8 +1337,9 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.9504616, y: 3.2151165, z: 0.90007496}
+  m_Radius: 0.98
+  m_Height: 3.176089
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &560799689
 MonoBehaviour:
@@ -4224,7 +4226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1902257459}
   - component: {fileID: 1902257458}
-  - component: {fileID: 1902257457}
+  - component: {fileID: 3251261597473365273}
   - component: {fileID: 1902257456}
   - component: {fileID: 8991410503911794251}
   m_Layer: 0
@@ -4272,8 +4274,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!65 &1902257457
-BoxCollider:
+--- !u!136 &3251261597473365273
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4282,8 +4284,9 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.9504616, y: 3.2151165, z: 0.90007496}
+  m_Radius: 0.98
+  m_Height: 3.176089
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1902257456
 MonoBehaviour:

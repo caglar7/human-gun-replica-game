@@ -28,7 +28,7 @@ public class ShootingTarget : MonoBehaviour
     }
     #endregion
 
-    #region Trigger
+    #region Collision
 
     /// <summary>
     /// when bullet hits put bullet back to its pool, damage the stone
@@ -51,9 +51,9 @@ public class ShootingTarget : MonoBehaviour
             TextAnimate();
         }
 
-        if(gun)
+        if (gun)
         {
-            if(GetComponent<LevelEndShootingTarget>())
+            if (GetComponent<LevelEndShootingTarget>())
             {
                 GameManager.instance.PauseGame();
 

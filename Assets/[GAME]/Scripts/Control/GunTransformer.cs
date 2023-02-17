@@ -15,6 +15,7 @@ public class GunTransformer : MonoBehaviour
     Gun currentGun;
     int stickmanCount;
     int stickmanCount_Instant;
+    ColliderHandle colliderHandle;
 
     [Header("Animation Settings")]
     [SerializeField] float animTime_StickmanJump;
@@ -174,6 +175,8 @@ public class GunTransformer : MonoBehaviour
 
         if (!currentGun.GetComponent<Stickman>())
             EventManager.EnableGunEvent(currentGun.gunData.id);
+
+        colliderHandle.EnableGunCollider(currentGun.gunData.name);
     }
 
     /// <summary>
@@ -429,6 +432,7 @@ public class GunTransformer : MonoBehaviour
         stickmanCount_Instant = 1;
         gunList.AddRange(GetComponentsInChildren<Gun>(true));
         currentGun = (gunList.Count > 0) ? gunList[0] : null;
+        colliderHandle = GetComponent<ColliderHandle>();
     }
     #endregion
 

@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class ColliderHandle : MonoBehaviour
 {
-    [SerializeField] float disableDuration = 1f;
-    Collider[] colliders;
+    [SerializeField] float initDisableTime = 1f;
+    Gun[] guns;
+    Gun enabledGun;
     public static bool isUsed;
 
     #region Awake, Init
@@ -17,9 +18,11 @@ public class ColliderHandle : MonoBehaviour
 
     private void Init()
     {
-        colliders = GetComponentsInChildren<Collider>();
+        guns = GetComponentsInChildren<Gun>();
         isUsed = false;
+        EnableGunCollider(guns[0].gunData.name);
     }
+
     #endregion
 
     #region OnEnable, OnDisable
@@ -50,15 +53,25 @@ public class ColliderHandle : MonoBehaviour
     IEnumerator DisableForDurationCo()
     {
         EnableColliders(false);
-        yield return new WaitForSeconds(disableDuration);
+        yield return new WaitForSeconds(initDisableTime);
         EnableColliders(true);
     }
 
     private void EnableColliders(bool value)
     {
-        foreach(Collider c in colliders)
+        enabledGun.enabled = value;
+    }
+
+    public void EnableGunCollider(string gunName)
+    {
+        foreach(Gun g in guns)
         {
-            c.enabled = value;
+            if (g.gunData.name == gunName)
+            {
+                g.GetComponent<Collider>().enabled = true;
+                enabledGun = g;
+            }
+            else g.GetComponent<Collider>().enabled = false;
         }
     }
 

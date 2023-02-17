@@ -1920,9 +1920,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5512961042661022197}
-  - component: {fileID: 5512961042661022199}
   - component: {fileID: 5512961042661022196}
   - component: {fileID: 5512961042661022198}
+  - component: {fileID: 405907805}
   m_Layer: 0
   m_Name: SMG
   m_TagString: Untagged
@@ -1947,19 +1947,6 @@ Transform:
   m_Father: {fileID: 5512961044517772809}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5512961042661022199
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5512961042661022202}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.4495378, z: 3.5197783}
-  m_Center: {x: 0, y: 1.0173752, z: 0.24251318}
 --- !u!114 &5512961042661022196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1989,6 +1976,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 5512961042806091770}
   recoilLevel: 0.5
+--- !u!65 &405907805
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961042661022202}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6849291, y: 1.2948731, z: 2.7389946}
+  m_Center: {x: 0, y: 0.9942513, z: 0.39316368}
 --- !u!1 &5512961042662119411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2157,9 +2157,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5512961042672659852}
-  - component: {fileID: 5512961042672659854}
   - component: {fileID: 5512961042672659855}
   - component: {fileID: 5512961042672659849}
+  - component: {fileID: 836380078}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -2184,19 +2184,6 @@ Transform:
   m_Father: {fileID: 5512961044517772809}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5512961042672659854
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5512961042672659853}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.0236597, z: 4.92754}
-  m_Center: {x: 0, y: 1.0410352, z: 1.0765247}
 --- !u!114 &5512961042672659855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2226,6 +2213,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 5512961044606641867}
   recoilLevel: 0.6
+--- !u!65 &836380078
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961042672659853}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5616554, y: 0.5989821, z: 4.097521}
+  m_Center: {x: 0, y: 1.0993427, z: 1.375907}
 --- !u!1 &5512961042676756252
 GameObject:
   m_ObjectHideFlags: 0
@@ -17545,9 +17545,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5512961044246003906}
-  - component: {fileID: 5512961044246003932}
   - component: {fileID: 5512961044246003933}
   - component: {fileID: 5512961044246003935}
+  - component: {fileID: 1116103959}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -17572,19 +17572,6 @@ Transform:
   m_Father: {fileID: 5512961044517772809}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5512961044246003932
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5512961044246003907}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7249654, y: 1.7701033, z: 1.6250858}
-  m_Center: {x: 0, y: 0.8388625, z: 0.20992756}
 --- !u!114 &5512961044246003933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17614,6 +17601,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 5512961043529727298}
   recoilLevel: 0.5
+--- !u!65 &1116103959
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512961044246003907}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.55087847, y: 1.6204641, z: 1.4558506}
+  m_Center: {x: 0, y: 0.8673836, z: 0.48117542}
 --- !u!1 &5512961044252901121
 GameObject:
   m_ObjectHideFlags: 0
@@ -20068,7 +20068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9218f10e275be3e479e41dc2ba34a248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableDuration: 1
+  initDisableTime: 1
 --- !u!114 &5512961044517772808
 MonoBehaviour:
   m_ObjectHideFlags: 0
