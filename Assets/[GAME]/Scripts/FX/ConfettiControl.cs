@@ -45,7 +45,7 @@ public class ConfettiControl : MonoBehaviour
             
             if(list.Contains(index))
             {
-                list.Remove(index);
+                list.Remove(index); 
                 confettiList[index].Play();
 
                 yield return new WaitForSeconds(.1f);
