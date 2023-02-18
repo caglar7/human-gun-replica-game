@@ -176,7 +176,7 @@ public class GunTransformer : MonoBehaviour
         if (!currentGun.GetComponent<Stickman>())
             EventManager.EnableGunEvent(currentGun.gunData.id);
 
-        colliderHandle.EnableGunCollider(currentGun.gunData.name);
+        colliderHandle.SetEnabledGun(currentGun);
     }
 
     /// <summary>

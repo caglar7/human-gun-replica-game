@@ -9,6 +9,7 @@ public class ColliderHandle : MonoBehaviour
     Gun[] guns;
     Gun enabledGun;
     public static bool isUsed;
+    bool disableCalled = false;
 
     #region Awake, Init
     private void Awake()
@@ -20,7 +21,7 @@ public class ColliderHandle : MonoBehaviour
     {
         guns = GetComponentsInChildren<Gun>();
         isUsed = false;
-        EnableGunCollider(guns[0].gunData.name);
+        SetEnabledGun(guns[0]);
     }
 
     #endregion
@@ -52,27 +53,35 @@ public class ColliderHandle : MonoBehaviour
 
     IEnumerator DisableForDurationCo()
     {
+        disableCalled = true;
         EnableColliders(false);
+
         yield return new WaitForSeconds(initDisableTime);
+
         EnableColliders(true);
+        disableCalled = false;
     }
 
     private void EnableColliders(bool value)
     {
-        enabledGun.enabled = value;
+        if (value)
+        {
+            foreach (Gun g in guns)
+            {
+                if (g.gunData.name == enabledGun.gunData.name)
+                    enabledGun.GetComponent<Collider>().enabled = true;
+                else g.GetComponent<Collider>().enabled = false;
+            }
+        }
+        else
+            enabledGun.GetComponent<Collider>().enabled = false;
     }
 
-    public void EnableGunCollider(string gunName)
+    public void SetEnabledGun(Gun g)
     {
-        foreach(Gun g in guns)
-        {
-            if (g.gunData.name == gunName)
-            {
-                g.GetComponent<Collider>().enabled = true;
-                enabledGun = g;
-            }
-            else g.GetComponent<Collider>().enabled = false;
-        }
+        enabledGun = g;
+
+        if (!disableCalled) EnableColliders(true);
     }
 
     #endregion
