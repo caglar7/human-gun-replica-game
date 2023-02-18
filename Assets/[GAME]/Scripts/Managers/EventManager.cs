@@ -19,6 +19,7 @@ public class EventManager : MonoBehaviour
     public static event Action CollidersDisabled;
     public static event Action LevelEndStart;   // when passes finish line, starts shooting
     public static event Action LevelEndDone;    // when level is complete, scene is done
+    public static event Action<int> SlideUI;
     #endregion
 
     #region Methods
@@ -65,6 +66,11 @@ public class EventManager : MonoBehaviour
     public static void LevelEndDoneEvent()
     {
         LevelEndDone?.Invoke();
+    }
+
+    public static void SlideUIEvent(int count)
+    {
+        SlideUI?.Invoke(count);
     }
 
     #endregion

@@ -68,6 +68,15 @@ public class PlayerMover : MonoBehaviour
     /// </summary>
     private void DragMove()
     {
+        // testing 
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        Vector3 pos = transform.position;
+        pos.x += (horizontal * Time.deltaTime * 10);
+        transform.position = pos;
+
+        return;
+
+
         if (Input.GetMouseButtonDown(0))
         {
             initTouchPosition = Input.mousePosition;

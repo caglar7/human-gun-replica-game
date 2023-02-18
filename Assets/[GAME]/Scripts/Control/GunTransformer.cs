@@ -15,6 +15,7 @@ public class GunTransformer : MonoBehaviour
     Gun currentGun;
     int stickmanCount;
     int stickmanCount_Instant;
+    int maxStickmanCount;
     ColliderHandle colliderHandle;
 
     [Header("Animation Settings")]
@@ -157,7 +158,7 @@ public class GunTransformer : MonoBehaviour
     /// <param name="count"></param>
     private void NextTransform(int added)
     {
-        stickmanCount = Mathf.Max(stickmanCount + added, 1);
+        stickmanCount = Mathf.Clamp(stickmanCount + added, 1, maxStickmanCount);
 
         foreach (GunPart gPart in currentGun.gunParts)
             gPart.EnableRenderer(false);
@@ -177,6 +178,8 @@ public class GunTransformer : MonoBehaviour
             EventManager.EnableGunEvent(currentGun.gunData.id);
 
         colliderHandle.SetEnabledGun(currentGun);
+
+        EventManager.SlideUIEvent(stickmanCount);
     }
 
     /// <summary>
@@ -433,6 +436,11 @@ public class GunTransformer : MonoBehaviour
         gunList.AddRange(GetComponentsInChildren<Gun>(true));
         currentGun = (gunList.Count > 0) ? gunList[0] : null;
         colliderHandle = GetComponent<ColliderHandle>();
+
+        foreach(Gun g in gunList)
+        {
+            if (g.gunData.max > maxStickmanCount) maxStickmanCount = g.gunData.max;
+        }
     }
     #endregion
 
@@ -443,4 +451,5 @@ public enum VisualMode
     StickmanCollect,
     GateCollect,
     Remove,
+    None,
 }

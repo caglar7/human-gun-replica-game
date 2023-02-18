@@ -66,6 +66,10 @@ public class ShootingTarget : MonoBehaviour
             {
                 EventManager.StickmanUpdateEvent(-1, null, VisualMode.Remove);
                 EventManager.PlayerHitsTargetEvent();
+
+                print("hit the shooting target");
+
+
             }
         }
     }
