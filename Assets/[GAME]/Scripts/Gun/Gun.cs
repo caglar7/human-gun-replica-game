@@ -6,23 +6,26 @@ using UnityEngine;
 /// main gun class, and every gun object inherit this class
 /// </summary>
 
-public class Gun : MonoBehaviour
+namespace GAME
 {
-    #region Properties
-    [Header("Gun Parts")]
-    public Transform gunPartsObj;
-    [HideInInspector] public List<GunPart> gunParts = new List<GunPart>();
-
-    [Header("Gun Data")]
-    public GunData gunData;
-
-    #endregion
-
-    #region Init Method
-    public void Init()
+    public class Gun : MonoBehaviour
     {
-        gunParts.AddRange(gunPartsObj.GetComponentsInChildren<GunPart>(true));
-    }
-    #endregion
+        #region Properties
+        [Header("Gun Parts")]
+        public Transform gunPartsObj;
+        [HideInInspector] public List<GunPart> gunParts = new List<GunPart>();
 
+        [Header("Gun Data")]
+        public GunData gunData;
+
+        #endregion
+
+        #region Init Method
+        public void Init()
+        {
+            gunParts.AddRange(gunPartsObj.GetComponentsInChildren<GunPart>(true));
+        }
+        #endregion
+
+    }
 }

@@ -7,44 +7,47 @@ using UnityEngine;
 ///  staring with idle and goes to running animations
 /// </summary>
 
-public class Stickman : Gun
+namespace GAME
 {
-    #region Properties
-
-    [Header("Stickman Params")]
-    [SerializeField] Animator animator;
-    #endregion
-
-    #region Awake
-
-    private void Awake()
+    public class Stickman : Gun
     {
-        Init();
+        #region Properties
+
+        [Header("Stickman Params")]
+        [SerializeField] Animator animator;
+        #endregion
+
+        #region Awake
+
+        private void Awake()
+        {
+            Init();
+        }
+
+        #endregion
+
+        #region Enable, Disable
+
+        /// <summary>
+        ///  subs to events
+        /// </summary>
+        private void OnEnable()
+        {
+            EventManager.StartGame += RunAnimation;
+        }
+
+        private void OnDisable()
+        {
+            EventManager.StartGame -= RunAnimation;
+        }
+
+        #endregion
+
+        #region Animation Methods
+        private void RunAnimation() => animator.SetTrigger("Run");
+
+        private void IdleAnimation() => animator.SetTrigger("Idle");
+
+        #endregion
     }
-
-    #endregion
-
-    #region Enable, Disable
-
-    /// <summary>
-    ///  subs to events
-    /// </summary>
-    private void OnEnable()
-    {
-        EventManager.StartGame += RunAnimation;
-    }
-
-    private void OnDisable()
-    {
-        EventManager.StartGame -= RunAnimation;
-    }
-
-    #endregion
-
-    #region Animation Methods
-    private void RunAnimation() => animator.SetTrigger("Run");
-
-    private void IdleAnimation() => animator.SetTrigger("Idle");
-
-    #endregion
 }

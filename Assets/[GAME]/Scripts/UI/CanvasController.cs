@@ -10,54 +10,58 @@ using UnityEngine;
 /// update the enum below
 /// </summary>
 
-public enum CanvasType
+namespace GAME
 {
-    StartMenu,
-    GameMenu,
-    LevelEndMenu,
-}
-
-public class CanvasController : MonoBehaviour
-{
-    #region Properties
-
-    SubCanvas[] subCanvases;
-
-    #endregion
-
-    #region Awake
-
-    public static CanvasController instance { get; private set; }
-
-    private void Awake()
+    public enum CanvasType
     {
-        if (instance == null) instance = this;
-        else if (instance != this) Destroy(gameObject);
-
-        Init();
+        StartMenu,
+        GameMenu,
+        LevelEndMenu,
     }
 
-    #endregion
-
-    #region Methods
-    /// <summary>
-    /// deactive canvases and activate the next one
-    /// </summary>
-    /// <param name="startCanvas"></param>
-    public void SwitchCanvas(CanvasType startCanvas)
+    public class CanvasController : MonoBehaviour
     {
-        foreach (SubCanvas sub in subCanvases)
+        #region Properties
+
+        SubCanvas[] subCanvases;
+
+        #endregion
+
+        #region Awake
+
+        public static CanvasController instance { get; private set; }
+
+        private void Awake()
         {
-            if (sub.canvasType == startCanvas) sub.gameObject.SetActive(true);
-            else sub.gameObject.SetActive(false);
-        }
-    }
-    #endregion
+            if (instance == null) instance = this;
+            else if (instance != this) Destroy(gameObject);
 
-    #region Init
-    private void Init()
-    {
-        subCanvases = GetComponentsInChildren<SubCanvas>(true);
-    } 
-    #endregion
+            Init();
+        }
+
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// deactive canvases and activate the next one
+        /// </summary>
+        /// <param name="startCanvas"></param>
+        public void SwitchCanvas(CanvasType startCanvas)
+        {
+            foreach (SubCanvas sub in subCanvases)
+            {
+                if (sub.canvasType == startCanvas) sub.gameObject.SetActive(true);
+                else sub.gameObject.SetActive(false);
+            }
+        }
+        #endregion
+
+        #region Init
+        private void Init()
+        {
+            subCanvases = GetComponentsInChildren<SubCanvas>(true);
+        }
+        #endregion
+    }
+
 }

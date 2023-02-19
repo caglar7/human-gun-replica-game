@@ -7,13 +7,16 @@ using UnityEngine.EventSystems;
 ///  on press handle, only pointer down, not a click
 /// </summary>
 
-public class ButtonOnPressed : ButtonMethods, IPointerDownHandler
+namespace GAME
 {
-    public void OnPointerDown(PointerEventData eventData)
+    public class ButtonOnPressed : ButtonMethods, IPointerDownHandler
     {
-        foreach(ButtonActionType action in actions)
+        public void OnPointerDown(PointerEventData eventData)
         {
-            ButtonAction(action);
+            foreach (ButtonActionType action in actions)
+            {
+                ButtonAction(action);
+            }
         }
     }
 }

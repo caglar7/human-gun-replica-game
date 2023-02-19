@@ -6,59 +6,62 @@ using UnityEngine;
 /// confetti fx on level end trigger
 /// </summary>
 
-public class ConfettiControl : MonoBehaviour
+namespace GAME
 {
-    #region Properties
-    [SerializeField] List<ParticleSystem> confettiList = new List<ParticleSystem>(); 
-    #endregion
-
-    #region Enable, Disable
-
-    /// <summary>
-    ///  subs to level end event
-    /// </summary>
-    private void OnEnable()
+    public class ConfettiControl : MonoBehaviour
     {
-        EventManager.LevelFinishStage += ShowConfetti;
-    }
+        #region Properties
+        [SerializeField] List<ParticleSystem> confettiList = new List<ParticleSystem>();
+        #endregion
 
-    private void OnDisable()
-    {
-        EventManager.LevelFinishStage -= ShowConfetti;
-    }
-    #endregion
+        #region Enable, Disable
 
-    #region Methods
-    /// <summary>
-    /// show confetti in the list property above
-    /// triggering effects randomly in the list
-    /// </summary>
-    private void ShowConfetti()
-    {
-        StartCoroutine(ShowConfettiCo());
-    }
-
-    IEnumerator ShowConfettiCo()
-    {
-        List<int> list = new List<int>();
-        for (int i = 0; i < confettiList.Count; i++)
+        /// <summary>
+        ///  subs to level end event
+        /// </summary>
+        private void OnEnable()
         {
-            list.Add(i);
+            EventManager.LevelFinishStage += ShowConfetti;
         }
 
-        while (list.Count > 0)
+        private void OnDisable()
         {
-            int index = Random.Range(0, confettiList.Count);
+            EventManager.LevelFinishStage -= ShowConfetti;
+        }
+        #endregion
 
-            if (list.Contains(index))
+        #region Methods
+        /// <summary>
+        /// show confetti in the list property above
+        /// triggering effects randomly in the list
+        /// </summary>
+        private void ShowConfetti()
+        {
+            StartCoroutine(ShowConfettiCo());
+        }
+
+        IEnumerator ShowConfettiCo()
+        {
+            List<int> list = new List<int>();
+            for (int i = 0; i < confettiList.Count; i++)
             {
-                list.Remove(index);
-                confettiList[index].Play();
+                list.Add(i);
+            }
 
-                yield return new WaitForSeconds(.1f);
+            while (list.Count > 0)
+            {
+                int index = Random.Range(0, confettiList.Count);
+
+                if (list.Contains(index))
+                {
+                    list.Remove(index);
+                    confettiList[index].Play();
+
+                    yield return new WaitForSeconds(.1f);
+                }
             }
         }
-    } 
 
-    #endregion
+        #endregion
+    }
 }

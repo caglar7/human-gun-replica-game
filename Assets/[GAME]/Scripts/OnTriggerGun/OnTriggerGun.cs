@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnTriggerGun : MonoBehaviour
+namespace GAME
 {
-    bool isUsed = false;
-    Gun gun;
-
-    private void OnTriggerEnter(Collider other)
+    public class OnTriggerGun : MonoBehaviour
     {
-        gun = other.GetComponent<Gun>();
-        if(gun && isUsed == false)
+        bool isUsed = false;
+        Gun gun;
+
+        private void OnTriggerEnter(Collider other)
         {
-            isUsed = true;
-            OnTrigger();
+            gun = other.GetComponent<Gun>();
+            if (gun && isUsed == false)
+            {
+                isUsed = true;
+                OnTrigger();
+            }
         }
-    }
 
-    public virtual void OnTrigger()
-    {
-        Debug.Log("OnTrigger() not implemented");
+        public virtual void OnTrigger()
+        {
+            Debug.Log("OnTrigger() not implemented");
+        }
     }
 }

@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : OnTriggerGun
+namespace GAME
 {
-    [SerializeField] int stickmanLose = 1;
-
-    public override void OnTrigger()
+    public class Obstacle : OnTriggerGun
     {
-        EventManager.ObstacleJumpEvent();
-        EventManager.StickmanUpdateEvent(-stickmanLose, null, VisualMode.Remove);
+        [SerializeField] int stickmanLose = 1;
+
+        public override void OnTrigger()
+        {
+            EventManager.ObstacleJumpEvent();
+            EventManager.StickmanUpdateEvent(-stickmanLose, null, VisualMode.Remove);
+        }
     }
 }

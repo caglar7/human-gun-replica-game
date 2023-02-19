@@ -6,7 +6,10 @@ using UnityEngine;
 /// bullet type, to access from bullet parent object
 /// </summary>
 
-public class BulletTypeControl : MonoBehaviour
+namespace GAME
 {
-    public BulletType type;    
+    public class BulletTypeControl : MonoBehaviour
+    {
+        public BulletType type;
+    }
 }

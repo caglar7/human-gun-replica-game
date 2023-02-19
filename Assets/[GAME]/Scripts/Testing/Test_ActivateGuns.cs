@@ -8,57 +8,60 @@ using System;
 ///  on other things while viewing guns
 /// </summary>
 
-[ExecuteInEditMode]
-public class Test_ActivateGuns : MonoBehaviour
+namespace GAME
 {
-    [SerializeField]
-    private GunNames gunName;
-    
-    private void OnEnable()
+    [ExecuteInEditMode]
+    public class Test_ActivateGuns : MonoBehaviour
     {
-        ShowGun(gunName);
-    }
+        [SerializeField]
+        private GunNames gunName;
 
-    private void OnDisable()
-    {
-        ShowGun(GunNames.Stickman);
-    }
-
-    private void OnValidate()
-    {
-        ShowGun(gunName);
-    }
-
-    private void ShowGun(GunNames name)
-    {
-        foreach(Gun gun in transform.GetComponentsInChildren<Gun>())
+        private void OnEnable()
         {
-            if(gun.gunData.name == name.ToString())
+            ShowGun(gunName);
+        }
+
+        private void OnDisable()
+        {
+            ShowGun(GunNames.Stickman);
+        }
+
+        private void OnValidate()
+        {
+            ShowGun(gunName);
+        }
+
+        private void ShowGun(GunNames name)
+        {
+            foreach (Gun gun in transform.GetComponentsInChildren<Gun>())
             {
-                foreach(Renderer r in gun.transform.GetComponentsInChildren<Renderer>())
+                if (gun.gunData.name == name.ToString())
                 {
-                    if (r.transform.GetComponent<ParticleSystem>()) continue;
-                    r.enabled = true;
+                    foreach (Renderer r in gun.transform.GetComponentsInChildren<Renderer>())
+                    {
+                        if (r.transform.GetComponent<ParticleSystem>()) continue;
+                        r.enabled = true;
+                    }
                 }
-            }
-            else
-            {
-                foreach (Renderer r in gun.transform.GetComponentsInChildren<Renderer>())
+                else
                 {
-                    if (r.transform.GetComponent<ParticleSystem>()) continue;
-                    r.enabled = false;
+                    foreach (Renderer r in gun.transform.GetComponentsInChildren<Renderer>())
+                    {
+                        if (r.transform.GetComponent<ParticleSystem>()) continue;
+                        r.enabled = false;
+                    }
                 }
             }
         }
+
+        enum GunNames
+        {
+            Stickman,
+            Pistol,
+            SMG,
+            Shotgun,
+        }
     }
 
-    enum GunNames
-    {
-        Stickman,
-        Pistol,
-        SMG,
-        Shotgun,
-    }
 }
-
 

@@ -4,34 +4,37 @@ using UnityEngine;
 using TMPro;
 using System;
 
-public class Collectable_Gate : OnTriggerGun
+namespace GAME
 {
-    [SerializeField] Collider otherGate;
-    [SerializeField] int addedStickman;
-    TextMeshPro tmpro;
-
-    private void Awake()
+    public class Collectable_Gate : OnTriggerGun
     {
-        Init();
-    }
+        [SerializeField] Collider otherGate;
+        [SerializeField] int addedStickman;
+        TextMeshPro tmpro;
 
-    private void Init()
-    {
-        tmpro = GetComponentInChildren<TextMeshPro>();
-        tmpro.text = (addedStickman > 0) ? "+" + addedStickman.ToString() : tmpro.text;
-        tmpro.text = (addedStickman < 0) ? addedStickman.ToString() : tmpro.text;
-    }
+        private void Awake()
+        {
+            Init();
+        }
 
-    public override void OnTrigger()
-    {
-        otherGate.enabled = false;
+        private void Init()
+        {
+            tmpro = GetComponentInChildren<TextMeshPro>();
+            tmpro.text = (addedStickman > 0) ? "+" + addedStickman.ToString() : tmpro.text;
+            tmpro.text = (addedStickman < 0) ? addedStickman.ToString() : tmpro.text;
+        }
 
-        gameObject.SetActive(false);
+        public override void OnTrigger()
+        {
+            otherGate.enabled = false;
 
-        if(addedStickman > 0) 
-            EventManager.StickmanUpdateEvent(addedStickman, null, VisualMode.GateCollect);
+            gameObject.SetActive(false);
 
-        if(addedStickman < 0)
-            EventManager.StickmanUpdateEvent(addedStickman, null, VisualMode.Remove);
+            if (addedStickman > 0)
+                EventManager.StickmanUpdateEvent(addedStickman, null, VisualMode.GateCollect);
+
+            if (addedStickman < 0)
+                EventManager.StickmanUpdateEvent(addedStickman, null, VisualMode.Remove);
+        }
     }
 }

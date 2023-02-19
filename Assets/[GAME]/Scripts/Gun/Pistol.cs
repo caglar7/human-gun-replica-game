@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pistol : Gun
+namespace GAME
 {
-    #region Awake
-    private void Awake()
+
+    public class Pistol : Gun
     {
-        Init();
-    } 
-    #endregion
+        #region Awake
+        private void Awake()
+        {
+            Init();
+        }
+        #endregion
+    }
 }

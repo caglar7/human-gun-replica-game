@@ -7,71 +7,74 @@ using System;
 /// Event Manager
 /// </summary>
 
-public class EventManager : MonoBehaviour
+namespace GAME
 {
-    #region Events
-    public static event Action StartGame;
-    public static event Action<int, Transform, VisualMode> StickmanUpdate;
-    public static event Action ObstacleJump;
-    public static event Action<Vector3> MoneyCollect;
-    public static event Action<int> EnableGun;
-    public static event Action PlayerHitsTarget;
-    public static event Action CollidersDisabled;
-    public static event Action LevelFinishStage;   // when passes finish line, starts shooting
-    public static event Action LevelComplete;    // when level is complete, scene is done
-    public static event Action<int> SlideUI;
-    #endregion
-
-    #region Methods
-    public static void StartGameEvent()
+    public class EventManager : MonoBehaviour
     {
-        StartGame?.Invoke();
-    } 
+        #region Events
+        public static event Action StartGame;
+        public static event Action<int, Transform, VisualMode> StickmanUpdate;
+        public static event Action ObstacleJump;
+        public static event Action<Vector3> MoneyCollect;
+        public static event Action<int> EnableGun;
+        public static event Action PlayerHitsTarget;
+        public static event Action CollidersDisabled;
+        public static event Action LevelFinishStage;   // when passes finish line, starts shooting
+        public static event Action<int> LevelComplete;    // when level is complete, scene is done
+        public static event Action<int> SlideUI;
+        #endregion
 
-    public static void StickmanUpdateEvent(int count, Transform t, VisualMode mode)
-    {
-        StickmanUpdate?.Invoke(count, t, mode);
+        #region Methods
+        public static void StartGameEvent()
+        {
+            StartGame?.Invoke();
+        }
+
+        public static void StickmanUpdateEvent(int count, Transform t, VisualMode mode)
+        {
+            StickmanUpdate?.Invoke(count, t, mode);
+        }
+
+        public static void ObstacleJumpEvent()
+        {
+            ObstacleJump?.Invoke();
+        }
+
+        public static void MoneyCollectEvent(Vector3 worldPos)
+        {
+            MoneyCollect?.Invoke(worldPos);
+        }
+
+        public static void EnableGunEvent(int id)
+        {
+            EnableGun?.Invoke(id);
+        }
+
+        public static void PlayerHitsTargetEvent()
+        {
+            PlayerHitsTarget?.Invoke();
+        }
+
+        public static void CollidersDisabledEvent()
+        {
+            CollidersDisabled?.Invoke();
+        }
+
+        public static void LevelFinishStageEvent()
+        {
+            LevelFinishStage?.Invoke();
+        }
+
+        public static void LevelCompleteEvent(int xReached)
+        {
+            LevelComplete?.Invoke(xReached);
+        }
+
+        public static void SlideUIEvent(int count)
+        {
+            SlideUI?.Invoke(count);
+        }
+
+        #endregion
     }
-
-    public static void ObstacleJumpEvent()
-    {
-        ObstacleJump?.Invoke();
-    }
-
-    public static void MoneyCollectEvent(Vector3 worldPos)
-    {
-        MoneyCollect?.Invoke(worldPos);
-    }
-
-    public static void EnableGunEvent(int id)
-    {
-        EnableGun?.Invoke(id);
-    }
-
-    public static void PlayerHitsTargetEvent()
-    {
-        PlayerHitsTarget?.Invoke();
-    }
-
-    public static void CollidersDisabledEvent()
-    {
-        CollidersDisabled?.Invoke();
-    }
-
-    public static void LevelFinishStageEvent()
-    {
-        LevelFinishStage?.Invoke();
-    }
-
-    public static void LevelCompleteEvent()
-    {
-        LevelComplete?.Invoke();
-    }
-
-    public static void SlideUIEvent(int count)
-    {
-        SlideUI?.Invoke(count);
-    }
-
-    #endregion
 }

@@ -4,7 +4,10 @@
 ///  some collectables jump down after shooting target destroyed, some move towards player
 /// </summary>
 
-public interface ICollectableMovable
+namespace GAME
 {
-    void Move();
+    public interface ICollectableMovable
+    {
+        void Move();
+    }
 }

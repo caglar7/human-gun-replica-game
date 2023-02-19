@@ -7,127 +7,131 @@ using UnityEngine;
 /// does automatic shooting, every gun object contains this class
 /// </summary>
 
-public class Shooter : MonoBehaviour
+namespace GAME
 {
-    #region Properties
-    [SerializeField] Transform shootPoint;
-    [SerializeField] [Range(0f, 1f)] float recoilLevel;
-    GunData gunData;
-    RecoilPart[] recoilParts;
-    float period, timer;
-    float range, speed;
-    int attackDamage;
-    bool isActive;
-    int gunID;
-    #endregion
-
-    #region Awake, Update
-    private void Awake()
+    public class Shooter : MonoBehaviour
     {
-        Init();
-    }
+        #region Properties
+        [SerializeField] Transform shootPoint;
+        [SerializeField] [Range(0f, 1f)] float recoilLevel;
+        GunData gunData;
+        RecoilPart[] recoilParts;
+        float period, timer;
+        float range, speed;
+        int attackDamage;
+        bool isActive;
+        int gunID;
+        #endregion
 
-    private void Update()
-    {
-        if (!isActive) return;
-
-        timer += Time.deltaTime;
-        if(timer >= period && isThereTarget())
+        #region Awake, Update
+        private void Awake()
         {
-            timer = 0f;
-            Shoot();
+            Init();
         }
-    }
 
-    #endregion
-
-    #region Enable, Disable
-
-    /// <summary>
-    ///  subs to events
-    /// </summary>
-    private void OnEnable()
-    {
-        EventManager.EnableGun += EnableShooting;
-    }
-
-    private void OnDisable()
-    {
-        EventManager.EnableGun -= EnableShooting;
-    }
-
-    #endregion
-
-    #region Shooting Related
-
-    /// <summary>
-    /// send a raycast, check hits if there is a shooting target on the way
-    /// </summary>
-    /// <returns></returns>
-    private bool isThereTarget()
-    {
-
-        RaycastHit[] hits = Physics.RaycastAll(shootPoint.position, Vector3.forward, range);
-
-        foreach(RaycastHit hit in hits)
+        private void Update()
         {
-            if (hit.collider.GetComponent<ShootingTarget>()) return true;
+            if (!isActive) return;
+
+            timer += Time.deltaTime;
+            if (timer >= period && isThereTarget())
+            {
+                timer = 0f;
+                Shoot();
+            }
         }
-        return false;
-    }
-    
-    /// <summary>
-    /// get a bullet from pool, set its position to shooting point
-    /// then shoot, calling its method in Bullet.cs
-    /// </summary>
-    private void Shoot()
-    {
-        Bullet bullet = PoolManager.instance.poolBullet.PullObjFromPool().GetComponent<Bullet>();
-        bullet.SetBulletType(gunData.bulletType);
 
-        bullet.transform.position = shootPoint.position;
-        bullet.Shoot(range, speed, attackDamage);
+        #endregion
 
-        StartCoroutine(RecoilCo(recoilLevel));
-    }
+        #region Enable, Disable
 
-    /// <summary>
-    /// enabled with event, passing gun id to recognize which gun
-    /// </summary>
-    /// <param name="id"></param>
-    public void EnableShooting(int id)
-    {
-        if (gunID == id) isActive = true;
-        else isActive = false;
-    }
-
-    /// <summary>
-    /// recoil animation, async
-    /// </summary>
-    /// <param name="level"></param>
-    /// <returns></returns>
-    IEnumerator RecoilCo(float level)
-    {
-        foreach(RecoilPart r in recoilParts)
+        /// <summary>
+        ///  subs to events
+        /// </summary>
+        private void OnEnable()
         {
-            r.RecoilAnimation(level);
-            yield return 0;
+            EventManager.EnableGun += EnableShooting;
         }
+
+        private void OnDisable()
+        {
+            EventManager.EnableGun -= EnableShooting;
+        }
+
+        #endregion
+
+        #region Shooting Related
+
+        /// <summary>
+        /// send a raycast, check hits if there is a shooting target on the way
+        /// </summary>
+        /// <returns></returns>
+        private bool isThereTarget()
+        {
+
+            RaycastHit[] hits = Physics.RaycastAll(shootPoint.position, Vector3.forward, range);
+
+            foreach (RaycastHit hit in hits)
+            {
+                if (hit.collider.GetComponent<ShootingTarget>()) return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// get a bullet from pool, set its position to shooting point
+        /// then shoot, calling its method in Bullet.cs
+        /// </summary>
+        private void Shoot()
+        {
+            Bullet bullet = PoolManager.instance.poolBullet.PullObjFromPool().GetComponent<Bullet>();
+            bullet.SetBulletType(gunData.bulletType);
+
+            bullet.transform.position = shootPoint.position;
+            bullet.Shoot(range, speed, attackDamage);
+
+            StartCoroutine(RecoilCo(recoilLevel));
+        }
+
+        /// <summary>
+        /// enabled with event, passing gun id to recognize which gun
+        /// </summary>
+        /// <param name="id"></param>
+        public void EnableShooting(int id)
+        {
+            if (gunID == id) isActive = true;
+            else isActive = false;
+        }
+
+        /// <summary>
+        /// recoil animation, async
+        /// </summary>
+        /// <param name="level"></param>
+        /// <returns></returns>
+        IEnumerator RecoilCo(float level)
+        {
+            foreach (RecoilPart r in recoilParts)
+            {
+                r.RecoilAnimation(level);
+                yield return 0;
+            }
+        }
+
+        #endregion
+
+        #region Init Method
+        private void Init()
+        {
+            gunData = GetComponent<Gun>().gunData;
+            recoilParts = GetComponentsInChildren<RecoilPart>();
+            range = gunData.range;
+            period = gunData.shootingPeriod;
+            speed = gunData.bulletSpeed;
+            attackDamage = gunData.attackDamage;
+            gunID = gunData.id;
+            timer = period;
+        }
+        #endregion
     }
 
-    #endregion
-
-    #region Init Method
-    private void Init()
-    {
-        gunData = GetComponent<Gun>().gunData;
-        recoilParts = GetComponentsInChildren<RecoilPart>();
-        range = gunData.range;
-        period = gunData.shootingPeriod;
-        speed = gunData.bulletSpeed;
-        attackDamage = gunData.attackDamage;
-        gunID = gunData.id;
-        timer = period;
-    }
-    #endregion
 }

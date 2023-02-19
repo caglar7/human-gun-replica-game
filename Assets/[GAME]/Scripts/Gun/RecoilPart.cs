@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class RecoilPart : MonoBehaviour
+namespace GAME
 {
-
-    public void RecoilAnimation(float level)
+    public class RecoilPart : MonoBehaviour
     {
-        transform.DOKill(true);
 
-        float duration = .2f;
-        float initZ = transform.localPosition.z;
-        transform.DOLocalMoveZ(transform.localPosition.z - level, duration / 2f)
-            .OnComplete(() => {
-                transform.DOLocalMoveZ(initZ, duration / 2f);
-            });
+        public void RecoilAnimation(float level)
+        {
+            transform.DOKill(true);
+
+            float duration = .2f;
+            float initZ = transform.localPosition.z;
+            transform.DOLocalMoveZ(transform.localPosition.z - level, duration / 2f)
+                .OnComplete(() => {
+                    transform.DOLocalMoveZ(initZ, duration / 2f);
+                });
+        }
     }
 }

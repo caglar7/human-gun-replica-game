@@ -2,23 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectable_Stickman : OnTriggerGun
+namespace GAME
 {
-    [SerializeField] Transform stickman;
-
-    public override void OnTrigger()
+    public class Collectable_Stickman : OnTriggerGun
     {
-        Transform cloneTransform = PoolManager.instance.GenerateVisualStickman();
-        cloneTransform.position = stickman.position;
-        cloneTransform.rotation = stickman.rotation;
+        [SerializeField] Transform stickman;
 
-        EventManager.StickmanUpdateEvent(1, cloneTransform, VisualMode.StickmanCollect);
-        gameObject.SetActive(false);
-
-        if(!ColliderHandle.isUsed)
+        public override void OnTrigger()
         {
-            ColliderHandle.isUsed = true;
-            EventManager.CollidersDisabledEvent();
+            Transform cloneTransform = PoolManager.instance.GenerateVisualStickman();
+            cloneTransform.position = stickman.position;
+            cloneTransform.rotation = stickman.rotation;
+
+            EventManager.StickmanUpdateEvent(1, cloneTransform, VisualMode.StickmanCollect);
+            gameObject.SetActive(false);
+
+            if (!ColliderHandle.isUsed)
+            {
+                ColliderHandle.isUsed = true;
+                EventManager.CollidersDisabledEvent();
+            }
         }
     }
+
 }

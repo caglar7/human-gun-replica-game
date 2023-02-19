@@ -7,11 +7,14 @@ using UnityEngine;
 /// and that event gonna call camera, confetti methods
 /// </summary>
 
-public class LevelEndTrigger : OnTriggerGun
+namespace GAME
 {
-
-    public override void OnTrigger()
+    public class LevelEndTrigger : OnTriggerGun
     {
-        EventManager.LevelFinishStageEvent();     
+
+        public override void OnTrigger()
+        {
+            EventManager.LevelFinishStageEvent();
+        }
     }
 }

@@ -14,48 +14,51 @@ using UnityEngine.UI;
 /// </summary>
 /// 
 
-public enum ButtonActionType
+namespace GAME
 {
-    Pause,
-    Resume,
-    SwitchCanvas_StartMenu,
-    SwitchCanvas_GameMenu,
-    SwitchCanvas_LevelEndMenu,
-    StartGameEvent,
-}
-
-[RequireComponent(typeof(Button))]
-public class ButtonMethods : MonoBehaviour
-{
-    public ButtonActionType[] actions;
-
-    public void ButtonAction(ButtonActionType type)
+    public enum ButtonActionType
     {
-        switch (type)
+        Pause,
+        Resume,
+        SwitchCanvas_StartMenu,
+        SwitchCanvas_GameMenu,
+        SwitchCanvas_LevelEndMenu,
+        StartGameEvent,
+    }
+
+    [RequireComponent(typeof(Button))]
+    public class ButtonMethods : MonoBehaviour
+    {
+        public ButtonActionType[] actions;
+
+        public void ButtonAction(ButtonActionType type)
         {
-            case ButtonActionType.Pause:
-                GameManager.instance.PauseGame();
-                break;
+            switch (type)
+            {
+                case ButtonActionType.Pause:
+                    GameManager.instance.PauseGame();
+                    break;
 
-            case ButtonActionType.Resume:
-                GameManager.instance.ResumeGame();
-                break;
+                case ButtonActionType.Resume:
+                    GameManager.instance.ResumeGame();
+                    break;
 
-            case ButtonActionType.SwitchCanvas_StartMenu:
-                CanvasController.instance.SwitchCanvas(CanvasType.StartMenu);
-                break;
+                case ButtonActionType.SwitchCanvas_StartMenu:
+                    CanvasController.instance.SwitchCanvas(CanvasType.StartMenu);
+                    break;
 
-            case ButtonActionType.SwitchCanvas_GameMenu:
-                CanvasController.instance.SwitchCanvas(CanvasType.GameMenu);
-                break;
+                case ButtonActionType.SwitchCanvas_GameMenu:
+                    CanvasController.instance.SwitchCanvas(CanvasType.GameMenu);
+                    break;
 
-            case ButtonActionType.SwitchCanvas_LevelEndMenu:
-                CanvasController.instance.SwitchCanvas(CanvasType.LevelEndMenu);
-                break;
+                case ButtonActionType.SwitchCanvas_LevelEndMenu:
+                    CanvasController.instance.SwitchCanvas(CanvasType.LevelEndMenu);
+                    break;
 
-            case ButtonActionType.StartGameEvent:
-                EventManager.StartGameEvent();
-                break;
+                case ButtonActionType.StartGameEvent:
+                    EventManager.StartGameEvent();
+                    break;
+            }
         }
     }
 }

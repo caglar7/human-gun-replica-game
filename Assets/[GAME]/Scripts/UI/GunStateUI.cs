@@ -12,91 +12,94 @@ using DG.Tweening;
 /// 
 /// </summary>
 
-public class GunStateUI : MonoBehaviour
+namespace GAME
 {
-    [SerializeField] RectTransform arrowRT;
-    [SerializeField] GameObject circlePrefab;
-    [SerializeField] GameObject rectanglePrefab;
-    [SerializeField] float xDiff;
-    [SerializeField] Transform parentObject;
-    [SerializeField] GunData[] gunDatas;
-    Vector2 nextPos;
-    int stickmanCount;
-
-    private void Awake()
+    public class GunStateUI : MonoBehaviour
     {
-        Init();
-    }
+        [SerializeField] RectTransform arrowRT;
+        [SerializeField] GameObject circlePrefab;
+        [SerializeField] GameObject rectanglePrefab;
+        [SerializeField] float xDiff;
+        [SerializeField] Transform parentObject;
+        [SerializeField] GunData[] gunDatas;
+        Vector2 nextPos;
+        int stickmanCount;
 
-    private void Init()
-    {
-        nextPos = Vector2.zero;
-        stickmanCount = 1;
-
-        GenerateGunStateUI();
-    }
-
-    #region Enable, Disable
-    private void OnEnable()
-    {
-        EventManager.SlideUI += SlideState;
-    }
-
-    private void OnDisable()
-    {
-        EventManager.SlideUI -= SlideState;
-    } 
-    #endregion
-
-    /// <summary>
-    ///  generation UI for current gun states
-    ///  using all the gunData 
-    /// 
-    /// </summary>
-    private void GenerateGunStateUI()
-    {
-        foreach(GunData g in gunDatas)
+        private void Awake()
         {
-            for(int i=g.min; i<=g.max; i++)
+            Init();
+        }
+
+        private void Init()
+        {
+            nextPos = Vector2.zero;
+            stickmanCount = 1;
+
+            GenerateGunStateUI();
+        }
+
+        #region Enable, Disable
+        private void OnEnable()
+        {
+            EventManager.SlideUI += SlideState;
+        }
+
+        private void OnDisable()
+        {
+            EventManager.SlideUI -= SlideState;
+        }
+        #endregion
+
+        /// <summary>
+        ///  generation UI for current gun states
+        ///  using all the gunData 
+        /// 
+        /// </summary>
+        private void GenerateGunStateUI()
+        {
+            foreach (GunData g in gunDatas)
             {
-                if (i == g.min) GenerateRectangle(nextPos, g.name);
-                else GenerateCircle(nextPos);
-                nextPos += new Vector2(xDiff, 0);
+                for (int i = g.min; i <= g.max; i++)
+                {
+                    if (i == g.min) GenerateRectangle(nextPos, g.name);
+                    else GenerateCircle(nextPos);
+                    nextPos += new Vector2(xDiff, 0);
+                }
             }
         }
-    }
 
-    private GameObject GenerateCircle(Vector2 rPos)
-    {
-        GameObject clone = Instantiate(circlePrefab, parentObject);
-        clone.GetComponent<RectTransform>().anchoredPosition = rPos;
-        return clone;
-    }
-
-    private GameObject GenerateRectangle(Vector2 rPos, string gunName)
-    {
-        GameObject clone = Instantiate(rectanglePrefab, parentObject);
-        clone.GetComponent<RectTransform>().anchoredPosition = rPos;
-
-        clone.GetComponentInChildren<TextMeshProUGUI>().text = gunName;
-
-        return clone;
-    } 
-
-
-    private void SlideState(int currentCount)
-    {
-        if(stickmanCount != currentCount)
+        private GameObject GenerateCircle(Vector2 rPos)
         {
-            stickmanCount = currentCount;
+            GameObject clone = Instantiate(circlePrefab, parentObject);
+            clone.GetComponent<RectTransform>().anchoredPosition = rPos;
+            return clone;
+        }
 
-            float nextX = -xDiff * (stickmanCount - 1);
+        private GameObject GenerateRectangle(Vector2 rPos, string gunName)
+        {
+            GameObject clone = Instantiate(rectanglePrefab, parentObject);
+            clone.GetComponent<RectTransform>().anchoredPosition = rPos;
 
-            RectTransform rt = parentObject.GetComponent<RectTransform>();
+            clone.GetComponentInChildren<TextMeshProUGUI>().text = gunName;
 
-            rt.DOKill(true);
+            return clone;
+        }
 
-            rt.DOAnchorPosX(nextX, .4f);
+
+        private void SlideState(int currentCount)
+        {
+            if (stickmanCount != currentCount)
+            {
+                stickmanCount = currentCount;
+
+                float nextX = -xDiff * (stickmanCount - 1);
+
+                RectTransform rt = parentObject.GetComponent<RectTransform>();
+
+                rt.DOKill(true);
+
+                rt.DOAnchorPosX(nextX, .4f);
+            }
         }
     }
 }

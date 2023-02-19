@@ -7,21 +7,24 @@ using UnityEngine.UI;
 ///  on click handle
 /// </summary>
 
-public class ButtonOnClick : ButtonMethods
+namespace GAME
 {
-    Button button;
-
-    private void Start()
+    public class ButtonOnClick : ButtonMethods
     {
-        button = GetComponent<Button>();
-        button.onClick.AddListener(OnClick);
-    }
+        Button button;
 
-    private void OnClick()
-    {
-        foreach(ButtonActionType action in actions)
+        private void Start()
         {
-            ButtonAction(action);
+            button = GetComponent<Button>();
+            button.onClick.AddListener(OnClick);
+        }
+
+        private void OnClick()
+        {
+            foreach (ButtonActionType action in actions)
+            {
+                ButtonAction(action);
+            }
         }
     }
 }

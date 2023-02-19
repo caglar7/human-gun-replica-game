@@ -2,47 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolingPattern : MonoBehaviour
+namespace GAME
 {
-    private GameObject prefab;
-    private Stack<GameObject> objPool = new Stack<GameObject>();
-
-    public PoolingPattern(GameObject prefab)
+    public class PoolingPattern : MonoBehaviour
     {
-        this.prefab = prefab;
-    }
+        private GameObject prefab;
+        private Stack<GameObject> objPool = new Stack<GameObject>();
 
-    public void FillPool(int amount)
-    {
-        for (int i = 0; i < amount; i++)
+        public PoolingPattern(GameObject prefab)
         {
-            GameObject obje = Object.Instantiate(prefab);
+            this.prefab = prefab;
+        }
+
+        public void FillPool(int amount)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                GameObject obje = Object.Instantiate(prefab);
+                obje.hideFlags = HideFlags.HideInHierarchy;
+                AddObjToPool(obje);
+            }
+        }
+
+        public GameObject PullObjFromPool(HideFlags flags = HideFlags.None)
+        {
+            if (objPool.Count > 0)
+            {
+                GameObject obje = objPool.Pop();
+                obje.gameObject.SetActive(true);
+                obje.hideFlags = flags;
+
+                return obje;
+            }
+
+            GameObject objeIns = Object.Instantiate(prefab);
+            objeIns.hideFlags = flags;
+            return objeIns;
+        }
+
+        public void AddObjToPool(GameObject obje)
+        {
+            obje.transform.SetParent(null);
+            obje.gameObject.SetActive(false);
             obje.hideFlags = HideFlags.HideInHierarchy;
-            AddObjToPool(obje);
+            objPool.Push(obje);
         }
-    }
-
-    public GameObject PullObjFromPool(HideFlags flags = HideFlags.None)
-    {
-        if (objPool.Count > 0)
-        {
-            GameObject obje = objPool.Pop();
-            obje.gameObject.SetActive(true);
-            obje.hideFlags = flags;
-
-            return obje;
-        }
-
-        GameObject objeIns = Object.Instantiate(prefab);
-        objeIns.hideFlags = flags;
-        return objeIns;
-    }
-
-    public void AddObjToPool(GameObject obje)
-    {
-        obje.transform.SetParent(null);
-        obje.gameObject.SetActive(false);
-        obje.hideFlags = HideFlags.HideInHierarchy;
-        objPool.Push(obje);
     }
 }

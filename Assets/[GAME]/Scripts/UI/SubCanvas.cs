@@ -6,7 +6,10 @@ using UnityEngine;
 /// sub canvas access from parent main canvas
 /// </summary>
 
-public class SubCanvas : MonoBehaviour
+namespace GAME
 {
-    public CanvasType canvasType;
+    public class SubCanvas : MonoBehaviour
+    {
+        public CanvasType canvasType;
+    }
 }
