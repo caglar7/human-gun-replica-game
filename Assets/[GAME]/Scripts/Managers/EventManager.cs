@@ -17,8 +17,8 @@ public class EventManager : MonoBehaviour
     public static event Action<int> EnableGun;
     public static event Action PlayerHitsTarget;
     public static event Action CollidersDisabled;
-    public static event Action LevelEndStart;   // when passes finish line, starts shooting
-    public static event Action LevelEndDone;    // when level is complete, scene is done
+    public static event Action LevelFinishStage;   // when passes finish line, starts shooting
+    public static event Action LevelComplete;    // when level is complete, scene is done
     public static event Action<int> SlideUI;
     #endregion
 
@@ -58,14 +58,14 @@ public class EventManager : MonoBehaviour
         CollidersDisabled?.Invoke();
     }
 
-    public static void LevelEndStartEvent()
+    public static void LevelFinishStageEvent()
     {
-        LevelEndStart?.Invoke();
+        LevelFinishStage?.Invoke();
     }
 
-    public static void LevelEndDoneEvent()
+    public static void LevelCompleteEvent()
     {
-        LevelEndDone?.Invoke();
+        LevelComplete?.Invoke();
     }
 
     public static void SlideUIEvent(int count)

@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// main gun class, and every gun object inherit this class
+/// </summary>
+
 public class Gun : MonoBehaviour
 {
     #region Properties

@@ -8,7 +8,9 @@ using UnityEngine;
 
 public class ConfettiControl : MonoBehaviour
 {
-    [SerializeField] List<ParticleSystem> confettiList = new List<ParticleSystem>();
+    #region Properties
+    [SerializeField] List<ParticleSystem> confettiList = new List<ParticleSystem>(); 
+    #endregion
 
     #region Enable, Disable
 
@@ -17,15 +19,20 @@ public class ConfettiControl : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        EventManager.LevelEndStart += ShowConfetti;
+        EventManager.LevelFinishStage += ShowConfetti;
     }
 
     private void OnDisable()
     {
-        EventManager.LevelEndStart -= ShowConfetti;
-    } 
+        EventManager.LevelFinishStage -= ShowConfetti;
+    }
     #endregion
 
+    #region Methods
+    /// <summary>
+    /// show confetti in the list property above
+    /// triggering effects randomly in the list
+    /// </summary>
     private void ShowConfetti()
     {
         StartCoroutine(ShowConfettiCo());
@@ -39,17 +46,19 @@ public class ConfettiControl : MonoBehaviour
             list.Add(i);
         }
 
-        while(list.Count > 0)
+        while (list.Count > 0)
         {
             int index = Random.Range(0, confettiList.Count);
-            
-            if(list.Contains(index))
+
+            if (list.Contains(index))
             {
-                list.Remove(index); 
+                list.Remove(index);
                 confettiList[index].Play();
 
                 yield return new WaitForSeconds(.1f);
             }
         }
-    }
+    } 
+
+    #endregion
 }

@@ -20090,6 +20090,10 @@ MonoBehaviour:
   pushZ: 4
   pushDuration: 0.6
   pushEase: 1
+  throwJumpPower: 20
+  throwDuration: 3
+  jumpOffsetX: 10
+  jumpOffsetY: 20
 --- !u!114 &5512961044517772811
 MonoBehaviour:
   m_ObjectHideFlags: 0

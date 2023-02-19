@@ -12,6 +12,6 @@ public class LevelEndTrigger : OnTriggerGun
 
     public override void OnTrigger()
     {
-        EventManager.LevelEndStartEvent();     
+        EventManager.LevelFinishStageEvent();     
     }
 }

@@ -55,21 +55,17 @@ public class ShootingTarget : MonoBehaviour
         {
             if (GetComponent<LevelEndShootingTarget>())
             {
-                GameManager.instance.PauseGame();
+                //GameManager.instance.PauseGame();
 
-                print("level done");
+                CanvasController.instance.SwitchCanvas(CanvasType.LevelEndMenu);
 
-                // event level end done here
-                // ...
+                EventManager.LevelCompleteEvent();
             }
             else
             {
                 EventManager.StickmanUpdateEvent(-1, null, VisualMode.Remove);
+
                 EventManager.PlayerHitsTargetEvent();
-
-                print("hit the shooting target");
-
-
             }
         }
     }

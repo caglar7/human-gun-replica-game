@@ -55,9 +55,6 @@ public class GunStateUI : MonoBehaviour
     /// </summary>
     private void GenerateGunStateUI()
     {
-        //GenerateCircle(nextPos);
-        //nextPos += new Vector2(xDiff, 0);
-
         foreach(GunData g in gunDatas)
         {
             for(int i=g.min; i<=g.max; i++)

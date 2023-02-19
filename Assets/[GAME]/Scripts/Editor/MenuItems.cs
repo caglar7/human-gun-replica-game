@@ -3,6 +3,13 @@ using UnityEditor;
 using System.IO;
 using System.Reflection;
 
+/// <summary>
+/// custom class for shortcuts
+/// 
+/// pause, resume, fast, slow mode etc.
+/// 
+/// </summary>
+
 public class MenuItems
 {
     static string path;

@@ -3,13 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///  enable, disabling colliders
+/// </summary>
+
 public class ColliderHandle : MonoBehaviour
 {
+    #region Properties
     [SerializeField] float initDisableTime = 1f;
     Gun[] guns;
     Gun enabledGun;
     public static bool isUsed;
-    bool disableCalled = false;
+    bool disableCalled = false; 
+    #endregion
 
     #region Awake, Init
     private void Awake()
@@ -39,7 +45,7 @@ public class ColliderHandle : MonoBehaviour
     }
 
     #endregion
-
+    
     #region Methods
 
     /// <summary>
@@ -62,7 +68,7 @@ public class ColliderHandle : MonoBehaviour
         disableCalled = false;
     }
 
-    private void EnableColliders(bool value)
+    public void EnableColliders(bool value)
     {
         if (value)
         {

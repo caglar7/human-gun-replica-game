@@ -35,7 +35,6 @@ public class GunTransformer : MonoBehaviour
     }
     #endregion
 
-
     #region Enable, Disable
     /// <summary>
     /// subs to events
@@ -92,21 +91,6 @@ public class GunTransformer : MonoBehaviour
                 ShowStickmanVisual(stickman, gunPart, mode);
                 StartCoroutine(NextTransformCo(added));
             }
-
-            #region prev code
-            //if (currentGun == nextGun)
-            //{
-            //    ShowStickmanVisual(stickman, gunPart, mode);
-            //    StartCoroutine(NextTransformCo(added));
-            //}
-            //else
-            //{
-            //    PoolManager.instance.poolStickmanVisual.AddObjToPool(stickman.gameObject);
-            //    NextTransform(added);
-            //    StartCoroutine(AnimateNewGun(currentGun));
-            //} 
-            #endregion
-
         }
         #endregion
 
@@ -269,7 +253,6 @@ public class GunTransformer : MonoBehaviour
             currentStickman.DOLocalMove(Vector3.zero, animTime_StickmanJump)
                 .OnComplete(() =>
                 {
-
                     PoolManager.instance.poolStickmanVisual.AddObjToPool(currentStickman.gameObject);
                 });
 
@@ -425,8 +408,7 @@ public class GunTransformer : MonoBehaviour
     #region Init Method
     /// <summary>
     /// init gun list 
-    /// 
-    /// stickman count start with 1 since we have a stick at start
+    /// stickman count start with 1 since we have a stickman at start
     /// </summary>
     private void Init()
     {
@@ -442,8 +424,8 @@ public class GunTransformer : MonoBehaviour
             if (g.gunData.max > maxStickmanCount) maxStickmanCount = g.gunData.max;
         }
     }
-    #endregion
 
+    #endregion
 }
 
 public enum VisualMode
