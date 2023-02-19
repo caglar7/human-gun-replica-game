@@ -24,6 +24,7 @@ namespace GAME
         SwitchCanvas_GameMenu,
         SwitchCanvas_LevelEndMenu,
         StartGameEvent,
+        Load_NextLevel,
     }
 
     [RequireComponent(typeof(Button))]
@@ -57,6 +58,11 @@ namespace GAME
 
                 case ButtonActionType.StartGameEvent:
                     EventManager.StartGameEvent();
+                    break;
+
+
+                case ButtonActionType.Load_NextLevel:
+                    SceneLoader.instance.NextLevel();
                     break;
             }
         }

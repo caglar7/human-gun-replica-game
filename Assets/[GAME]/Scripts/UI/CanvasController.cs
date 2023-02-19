@@ -45,12 +45,12 @@ namespace GAME
         /// <summary>
         /// deactive canvases and activate the next one
         /// </summary>
-        /// <param name="startCanvas"></param>
-        public void SwitchCanvas(CanvasType startCanvas)
+        /// <param name="type"></param>
+        public void SwitchCanvas(CanvasType type)
         {
             foreach (SubCanvas sub in subCanvases)
             {
-                if (sub.canvasType == startCanvas) sub.gameObject.SetActive(true);
+                if (sub.canvasType == type) sub.gameObject.SetActive(true);
                 else sub.gameObject.SetActive(false);
             }
         }
@@ -60,6 +60,7 @@ namespace GAME
         private void Init()
         {
             subCanvases = GetComponentsInChildren<SubCanvas>(true);
+            SwitchCanvas(CanvasType.StartMenu);
         }
         #endregion
     }

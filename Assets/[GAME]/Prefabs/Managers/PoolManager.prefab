@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2159931473940914966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2159931473940914965}
+  - component: {fileID: 2159931473940914964}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2159931473940914965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159931473940914966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2159931473940914964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159931473940914966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a481a84ed062ce47821f1cf6b634e96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 7197582090754203781, guid: eb35e1dad96fb074b8d5f6f543306b8d, type: 3}
+  bulletDecal: {fileID: 1649514149693448, guid: d519ad6ef8ea3cd4f9acf13f6646a601, type: 3}
+  moneyImage: {fileID: 6807570025233956466, guid: 6e8eedf7308922a46a3b3645085e0486, type: 3}
+  stickmanVisual: {fileID: 341726620892121112, guid: 4b5cf05bb4db24b468339635061b614a, type: 3}
+  targetRemoved: {fileID: 186782, guid: 32e5eec4a4b3ffc4dba1ac0f5bb318be, type: 3}
+  endPlatform: {fileID: 245712552300911676, guid: 950d40975e1ef2643b3230c1a0a7f51c, type: 3}
+  poolBullet: {fileID: 0}
+  poolBulletDecal: {fileID: 0}
+  poolMoneyImage: {fileID: 0}
+  poolStickmanVisual: {fileID: 0}
+  poolTargetRemoved: {fileID: 0}
+  poolEndPlatform: {fileID: 0}
