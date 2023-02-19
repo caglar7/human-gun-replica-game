@@ -33,7 +33,10 @@ namespace GAME
         #endregion
 
         #region Methods
-
+        /// <summary>
+        /// show hide stickmans on gun by toggling renderer enabled
+        /// </summary>
+        /// <param name="value"></param>
         public void EnableRenderer(bool value)
         {
             rend.enabled = value;

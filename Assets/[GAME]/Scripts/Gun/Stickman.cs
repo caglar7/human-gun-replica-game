@@ -4,7 +4,10 @@ using UnityEngine;
 
 /// <summary>
 ///  initial gun state where there is only a stickman
-///  staring with idle and goes to running animations
+///  starting with idle and goes to running animations
+///  
+/// inherits gun class since it's making design more clean
+/// 
 /// </summary>
 
 namespace GAME

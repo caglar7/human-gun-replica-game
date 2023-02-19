@@ -6,7 +6,7 @@ using TMPro;
 
 /// <summary>
 /// Editing level end visuals in edit mode
-/// instead of placing objects staticly, we use a platform prefab and a starting pos
+/// instead of placing objects statically, we use a platform prefab and a starting pos
 /// then generating level end models based on preferences
 /// </summary>
 
@@ -28,6 +28,8 @@ namespace GAME
         private const int COUNT_LIMIT = 20;
         #endregion
 
+        #region Validate Methods
+
 #if UNITY_EDITOR
         /// <summary>
         /// on validate is called to update level end models
@@ -45,7 +47,12 @@ namespace GAME
 
             UpdateLevelEnd();
         }
+
 #endif
+
+        #endregion
+
+        #region Methods
 
         /// <summary>
         /// update
@@ -200,6 +207,8 @@ namespace GAME
             probBlock.SetColor("_Color", colors[indexMod]);
             rend.SetPropertyBlock(probBlock, 0);
         }
+
+        #endregion
     }
 
 }

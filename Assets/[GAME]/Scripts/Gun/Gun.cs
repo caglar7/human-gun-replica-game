@@ -26,6 +26,5 @@ namespace GAME
             gunParts.AddRange(gunPartsObj.GetComponentsInChildren<GunPart>(true));
         }
         #endregion
-
     }
 }

@@ -30,7 +30,7 @@ namespace GAME
         }
         #endregion
 
-        #region Collision
+        #region Trigger
 
         /// <summary>
         /// when bullet hits put bullet back to its pool, damage the stone
@@ -42,6 +42,7 @@ namespace GAME
             bullet = other.GetComponent<Bullet>();
             gun = other.GetComponent<Gun>();
 
+            #region Bullet Hits
             if (bullet)
             {
                 GenerateDecal(bullet.transform.position);
@@ -52,6 +53,9 @@ namespace GAME
 
                 TextAnimate();
             }
+            #endregion
+
+            #region Player Hits
 
             if (gun)
             {
@@ -70,9 +74,9 @@ namespace GAME
 
                     EventManager.PlayerHitsTargetEvent();
                 }
-            }
+            } 
+            #endregion
         }
-
 
         #endregion
 
@@ -90,12 +94,8 @@ namespace GAME
                     m.Move();
                 }
 
-                // stone blast effect here
                 GameObject blastEffect = PoolManager.instance.poolTargetRemoved.PullObjFromPool();
                 blastEffect.transform.position = transform.position;
-
-                // put object back to the pool
-                // ... later with delay
 
                 gameObject.SetActive(false);
             }

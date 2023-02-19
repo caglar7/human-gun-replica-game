@@ -11,12 +11,15 @@ namespace GAME
 {
     public class ButtonOnPressed : ButtonMethods, IPointerDownHandler
     {
+        #region Methods
+
         public void OnPointerDown(PointerEventData eventData)
         {
             foreach (ButtonActionType action in actions)
             {
                 ButtonAction(action);
             }
-        }
+        } 
+        #endregion
     }
 }

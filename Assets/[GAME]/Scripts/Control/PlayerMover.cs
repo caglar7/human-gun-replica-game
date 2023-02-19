@@ -43,17 +43,10 @@ namespace GAME
         bool moveActive;
         #endregion
 
-        // testing
-        //[SerializeField] LevelData levelData;
-
         #region Awake, Update
         private void Awake()
         {
             Init();
-
-            ////testing
-            //levelData.level += 1;
-            //levelData.fakeLevel += 1;
         }
 
         private void Update()
@@ -90,13 +83,6 @@ namespace GAME
         /// </summary>
         private void DragMove()
         {
-            // testing 
-            //float horizontal = Input.GetAxisRaw("Horizontal");
-            //Vector3 pos = transform.position;
-            //pos.x += (horizontal * Time.deltaTime * 10);
-            //transform.position = pos;
-            //return;
-
             if (!moveActive) return;
 
             if (Input.GetMouseButtonDown(0))
@@ -193,7 +179,6 @@ namespace GAME
         #region Init
         private void Init()
         {
-            // screen sensitivity and pixels for max range
             screenFractionForMaxRange = Mathf.Clamp(1f - movementSensitivity, .1f, 1f);
             screenXPerUnitMove = (screenFractionForMaxRange * Screen.width) / (clampRange * 2f);
             forwardMoveActive = true;

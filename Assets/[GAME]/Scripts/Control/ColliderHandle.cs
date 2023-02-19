@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-///  enable, disabling colliders
+///  enabling, disabling colliders
 /// </summary>
 
 namespace GAME
@@ -36,6 +36,9 @@ namespace GAME
 
         #region OnEnable, OnDisable
 
+        /// <summary>
+        /// subs to events
+        /// </summary>
         private void OnEnable()
         {
             EventManager.CollidersDisabled += DisableForDuration;
@@ -69,7 +72,11 @@ namespace GAME
             EnableColliders(true);
             disableCalled = false;
         }
-
+        
+        /// <summary>
+        /// enable or disable collider on the current gun
+        /// </summary>
+        /// <param name="value"></param>
         public void EnableColliders(bool value)
         {
             if (value)
@@ -85,6 +92,10 @@ namespace GAME
                 enabledGun.GetComponent<Collider>().enabled = false;
         }
 
+        /// <summary>
+        /// same as currentGun
+        /// </summary>
+        /// <param name="g"></param>
         public void SetEnabledGun(Gun g)
         {
             enabledGun = g;

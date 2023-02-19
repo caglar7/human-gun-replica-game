@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///  pooling
+/// </summary>
+
 namespace GAME
 {
     public class PoolingPattern : MonoBehaviour
     {
+        #region Properties, Constructor
         private GameObject prefab;
         private Stack<GameObject> objPool = new Stack<GameObject>();
 
@@ -13,7 +18,9 @@ namespace GAME
         {
             this.prefab = prefab;
         }
+        #endregion
 
+        #region Methods
         public void FillPool(int amount)
         {
             for (int i = 0; i < amount; i++)
@@ -46,6 +53,8 @@ namespace GAME
             obje.gameObject.SetActive(false);
             obje.hideFlags = HideFlags.HideInHierarchy;
             objPool.Push(obje);
-        }
+        } 
+
+        #endregion
     }
 }

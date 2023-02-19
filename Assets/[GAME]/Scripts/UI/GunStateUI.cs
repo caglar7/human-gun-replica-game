@@ -16,6 +16,7 @@ namespace GAME
 {
     public class GunStateUI : MonoBehaviour
     {
+        #region Properties
         [SerializeField] RectTransform arrowRT;
         [SerializeField] GameObject circlePrefab;
         [SerializeField] GameObject rectanglePrefab;
@@ -24,7 +25,9 @@ namespace GAME
         [SerializeField] GunData[] gunDatas;
         Vector2 nextPos;
         int stickmanCount;
+        #endregion
 
+        #region Awake, Init
         private void Awake()
         {
             Init();
@@ -33,12 +36,17 @@ namespace GAME
         private void Init()
         {
             nextPos = Vector2.zero;
+
             stickmanCount = 1;
 
             GenerateGunStateUI();
-        }
+        } 
+        #endregion
 
         #region Enable, Disable
+        /// <summary>
+        /// subs to events
+        /// </summary>
         private void OnEnable()
         {
             EventManager.SlideUI += SlideState;
@@ -50,6 +58,7 @@ namespace GAME
         }
         #endregion
 
+        #region Methods
         /// <summary>
         ///  generation UI for current gun states
         ///  using all the gunData 
@@ -85,7 +94,6 @@ namespace GAME
             return clone;
         }
 
-
         private void SlideState(int currentCount)
         {
             if (stickmanCount != currentCount)
@@ -100,6 +108,8 @@ namespace GAME
 
                 rt.DOAnchorPosX(nextX, .4f);
             }
-        }
+        } 
+
+        #endregion
     }
 }

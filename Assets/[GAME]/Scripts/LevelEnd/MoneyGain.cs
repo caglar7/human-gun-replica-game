@@ -3,19 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// money rising on level complete based on distance travelled
+/// 
+/// shooting level end stones
+/// 
+/// </summary>
+
 namespace GAME
 {
     public class MoneyGain : MonoBehaviour
     {
-        [Header("Setttings")]
+        #region Properties
+        [Header("Settings")]
         [SerializeField] float initDelay;
         [SerializeField] float duration;
         [SerializeField] [Range(1, 5)] int moneyRangeMin;
         [SerializeField] [Range(6, 10)] int moneyRangeMax;
         [SerializeField] GameObject icon;
         [SerializeField] TextMeshProUGUI tm;
-        int count = 0;
+        int count = 0; 
+        #endregion
 
+        #region Enable, Disable
         private void OnEnable()
         {
             EventManager.LevelComplete += ShowMoney;
@@ -25,7 +35,9 @@ namespace GAME
         {
             EventManager.LevelComplete -= ShowMoney;
         }
+        #endregion
 
+        #region Methods
         /// <summary>
         ///  rise money count and update text
         /// </summary>
@@ -49,6 +61,7 @@ namespace GAME
 
                 yield return new WaitForSeconds(period);
             }
-        }
+        } 
+        #endregion
     }
 }

@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+/// <summary>
+/// stickman visual color handling, 
+/// chaning color to the target gunPart
+/// or fading out when removing stickmans
+/// </summary>
+
 namespace GAME
 {
     public class ColorHandle : MonoBehaviour
     {
+        #region Properties
         MaterialPropertyBlock matPB;
-        Renderer rend;
+        Renderer rend; 
+        #endregion
 
         #region Awake, Init
         private void Awake()
@@ -23,6 +31,7 @@ namespace GAME
         }
         #endregion
 
+        #region Color Methods
         /// <summary>
         ///  set color with prop block
         /// </summary>
@@ -46,7 +55,8 @@ namespace GAME
 
             float colorA = color.a;
             DOTween.To(() => colorA, x => colorA = x, 0f, duration).SetEase(Ease.InSine)
-                .OnUpdate(() => {
+                .OnUpdate(() =>
+                {
 
                     color.a = colorA;
 
@@ -54,6 +64,8 @@ namespace GAME
                     rend.SetPropertyBlock(matPB);
 
                 });
-        }
+        } 
+        #endregion
+
     }
 }

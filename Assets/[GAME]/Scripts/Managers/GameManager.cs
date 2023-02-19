@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Game Manager, singleton, has pause resume methods
+/// </summary>
+
 namespace GAME
 {
     public class GameManager : MonoBehaviour
@@ -21,17 +25,19 @@ namespace GAME
 
         #endregion
 
+        #region Methods
+
         public void PauseGame()
         {
             Time.timeScale = 0f;
-
 
         }
 
         public void ResumeGame()
         {
             Time.timeScale = 1f;
-        }
+        } 
+        #endregion
     }
 
 }

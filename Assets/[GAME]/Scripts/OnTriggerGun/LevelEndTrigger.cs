@@ -11,10 +11,11 @@ namespace GAME
 {
     public class LevelEndTrigger : OnTriggerGun
     {
-
+        #region Override
         public override void OnTrigger()
         {
             EventManager.LevelFinishStageEvent();
-        }
+        } 
+        #endregion
     }
 }

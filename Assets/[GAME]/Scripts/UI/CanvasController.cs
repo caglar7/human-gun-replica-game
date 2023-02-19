@@ -12,19 +12,10 @@ using UnityEngine;
 
 namespace GAME
 {
-    public enum CanvasType
-    {
-        StartMenu,
-        GameMenu,
-        LevelEndMenu,
-    }
-
     public class CanvasController : MonoBehaviour
     {
         #region Properties
-
         SubCanvas[] subCanvases;
-
         #endregion
 
         #region Awake
@@ -65,4 +56,10 @@ namespace GAME
         #endregion
     }
 
+    public enum CanvasType
+    {
+        StartMenu,
+        GameMenu,
+        LevelEndMenu,
+    }
 }

@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 
+/// <summary>
+///  pool manager, singleton
+/// </summary>
+
 namespace GAME
 {
     public class PoolManager : MonoBehaviour
     {
-        #region Singleton
+        #region Awake
 
         public static PoolManager instance;
         private void Awake()
@@ -12,11 +16,12 @@ namespace GAME
             if (instance == null) instance = this;
             else if (instance != this) Destroy(gameObject);
 
-            Init();
+            InitPools();
         }
 
         #endregion
 
+        #region Properties
         [Header("Objects For Pooling")]
         public GameObject bullet;
         public GameObject bulletDecal;
@@ -32,8 +37,10 @@ namespace GAME
         [HideInInspector] public PoolingPattern poolStickmanVisual;
         [HideInInspector] public PoolingPattern poolTargetRemoved;
         [HideInInspector] public PoolingPattern poolEndPlatform;
+        #endregion
 
-        void Init()
+        #region Methods
+        void InitPools()
         {
             poolBullet = new PoolingPattern(bullet);
             poolBullet.FillPool(10);
@@ -57,6 +64,8 @@ namespace GAME
         public Transform GenerateVisualStickman()
         {
             return poolStickmanVisual.PullObjFromPool().transform;
-        }
+        } 
+
+        #endregion
     }
 }

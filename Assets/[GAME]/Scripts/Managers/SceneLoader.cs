@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// stays between levels, so there is only one instance
-/// on level 1
-/// 
+/// SceneLoader, singleton, loads next level
+/// has levelIndex field
 /// </summary>
 
 namespace GAME

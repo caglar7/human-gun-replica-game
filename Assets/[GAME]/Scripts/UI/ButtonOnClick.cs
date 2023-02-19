@@ -11,6 +11,7 @@ namespace GAME
 {
     public class ButtonOnClick : ButtonMethods
     {
+        #region Properties, Start
         Button button;
 
         private void Start()
@@ -18,13 +19,16 @@ namespace GAME
             button = GetComponent<Button>();
             button.onClick.AddListener(OnClick);
         }
+        #endregion
 
+        #region Methods
         private void OnClick()
         {
             foreach (ButtonActionType action in actions)
             {
                 ButtonAction(action);
             }
-        }
+        } 
+        #endregion
     }
 }

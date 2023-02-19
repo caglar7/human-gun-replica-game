@@ -5,15 +5,17 @@ using DG.Tweening;
 using System;
 
 /// <summary>
-/// bullet methods
+/// bullet class
 /// </summary>
 
 namespace GAME
 {
     public class Bullet : MonoBehaviour
     {
+        #region Properties
         BulletTypeControl[] bulletTypes;
-        int bulletDamage;
+        int bulletDamage; 
+        #endregion
 
         #region Awake, Init
         private void Awake()
@@ -27,6 +29,15 @@ namespace GAME
         }
         #endregion
 
+        #region Methods
+
+        /// <summary>
+        /// shoot method, tweening bullet range distance from
+        /// shooting point
+        /// </summary>
+        /// <param name="range"></param>
+        /// <param name="speed"></param>
+        /// <param name="damage"></param>
         public void Shoot(float range, float speed, int damage)
         {
             bulletDamage = damage;
@@ -38,17 +49,28 @@ namespace GAME
                 });
         }
 
+        /// <summary>
+        /// back to pool
+        /// </summary>
         public void RemoveBullet()
         {
             transform.DOKill();
             PoolManager.instance.poolBullet.AddObjToPool(gameObject);
         }
 
+        /// <summary>
+        /// the object bullet hits get damage info from bullet
+        /// </summary>
+        /// <returns></returns>
         public int GetBulletDamage()
         {
             return bulletDamage;
         }
 
+        /// <summary>
+        ///  currently we have standard or shotgun bullets
+        /// </summary>
+        /// <param name="type"></param>
         public void SetBulletType(BulletType type)
         {
             for (int i = 0; i < bulletTypes.Length; i++)
@@ -57,6 +79,8 @@ namespace GAME
                 else bulletTypes[i].gameObject.SetActive(false);
             }
         }
+
+        #endregion
     }
 
     /// <summary>

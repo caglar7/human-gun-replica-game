@@ -5,12 +5,18 @@ using DG.Tweening;
 using UnityEngine.UI;
 using System;
 
+/// <summary>
+/// UI money count in Game Menu, 
+///
+/// updating money count and animating
+/// 
+/// </summary>
+
 namespace GAME
 {
     public class MoneyCount : MonoBehaviour
     {
         #region Properties
-
         [Header("Money Collect Settings")]
         [SerializeField] Text text;
         [SerializeField] RectTransform targetUI;
@@ -25,14 +31,18 @@ namespace GAME
 
         #endregion
 
-        #region Awake
+        #region Awake, Init
         private void Awake()
         {
             Init();
         }
-        #endregion
-
-        #region Init Method
+        
+        /// <summary>
+        /// money count UI in GameMenu,
+        /// 
+        /// get target pos and init scale for animations
+        /// 
+        /// </summary>
         private void Init()
         {
             moneyCount = 0;
@@ -46,7 +56,9 @@ namespace GAME
         #endregion
 
         #region Enable, Disable
-
+        /// <summary>
+        /// subs to events
+        /// </summary>
         private void OnEnable()
         {
             EventManager.MoneyCollect += Collect;
@@ -92,12 +104,19 @@ namespace GAME
                 });
         }
 
+        /// <summary>
+        /// add and update text
+        /// </summary>
+        /// <param name="add"></param>
         private void UpdateCount(int add)
         {
             moneyCount += add;
             text.text = moneyCount.ToString();
         }
 
+        /// <summary>
+        ///  scale up and down everytime money collected on platform
+        /// </summary>
         private void UpdateAnimation()
         {
             transform.DOKill();

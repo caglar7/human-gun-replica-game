@@ -27,7 +27,7 @@ public class MenuItems
         Time.timeScale = Time.timeScale == .5f ? 1 : .5f;
     }
 
-    [MenuItem("Tools/Clear Console _c")] // Clear Console added
+    [MenuItem("Tools/Clear Console _c")]
     static void ClearConsole()
     {
         var assembly = Assembly.GetAssembly(typeof(SceneView));
@@ -35,7 +35,6 @@ public class MenuItems
         var method = type.GetMethod("Clear");
         method.Invoke(new object(), null);
     }
-
 
     [MenuItem("Tools/Fast Time _i")]
     private static void TimeScaleFast()

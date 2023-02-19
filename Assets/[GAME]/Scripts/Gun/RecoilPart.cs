@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+/// <summary>
+/// when a gun shoots, there will be some rebound or recoil
+/// any stickman that is effected by this recoil has this component
+/// </summary>
+
 namespace GAME
 {
     public class RecoilPart : MonoBehaviour
     {
-
+        /// <summary>
+        /// adjustable recoil
+        /// </summary>
+        /// <param name="level"></param>
         public void RecoilAnimation(float level)
         {
             transform.DOKill(true);

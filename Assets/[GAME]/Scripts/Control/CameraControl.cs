@@ -41,6 +41,9 @@ namespace GAME
         #endregion
 
         #region Enable, Disable
+        /// <summary>
+        /// subs to events
+        /// </summary>
         private void OnEnable()
         {
             EventManager.LevelFinishStage += LevelEndView;
