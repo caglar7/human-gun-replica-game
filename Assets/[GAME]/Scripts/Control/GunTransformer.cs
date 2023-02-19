@@ -101,12 +101,16 @@ namespace GAME
             // iteration for more than 1, condition to check if switching to a new gun
             else if (added > 0 && mode == VisualMode.GateCollect)
             {
+                if (stickmanCount + added > maxStickmanCount) 
+                    added = maxStickmanCount - stickmanCount;
+
                 Gun nextGun = GetGun(stickmanCount + added);
 
                 if (nextGun != currentGun)
                 {
                     NextTransform(added);
                     StartCoroutine(AnimateNewGun(currentGun));
+
                 }
                 else
                 {
@@ -176,6 +180,8 @@ namespace GAME
         /// <returns></returns>
         private Gun GetGun(int count)
         {
+            count = Mathf.Clamp(count, 1, maxStickmanCount);
+
             Gun gun = null;
             foreach (Gun g in gunList)
             {
@@ -221,6 +227,7 @@ namespace GAME
         private void ShowStickmanVisual(Transform currentStickman, Transform gunPart, VisualMode mode)
         {
             GunPart targetGunPart = gunPart.GetComponent<GunPart>();
+            if (targetGunPart == null) return;
 
             ColorHandle colorHandle = currentStickman.GetComponent<ColorHandle>();
             if (colorHandle) colorHandle.SetColor(targetGunPart.color);

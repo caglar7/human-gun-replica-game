@@ -57,12 +57,12 @@ namespace GAME
             {
                 if (GetComponent<LevelEndShootingTarget>())
                 {
-                    //GameManager.instance.PauseGame();
-
                     CanvasController.instance.SwitchCanvas(CanvasType.LevelEndMenu);
 
-                    // call this with x reached
-                    EventManager.LevelCompleteEvent(1);
+                    string xStr = transform.parent.GetComponent<LevelEndPart>().tm.text;
+                    int x = xStr[xStr.Length - 1] - '0';
+
+                    EventManager.LevelCompleteEvent(x);
                 }
                 else
                 {

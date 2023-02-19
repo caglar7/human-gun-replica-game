@@ -16,20 +16,14 @@ namespace GAME
         [SerializeField] TextMeshProUGUI tm;
         int count = 0;
 
-        // call to test
-        private void Start()
-        {
-            ShowMoney(5);
-        }
-
         private void OnEnable()
         {
-
+            EventManager.LevelComplete += ShowMoney;
         }
 
         private void OnDisable()
         {
-
+            EventManager.LevelComplete -= ShowMoney;
         }
 
         /// <summary>

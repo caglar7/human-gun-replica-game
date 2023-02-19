@@ -104,7 +104,7 @@ namespace GAME
 
                 SetColor(g, i);
 
-                SetShootingHealths(g, (i * 10) + (i == 0 ? 2 : 0));
+                SetShootingHealths(g, (i * 5) + (i == 0 ? 2 : 0));
             }
 
             if (alreadyHave > count)
