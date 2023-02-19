@@ -1085,7 +1085,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26172195}
   m_LocalRotation: {x: 0.17397146, y: -0.098644674, z: 0.01751801, w: 0.9796409}
-  m_LocalPosition: {x: 4.3128104, y: 9.536876, z: 212.70749}
+  m_LocalPosition: {x: 4.312813, y: 9.536872, z: -34.902504}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1789,7 +1789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7283571913120448971, guid: 9e12e097ebbdb964b8478ab20a81bd8d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e12e097ebbdb964b8478ab20a81bd8d, type: 3}
@@ -4328,7 +4328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5282041987657681364, guid: 173a246356720f247b6b297e5a45981f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 173a246356720f247b6b297e5a45981f, type: 3}
@@ -6723,6 +6723,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShootingTarget_Money (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6787615351371594639, guid: d911595fae040c74193db1c794a7477d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d911595fae040c74193db1c794a7477d, type: 3}
 --- !u!4 &331764369 stripped
@@ -7553,6 +7557,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShootingTarget_Stickman
       objectReference: {fileID: 0}
+    - target: {fileID: 937683412470326629, guid: b9b55698fdff3fb42bb721a8b7b8bb91, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9b55698fdff3fb42bb721a8b7b8bb91, type: 3}
 --- !u!4 &410686983 stripped
@@ -7783,7 +7791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2137006039902178333, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
@@ -10214,6 +10222,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShootingTarget_Money (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6787615351371594639, guid: d911595fae040c74193db1c794a7477d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d911595fae040c74193db1c794a7477d, type: 3}
 --- !u!4 &520294026 stripped
@@ -11251,6 +11263,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShootingTarget_Money
       objectReference: {fileID: 0}
+    - target: {fileID: 6787615351371594639, guid: d911595fae040c74193db1c794a7477d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d911595fae040c74193db1c794a7477d, type: 3}
 --- !u!4 &552910661 stripped
@@ -11490,6 +11506,10 @@ PrefabInstance:
     - target: {fileID: 6787615351371594639, guid: d911595fae040c74193db1c794a7477d, type: 3}
       propertyPath: m_Name
       value: ShootingTarget_Money (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6787615351371594639, guid: d911595fae040c74193db1c794a7477d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d911595fae040c74193db1c794a7477d, type: 3}
@@ -15861,6 +15881,10 @@ PrefabInstance:
     - target: {fileID: 937683412470326629, guid: b9b55698fdff3fb42bb721a8b7b8bb91, type: 3}
       propertyPath: m_Name
       value: ShootingTarget_Stickman (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 937683412470326629, guid: b9b55698fdff3fb42bb721a8b7b8bb91, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9b55698fdff3fb42bb721a8b7b8bb91, type: 3}
@@ -22752,7 +22776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2137006039902178333, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
@@ -25225,7 +25249,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066259111}
   m_LocalRotation: {x: 0.17397146, y: -0.098644674, z: 0.01751801, w: 0.9796409}
-  m_LocalPosition: {x: 4.3128104, y: 9.536876, z: 212.70749}
+  m_LocalPosition: {x: 4.312813, y: 9.536872, z: -34.902504}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25324,6 +25348,10 @@ PrefabInstance:
     - target: {fileID: 937683412470326629, guid: b9b55698fdff3fb42bb721a8b7b8bb91, type: 3}
       propertyPath: m_Name
       value: ShootingTarget_Stickman (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 937683412470326629, guid: b9b55698fdff3fb42bb721a8b7b8bb91, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9b55698fdff3fb42bb721a8b7b8bb91, type: 3}
@@ -30269,6 +30297,10 @@ PrefabInstance:
     - target: {fileID: 2137006039902178333, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
       propertyPath: m_Name
       value: Collectable_Stickman (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137006039902178333, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
@@ -35580,6 +35612,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectable_Stickman (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2137006039902178333, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
 --- !u!4 &1518338105 stripped
@@ -37012,6 +37048,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShootingTarget_Money (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6787615351371594639, guid: d911595fae040c74193db1c794a7477d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d911595fae040c74193db1c794a7477d, type: 3}
 --- !u!4 &1582212817 stripped
@@ -37564,6 +37604,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectable_Stickman (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2137006039902178333, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
 --- !u!4 &1596419537 stripped
@@ -38035,6 +38079,10 @@ PrefabInstance:
     - target: {fileID: 6787615351371594639, guid: d911595fae040c74193db1c794a7477d, type: 3}
       propertyPath: m_Name
       value: ShootingTarget_Money (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6787615351371594639, guid: d911595fae040c74193db1c794a7477d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d911595fae040c74193db1c794a7477d, type: 3}
@@ -43275,6 +43323,10 @@ PrefabInstance:
     - target: {fileID: 6787615351371594639, guid: d911595fae040c74193db1c794a7477d, type: 3}
       propertyPath: m_Name
       value: ShootingTarget_Money (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6787615351371594639, guid: d911595fae040c74193db1c794a7477d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d911595fae040c74193db1c794a7477d, type: 3}
@@ -48724,6 +48776,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShootingTarget_Stickman (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 937683412470326629, guid: b9b55698fdff3fb42bb721a8b7b8bb91, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9b55698fdff3fb42bb721a8b7b8bb91, type: 3}
 --- !u!4 &2005900788 stripped
@@ -49565,7 +49621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2137006039902178333, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
@@ -52022,7 +52078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170267559755704711, guid: 7966a3fc9bdb0a24faea5052a041cb9d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8170267559755704728, guid: 7966a3fc9bdb0a24faea5052a041cb9d, type: 3}
       propertyPath: m_RootOrder
@@ -52710,6 +52766,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectable_Stickman
       objectReference: {fileID: 0}
+    - target: {fileID: 2137006039902178333, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c533548cf62740429cf7410ad90d123, type: 3}
 --- !u!1001 &2159931473530572295
@@ -53087,7 +53147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5512961044517772809, guid: 0d2e06cc97ae406489f9248ae6000b42, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 226.54
+      value: -21.07
       objectReference: {fileID: 0}
     - target: {fileID: 5512961044517772809, guid: 0d2e06cc97ae406489f9248ae6000b42, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53144,7 +53204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170267559755704711, guid: 7966a3fc9bdb0a24faea5052a041cb9d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8170267559755704728, guid: 7966a3fc9bdb0a24faea5052a041cb9d, type: 3}
       propertyPath: m_RootOrder
